@@ -1,0 +1,44 @@
+.contenedor{
+  width: 89%;
+  
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  margin-left: 140px;
+  align-items: center;
+  padding-left: 150px;
+  /* padding-right: 2px; */
+  
+  
+}
+
+.table-resposive{
+  background: rgb(11, 8, 61);
+}
+
+ 
+      .textField:hover {
+        cursor: pointer;
+      }
+    
+      .btnBuscar{
+        height: 34px;
+        width: 32px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        
+      }
+    
+      .barraBusqueda{
+        
+    float: right;
+     
+      }
+ 
+      .barraBusqueda input {
+        padding: 5px;
+      }
+      .bg-danger .fa-trash{
+        color: aliceblue;
+      }

@@ -1,0 +1,273 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  Modal,
+  Button,
+  Alert,
+  OverlayTrigger,
+  Tooltip,
+  Row,
+  Col,
+} from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import { PostsReservas, DeleteReserva, PutReservas } from "./api/service";
+
+export default function Registro() {
+  const [showAlert, setShowAlert] = useState(false);
+  const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  //boton agregar
+  const handleShow = () => setShow(true);
+//boy}ton editar
+  const Edit = () => setShowEdit(true);
+  //cerrar modal editar
+  const handleCloseEdit = () => setShowEdit(false);
+  //Cerrar modal agregar
+  const handleClose = () => setShow(false);
+//api
+    const [reservas, setReservas] = useState([]);
+
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 2000);
+  };
+
+  useEffect(() => {
+    handleClose();
+
+    return () => {
+      handleShowAlert();
+    };
+  }, []);
+
+  //useEffec
+   useEffect(() => {
+     fetch("http://localhost:4005/ping")
+       .then((response) => response.json())
+       .then((res) => {
+         setReservas(res);
+       });
+   }, []);
+  
+//AGRegar
+  const [nuevodato, setNuevodato] = useState({
+    nombre: "",
+    fecha: "",
+    estado: "",
+    address: "",
+  });
+
+  const onInputChange = (e) => {
+    setNuevodato({ ...nuevodato, [e.target.name]: e.target.value });
+  };
+
+  const { nombre, fecha, estado, address } = nuevodato;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   
+    PostsReservas(nombre, fecha, estado);
+  };
+//Editare
+  
+ 
+
+ 
+  
+
+  
+
+
+
+  return (
+    <>
+      <div className="table-title m-4">
+        <div className="row">
+          <div className="col-sm-6">
+            <h2>
+              Listado de <b>Reservas</b>
+            </h2>
+          </div>
+          <div className="col-sm-6">
+            <Button
+              onClick={handleShow}
+              className="btn btn-success"
+              data-toggle="modal"
+            >
+              <span>Añadir algo</span>
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <Alert show={showAlert} variant="success">
+        Datos actualizados
+      </Alert>
+
+      <table className="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Estado</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {/* tiene que ser otro componente */}
+          {reservas.map((reser) => (
+            <tr key={reser.id_reserva}>
+              <td>{reser.id_reserva}</td>
+              <td>{reser.Alumno}</td>
+              <td>{reser.Fecha}</td>
+              <td>{reser.Fecha}</td>
+              <td>
+                <OverlayTrigger
+                  overlay={<Tooltip id={`tooltip-top`}>Editar</Tooltip>}
+                >
+                  <button
+                    onClick={Edit}
+                    className="btn btn-success btn-act m-2"
+                    data-toggle="modal"
+                  >
+                    <i className="material-icons">&#xE254;</i>
+                  </button>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  overlay={<Tooltip id={`tooltip-top`}>Borrar</Tooltip>}
+                >
+                  <button
+                    //LLamamos a una funcion que esta en el contexto de la aplicacion
+                    className="btn  btn-danger "
+                    data-toggle="modal"
+                  >
+                    <i className="material-icons">&#xE872;</i>
+                  </button>
+                </OverlayTrigger>
+              </td>
+
+              <Modal show={showEdit} onHide={handleCloseEdit}>
+                <Modal.Header closeButton>
+                  <Modal.Title>Editar Reservas</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  {/* Enviamos datos al compontente de EditarM */}
+                  <Form >
+                    <Form.Group>
+                      <Form.Control
+                        type="text"
+                        placeholder="Name *"
+                        name="name"
+                        value={reser.id_reserva}
+                        required
+                        disabled
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Control
+                        type="text"
+                        placeholder="Email *"
+                        name="email"
+                        value={reser.Alumno}
+                        required
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Address"
+                        rows={3}
+                        name="address"
+                        value={reser.Fecha}
+                      />
+                    </Form.Group>
+                    <Form.Group>
+                      <Form.Control
+                        type="text"
+                        placeholder="Phone"
+                        name="phone"
+                        value={reser.Estado}
+                      />
+                    </Form.Group>
+                    <Button variant="success" type="submit" block>
+                      Confirmar
+                    </Button>
+                  </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={handleCloseEdit}>
+                    Salir
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Añadir Algo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* todo esto debe ser un componente AGREGAR */}
+
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="Nombre"
+                name="nombre"
+                value={nombre}
+                onChange={(e) => onInputChange(e)}
+                required
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                type="date"
+                placeholder="data"
+                name="fecha"
+                value={fecha}
+                onChange={(e) => onInputChange(e)}
+                required
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                as="textarea"
+                placeholder="numero"
+                rows={3}
+                name="estado"
+                value={estado}
+                onChange={(e) => onInputChange(e)}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="Algo"
+                name="address"
+                value={address}
+                onChange={(e) => onInputChange(e)}
+                disabled
+              />
+            </Form.Group>
+            <Button variant="success" type="submit" block>
+              Confirmar
+            </Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Salir
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+}
