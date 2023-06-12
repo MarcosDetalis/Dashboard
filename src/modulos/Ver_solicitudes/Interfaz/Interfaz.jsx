@@ -4,10 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch} from '@fortawesome/free-solid-svg-icons'
 import 'styled-components'
 import DataTable from "react-data-table-component";
-
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import { getdatos } from "../Infraestructura/Services";
+import { Modal, Button, Form } from "react-bootstrap";
+
+
 export default function Interfaz() {
   const [usuarios,setUsuarios]=useState([]);
   const [buscar, setBuscar] = useState("");
@@ -28,101 +29,154 @@ export default function Interfaz() {
             resultado=usuarios.filter((data)=>data.name.toLowerCase().includes(buscar.toLowerCase()));
   }
   
+  const [showEdit, setShowEdit] = useState(false);
+
+  //boy}ton editar
+  const Edit = () => setShowEdit(true);
+  //cerrar modal editar
+  const handleCloseEdit = () => setShowEdit(false);
+
+
+
+
+
         const columnas = [
           {
             name: "Id",
             selector: (row) => row.id,
-            sortable: true,
           },
           {
             name: "Titulo",
             selector: (row) => row.name,
-            center: true,
-            sortable: true,
           },
           {
             name: "Alumno",
             selector: (row) => row.email,
-            center: true,
           },
-          {
-            name: "Carrera",
-            selector: (row) => row.email,
-            center: true,
-          },
+
           {
             name: "Email",
             selector: (row) => row.email,
-            center: true,
           },
 
           {
             name: "Acciones",
 
             button: true,
-            cell: (row) => (
-              <button
-                className="btn btn-success"
-                //onClick={(e) => handleButtonClick(e, row.id)}
-              >
-                <i className="fa fa-eye gtext-light"></i>
-              </button>
+            cell: () => (
+              <div>
+                <button
+                  className="btn btn-success m-1"
+                  //onClick={(e) => handleButtonClick(e, row.id)}
+                  onClick={Edit}
+                >
+                  <i className="fa fa-eye gtext-light"></i>
+                </button>
+
+                <button
+                  className="btn btn-danger"
+                  //onClick={(e) => handleButtonClick(e, row.id)}
+                >
+                  <i className="fa fa-trash"></i>
+                </button>
+              </div>
             ),
           },
         ];
 
-    // //creamos el custom personalizado css
-    const estilos = {
-      headCells: {
-        style: {
-          paddingLeft: "2px", // override the cell padding for head cells
-          color: "white",
+  
+  
 
-          backgroundColor: "#214162",
-          boxshadow: "0 0 3px 0px rgba(0, 0, 0, 0.4)",
-        },
-      },
-      cells: {
-        style: {
-          // override the cell padding for data cells
-        },
-      },
-      
-    };
+
+
   return (
-    <div className="contenedor">
-      <div className="table-resposive   ">
-        <div className="logo_login">
-          {/* buscador */}
-          <div className="barraBusqueda">
-            <input
+    < >
+      <div className="table-title">
+        <div className="row">
+          <div className="col-sm-6">
+            <h2>
+              Listado de <b>Algo</b>
+            </h2>
+          </div>
+
+          <div className="col-sm-">
+            <Form.Control
+              type="search"
+              placeholder="Buscar"
+              className="me-2"
+              aria-label="Search"
               value={buscar}
               onChange={buscador}
-              type="text"
-              placeholder="Buscar Libro"
-              className="textField"
-              name="busqueda"
-              //onChange={handleFilter}
             />
-            <button type="button" className="btnBuscar">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
           </div>
+          <Button className="btn btn-success" data-toggle="modal">
+            <i className="material-icons">&#xE147;</i> <span>Añadir algo</span>
+          </Button>
         </div>
-        {/* hasta aca es buscador */}
-
-        <DataTable
-          columns={columnas}
-          //aqui le pasamos la variable del usestate q contiene el array que cargamos de la peticion
-          data={resultado}
-          customStyles={estilos}
-          highlightOnHover
-          pointerOnHover
-          pagination
-          selectableRows
-          responsive
-        />
       </div>
-    </div>
+
+      <DataTable
+        columns={columnas}
+        //aqui le pasamos la variable del usestate q contiene el array que cargamos de la peticion
+        data={resultado}
+
+       
+        
+        highlightOnHover
+        pointerOnHover
+        pagination
+        selectableRows
+        responsive
+
+        
+      />
+
+      <Modal show={showEdit} onHide={handleCloseEdit}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Reservas</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Enviamos datos al compontente de EditarM */}
+          <Form>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="Name *"
+                name="name"
+                required
+                disabled
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                type="text"
+                placeholder="Email *"
+                name="email"
+                required
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control
+                as="textarea"
+                placeholder="Address"
+                rows={3}
+                name="address"
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Control type="text" placeholder="Phone" name="phone" />
+            </Form.Group>
+            <Button variant="success" type="submit" block>
+              Confirmar
+            </Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseEdit}>
+            Salir
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }

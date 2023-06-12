@@ -4,10 +4,11 @@ import Ver_infromes from "./modulos/Ver_Infromes/Interfaz/Ver_infromes"
 import AgregarUser from "./modulos/Registro/Interfaz/Registrar_alumno"
 import Hook from "./modulos/Dardebaja/Interfaz/Inter"
 import EliminarLibros from "./modulos/EliminarLibro/Interfaz/InterfazEliminar"
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Frament from "./Frament";
 import Solicitud from "./modulos/Ver_solicitudes/Interfaz/Interfaz"
 import Solicitud2 from "./modulos/Solicitudes/Solicitud2"
+ 
 function App() {
   return (
     <div className="App">

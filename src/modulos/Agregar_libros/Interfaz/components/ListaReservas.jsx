@@ -60,7 +60,7 @@ const ListaReserva = () => {
 
   return (
     <>
-      <div className="table-title m-4">
+      <div className="table-title">
         <div className="row">
           <div className="col-sm-6">
             <h2>

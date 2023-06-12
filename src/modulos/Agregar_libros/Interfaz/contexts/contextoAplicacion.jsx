@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { PostsReservas, DeleteReserva, PutReservas } from "../api/service";
+import { PostsReservas, DeleteReserva, PutReservas } from "../../Infraestrutura/service";
 export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
