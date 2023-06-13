@@ -110,23 +110,23 @@ console.log(espa);
                 wrap:true,
                 
                
-            },
+            }
            
-            {
-                name:'Acciones',
+            // {
+            //     name:'Acciones',
             
               
-                button: true,
-                cell: (row) => (
-                    <button className="btn bg-danger"
-                        //onClick={(e) => handleButtonClick(e, row.id)}
-                        >
-                            <FontAwesomeIcon icon={faTrash} />
-                    </button>
+            //     button: true,
+            //     cell: (row) => (
+            //         <button className="btn bg-danger"
+            //             //onClick={(e) => handleButtonClick(e, row.id)}
+            //             >
+            //                 <FontAwesomeIcon icon={faTrash} />
+            //         </button>
                     
-                ),
+            //     ),
                 
-            }
+            // }
             
         ];
 
