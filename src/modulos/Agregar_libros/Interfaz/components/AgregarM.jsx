@@ -1,11 +1,27 @@
 import { Form, Button } from "react-bootstrap";
-
 import { ReservasContext } from "../contexts/contextoAplicacion";
-import { useContext, useState } from "react";
+import { useContext} from "react";
+
+import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
+
+   const [inputs, handleFieldChange, getErrors, nombreiderr, fechaerr] =
+     validacion({
+       nombreid: "",
+       fechaid: "",
+       estadoid: "",
+       //->Son los paramtros
+     });
+  
+   const submit = () => {
+     getErrors();
+   };
+////-------------
+  
   const { addReservas } = useContext(ReservasContext);
 
+/*
   const [nuevodato, setNuevodato] = useState({
     nombre: "",
     fecha: "",
@@ -18,10 +34,13 @@ const AgregarM = () => {
   };
 
   const { nombre, fecha, estado, address } = nuevodato;
+*/
 
   const handleSubmit = (e) => {
+    console.log("add", inputs.nombreid, inputs.fechaid, inputs.estadoid);
+    
     e.preventDefault();
-    addReservas(nombre, fecha, estado);
+    addReservas(inputs.nombreid, inputs.fechaid, inputs.estadoid);
   };
 
   return (
@@ -31,20 +50,30 @@ const AgregarM = () => {
           type="text"
           placeholder="Nombre"
           name="nombre"
-          value={nombre}
-          onChange={(e) => onInputChange(e)}
-          required
+          id="nombreid" //el id identifica el cambio
+          value={inputs.nombreid}
+          onChange={handleFieldChange}
         />
+        {nombreiderr?.emial && (
+          <span className="text-danger center  font-weight-bold">
+            {nombreiderr.emial}
+          </span>
+        )}
       </Form.Group>
       <Form.Group>
         <Form.Control
           type="date"
           placeholder="data"
-          name="fecha"
-          value={fecha}
-          onChange={(e) => onInputChange(e)}
-          required
+          name="fechaid"
+          value={inputs.fechaid}
+          id="fechaid"
+          onChange={handleFieldChange}
         />
+        {fechaerr?.op && (
+          <span className="text-danger center  font-weight-bold">
+            {fechaerr.op}
+          </span>
+        )}
       </Form.Group>
       <Form.Group>
         <Form.Control
@@ -52,8 +81,9 @@ const AgregarM = () => {
           placeholder="numero"
           rows={3}
           name="estado"
-          value={estado}
-          onChange={(e) => onInputChange(e)}
+          id="estadoid"
+          value={inputs.estadoid}
+          onChange={handleFieldChange}
         />
       </Form.Group>
       <Form.Group>
@@ -61,12 +91,13 @@ const AgregarM = () => {
           type="text"
           placeholder="Algo"
           name="address"
-          value={address}
-          onChange={(e) => onInputChange(e)}
+          id="address"
+          value={inputs.address}
+          onChange={handleFieldChange}
           disabled
         />
       </Form.Group>
-      <Button variant="success" type="submit" block>
+      <Button variant="success" type="submit" block onClick={submit}>
         Confirmar
       </Button>
     </Form>

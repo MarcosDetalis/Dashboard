@@ -59,6 +59,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
           <Button variant="secondary" onClick={handleClose}>
             Salir
           </Button>
+        
         </Modal.Footer>
       </Modal>
     </>

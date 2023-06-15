@@ -27,7 +27,7 @@ function App() {
                   <div className="user_profle_side">
                     <div className="user_img"></div>
                     <div className="user_info">
-                      <h6>John David</h6>
+                      <h6>Nombre usuario</h6>
                       <p>
                         <span className="online_animation"></span> Online
                       </p>
@@ -93,7 +93,7 @@ function App() {
                                 src="images/layout_img/user_img.jpg"
                                 alt="#"
                               />
-                              <span className="name_user">John David</span>
+                              <span className="name_user">Nombre usuario</span>
                             </a>
                             <div className="dropdown-menu">
                               <a className="dropdown-item" href="profile.html">

@@ -1,13 +1,10 @@
 
 import { useEffect,useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch} from '@fortawesome/free-solid-svg-icons'
-import 'styled-components'
 import DataTable from "react-data-table-component";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { getdatos } from "../Infraestructura/Services";
 import { Modal, Button, Form } from "react-bootstrap";
-
+ import EditModa from './EditModal'
 
 export default function Interfaz() {
   const [usuarios,setUsuarios]=useState([]);
@@ -36,27 +33,27 @@ export default function Interfaz() {
   //cerrar modal editar
   const handleCloseEdit = () => setShowEdit(false);
 
-
+console.log(resultado)
 
 
 
         const columnas = [
           {
             name: "Id",
-            selector: (row) => row.id,
+            selector: (row) => row.id_reserva,
           },
           {
             name: "Titulo",
-            selector: (row) => row.name,
+            selector: (row) => row.Alumno,
           },
           {
             name: "Alumno",
-            selector: (row) => row.email,
+            selector: (row) => row.Fecha,
           },
 
           {
             name: "Email",
-            selector: (row) => row.email,
+            selector: (row) => row.Estado,
           },
 
           {
@@ -70,7 +67,7 @@ export default function Interfaz() {
                   //onClick={(e) => handleButtonClick(e, row.id)}
                   onClick={Edit}
                 >
-                  <i className="fa fa-eye gtext-light"></i>
+                  <i className="fa fa-eye gtext-light">{resultado.id_reserva}</i>
                 </button>
 
                 <button
@@ -90,7 +87,7 @@ export default function Interfaz() {
 
 
   return (
-    < >
+    <>
       <div className="table-title">
         <div className="row">
           <div className="col-sm-6">
@@ -119,16 +116,11 @@ export default function Interfaz() {
         columns={columnas}
         //aqui le pasamos la variable del usestate q contiene el array que cargamos de la peticion
         data={resultado}
-
-       
-        
         highlightOnHover
         pointerOnHover
         pagination
         selectableRows
         responsive
-
-        
       />
 
       <Modal show={showEdit} onHide={handleCloseEdit}>
@@ -137,39 +129,7 @@ export default function Interfaz() {
         </Modal.Header>
         <Modal.Body>
           {/* Enviamos datos al compontente de EditarM */}
-          <Form>
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Name *"
-                name="name"
-                required
-                disabled
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control
-                type="text"
-                placeholder="Email *"
-                name="email"
-                required
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control
-                as="textarea"
-                placeholder="Address"
-                rows={3}
-                name="address"
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control type="text" placeholder="Phone" name="phone" />
-            </Form.Group>
-            <Button variant="success" type="submit" block>
-              Confirmar
-            </Button>
-          </Form>
+          <EditModa Req_Reservas={resultado}></EditModa>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseEdit}>

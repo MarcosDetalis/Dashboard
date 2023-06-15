@@ -127,6 +127,9 @@ const ListaReserva = () => {
           <AgregarM />
         </Modal.Body>
         <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Limpiar
+          </Button>
           <Button variant="secondary" onClick={handleClose}>
             Salir
           </Button>
