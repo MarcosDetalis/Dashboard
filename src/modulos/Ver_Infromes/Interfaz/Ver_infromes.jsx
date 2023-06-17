@@ -6,7 +6,7 @@ export default function Ver_infromes() {
   });
   const submit = () => {
     getErrors();
-    col();
+    
   };
   console.log("kkk",errors.op)
 

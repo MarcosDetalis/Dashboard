@@ -4,6 +4,7 @@ import { ReservasContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Reservas";
 import AgregarM from "./AgregarM";
 import Pagination from "./Paginacion";
+import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
   const { lingitudReserva } = useContext(ReservasContext);
@@ -118,8 +119,9 @@ const ListaReserva = () => {
         ActualReserva={ActualReserva}
         lingitudReserva={lingitudReserva}
       />
+      {/* ize="xs || sm || md || lg || full" */}
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} size="xs">
         <Modal.Header closeButton>
           <Modal.Title>Añadir Algo</Modal.Title>
         </Modal.Header>

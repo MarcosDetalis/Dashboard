@@ -6,7 +6,7 @@ import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
 
-   const [inputs, handleFieldChange, getErrors, nombreiderr, fechaerr] =
+   const [inputs, handleFieldChange, getErrors, nombreiderr,fechaerr] =
      validacion({
        nombreid: "",
        fechaid: "",
@@ -14,27 +14,14 @@ const AgregarM = () => {
        //->Son los paramtros
      });
   
+  
+  console.log("date fecha", fechaerr.op);
+  
    const submit = () => {
      getErrors();
    };
-////-------------
-  
+
   const { addReservas } = useContext(ReservasContext);
-
-/*
-  const [nuevodato, setNuevodato] = useState({
-    nombre: "",
-    fecha: "",
-    estado: "",
-    address: "",
-  });
-
-  const onInputChange = (e) => {
-    setNuevodato({ ...nuevodato, [e.target.name]: e.target.value });
-  };
-
-  const { nombre, fecha, estado, address } = nuevodato;
-*/
 
   const handleSubmit = (e) => {
     console.log("add", inputs.nombreid, inputs.fechaid, inputs.estadoid);
@@ -53,6 +40,11 @@ const AgregarM = () => {
           id="nombreid" //el id identifica el cambio
           value={inputs.nombreid}
           onChange={handleFieldChange}
+          className={
+            nombreiderr.emial == "El correo es un campo obligatorio"
+              ? "border-bottom border-danger"
+              : ""
+          }
         />
         {nombreiderr?.emial && (
           <span className="text-danger center  font-weight-bold">
@@ -65,9 +57,14 @@ const AgregarM = () => {
           type="date"
           placeholder="data"
           name="fechaid"
-          value={inputs.fechaid}
           id="fechaid"
+          value={inputs.fechaid}
           onChange={handleFieldChange}
+          className={
+            fechaerr.op == "Error en el formato"
+              ? "border-bottom border-danger"
+              : ""
+          }
         />
         {fechaerr?.op && (
           <span className="text-danger center  font-weight-bold">
