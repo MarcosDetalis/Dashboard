@@ -1,26 +1,50 @@
-import React from "react";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+
+
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+
+import FormLabel from "@mui/material/FormLabel";
+
+
+import Button from "@mui/material/Button";
+ 
+import Stack from "@mui/material/Stack";
+
+
+
 import Validacion from "../Dominio/Ver_informeValidacio";
 export default function Ver_infromes() {
+
+   
+
+
+
   const [inputs, handleFieldChange, getErrors, errors, pass] = Validacion({
     fechadesde: "",
   });
   const submit = () => {
     getErrors();
-    
   };
-  console.log("kkk",errors.op)
+  console.log("kkk", errors.op);
 
-  
   function col() {
-     
     if (errors.op == "Error en el formato") {
       return " border-bottom border-danger ";
     } else {
       return "ss ";
     }
   }
- 
-
 
   return (
     <div className="inner_page login ">
@@ -32,92 +56,79 @@ export default function Ver_infromes() {
               <div className="login_form">
                 <form>
                   <fieldset>
-                    <div class="form-row">
-                      <div class="col-md-6 form-group">
-                        <label className="label_field font-weight-bold">
-                          Fecha Desde:
-                        </label>
-                        <input
-                          type="date"
-                          name="fechadesde"
-                          id="fechadesde"
-                          value={inputs.fechadesde}
-                          onChange={handleFieldChange}
-                          className={
-                            errors.op == "Error en el formato"
-                              ? "border-bottom border-danger"
-                              : ""
-                          }
-                           
-                          required
-                        />
-                        {errors?.op && (
-                          <span className="text-danger center  font-weight-bold">
-                            {errors.op}
-                          </span>
-                        )}
+                    <div className="form-row">
+                      <div className="col-md-6 form-group">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker label="Ingresar Fecha Desde" />
+                        </LocalizationProvider>
                       </div>
 
-                      <div class="col-md-6 form-group">
-                        <label className="label_field font-weight-bold">
-                          Fecha Hasta:
-                        </label>
-                        <input type="date" name="fechahasta" required />
+                      <div className="col-md-6 form-group">
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                          <DatePicker label="Ingresar Fecha Hasta" />
+                        </LocalizationProvider>
                       </div>
                     </div>
 
                     <div className="field">
-                      <label className="label_field font-weight-bold">
-                        Carreras:
-                      </label>
                       <br />
-                      <select className="form-control">
-                        <option value="">Ing.Informatica</option>
-                        <option value="">Derecho</option>
-                        <option value="">Contabilidad</option>
-                      </select>
+                      <Box sx={{ minWidth: 120 }}>
+                        <FormControl fullWidth>
+                          <InputLabel id="demo-simple-select-label">
+                            Carreras
+                          </InputLabel>
+                          <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            label="Carreras"
+                            required
+                          >
+                            <MenuItem value={10}>
+                              Ingenieria Informatica
+                            </MenuItem>
+                            <MenuItem value={20}>Derecho</MenuItem>
+                            <MenuItem value={30}>Contabilidad</MenuItem>
+                          </Select>
+                        </FormControl>
+                      </Box>
                     </div>
 
                     <div className="field">
-                      <ul className="nav nav-pills nav-stacked labels-category inbox-divider">
-                        <li>
-                          <h4>Estado:</h4>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fa fa-circle"></i> Devueltos
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fa fa-circle"></i> Aprovado
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fa fa-circle"></i> En Reservas
-                          </a>
-                        </li>
-                      </ul>
+                      <FormControl>
+                        <FormLabel id="demo-row-radio-buttons-group-label">
+                          Tipo de Reporte
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="female"
+                            control={<Radio />}
+                            label="Devueltos"
+                            required
+                          />
+                          <FormControlLabel
+                            value="male"
+                            control={<Radio />}
+                            label="No devuelto"
+                            required
+                          />
+                        </RadioGroup>
+                      </FormControl>
                     </div>
 
-                    <div className="field ">
-                      <button className="main_bt  " onClick={submit}>
-                        <i className="fa fa-file-pdf-o">
-                          <span className="m-1">Imprimir Informe</span>
-                        </i>
-                      </button>
-                      <button className="main_bt m-3 btn-primary">
-                        <i className="fa fa-trash">
-                          <span className="m-1">Limpiar</span>
-                        </i>
-                      </button>
-                      <button className="main_bt btn-danger ">
-                        <i className="fa fa-mail-reply">
-                          <span className="m-1">Salir</span>
-                        </i>
-                      </button>
-                    </div>
+                   
+                      <Stack direction="row" spacing={2}>
+                        <Button variant="outlined" >
+                          Delete
+                        </Button>
+                        <Button variant="contained"  >
+                          Send
+                        </Button>
+                      </Stack>
+                    
                   </fieldset>
                 </form>
               </div>

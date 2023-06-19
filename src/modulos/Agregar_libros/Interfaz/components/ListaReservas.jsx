@@ -121,7 +121,7 @@ const ListaReserva = () => {
       />
       {/* ize="xs || sm || md || lg || full" */}
 
-      <Modal show={show} onHide={handleClose} size="xs">
+      <Modal show={show} onHide={handleClose} size="sm">
         <Modal.Header closeButton>
           <Modal.Title>Añadir Algo</Modal.Title>
         </Modal.Header>
