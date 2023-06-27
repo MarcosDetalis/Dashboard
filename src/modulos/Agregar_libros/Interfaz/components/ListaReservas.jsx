@@ -65,7 +65,7 @@ const ListaReserva = () => {
         <div className="row">
           <div className="col-sm-6">
             <h2>
-              Listado de <b>Algo</b>
+              Listado de <b>Libros</b>
             </h2>
           </div>
 
@@ -84,7 +84,7 @@ const ListaReserva = () => {
             className="btn btn-success"
             data-toggle="modal"
           >
-            <i className="material-icons">&#xE147;</i> <span>Añadir algo</span>
+            <i className="material-icons">&#xE147;</i> <span>Añadir Libros</span>
           </Button>
         </div>
       </div>
@@ -97,7 +97,7 @@ const ListaReserva = () => {
         <thead>
           <tr>
             <th>Id</th>
-            <th>Nombre</th>
+            <th>Autor</th>
             <th>Fecha</th>
             <th>Estado</th>
             <th>Actions</th>
@@ -121,9 +121,9 @@ const ListaReserva = () => {
       />
       {/* ize="xs || sm || md || lg || full" */}
 
-      <Modal show={show} onHide={handleClose} size="sm">
+      <Modal show={show} onHide={handleClose} size="md">
         <Modal.Header closeButton>
-          <Modal.Title>Añadir Algo</Modal.Title>
+          <Modal.Title>Añadir Libro</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AgregarM />

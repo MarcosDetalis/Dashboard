@@ -36,6 +36,16 @@ const EditarM = ({ Req_Reservas }) => {
       <Form.Group>
         <Form.Control
           type="text"
+          placeholder="Autor"
+          name="email"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          required
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Control
+          type="text"
           placeholder="Email *"
           name="email"
           value={nombre}
@@ -53,7 +63,7 @@ const EditarM = ({ Req_Reservas }) => {
           onChange={(e) => setFecha(e.target.value)}
         />
       </Form.Group>
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Control
           type="text"
           placeholder="Phone"
@@ -61,12 +71,16 @@ const EditarM = ({ Req_Reservas }) => {
           value={estado}
           onChange={(e) => setEstado(e.target.value)}
         />
-      </Form.Group>
+      </Form.Group> */}
 
       <Form.Group>
         <Row>
           <Col>
-            <Form.Control placeholder="Ejempos" />
+            <Form.Control size="sm" as="select">
+              <option>Nuevo</option>
+              <option>Donado</option>
+              <option>Usado</option>
+            </Form.Control>
           </Col>
           <Col>
             <Form.Control placeholder="Ejemplo" />

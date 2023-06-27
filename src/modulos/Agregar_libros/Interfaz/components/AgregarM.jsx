@@ -1,4 +1,4 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import { ReservasContext } from "../contexts/contextoAplicacion";
 import { useContext} from "react";
 
@@ -35,7 +35,7 @@ const AgregarM = () => {
       <Form.Group>
         <Form.Control
           type="text"
-          placeholder="Nombre"
+          placeholder="Autor"
           name="nombre"
           id="nombreid" //el id identifica el cambio
           value={inputs.nombreid}
@@ -52,7 +52,33 @@ const AgregarM = () => {
           </span>
         )}
       </Form.Group>
+
+
+      
       <Form.Group>
+        <Form.Control
+          type="text"
+          placeholder="Titulo"
+          name="nombre"
+          id="nombreid" //el id identifica el cambio
+          value={inputs.nombreid}
+          onChange={handleFieldChange}
+          className={
+            nombreiderr.emial == "El correo es un campo obligatorio"
+              ? "border-bottom border-danger"
+              : ""
+          }
+        />
+        {nombreiderr?.emial && (
+          <span className="text-danger center  font-weight-bold">
+            {nombreiderr.emial}
+          </span>
+        )}
+      </Form.Group>
+
+
+      
+      {/* <Form.Group>
         <Form.Control
           type="date"
           placeholder="data"
@@ -71,11 +97,12 @@ const AgregarM = () => {
             {fechaerr.op}
           </span>
         )}
-      </Form.Group>
+      </Form.Group> */}
+
       <Form.Group>
         <Form.Control
           as="textarea"
-          placeholder="numero"
+          placeholder="Descripcion del libro"
           rows={3}
           name="estado"
           id="estadoid"
@@ -83,7 +110,7 @@ const AgregarM = () => {
           onChange={handleFieldChange}
         />
       </Form.Group>
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Control
           type="text"
           placeholder="Algo"
@@ -93,7 +120,23 @@ const AgregarM = () => {
           onChange={handleFieldChange}
           disabled
         />
+      </Form.Group> */}
+
+      <Form.Group>
+        <Row>
+          <Col>
+            <Form.Control size="sm" as="select">
+              <option>Nuevo</option>
+              <option>Donado</option>
+              <option>Usado</option>
+            </Form.Control>
+          </Col>
+          <Col>
+            <Form.Control placeholder="Cantidad" />
+          </Col>
+        </Row>
       </Form.Group>
+
       <Button variant="success" type="submit" block onClick={submit}>
         Confirmar
       </Button>
