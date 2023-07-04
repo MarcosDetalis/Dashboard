@@ -49,7 +49,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
 
       <Modal show={show} onHide={handleClose} fullscreen={true}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Reservas</Modal.Title>
+          <Modal.Title>Editar Libros</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {/* Enviamos datos al compontente de EditarM */}

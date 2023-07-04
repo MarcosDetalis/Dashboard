@@ -1,5 +1,6 @@
 import {  useEffect, useState, Fragment } from "react";
 import { Page, Text, Document, StyleSheet, View } from "@react-pdf/renderer";
+ import dayjs from "dayjs";
 
 const styles = StyleSheet.create({
   table: {
@@ -67,13 +68,16 @@ const styles = StyleSheet.create({
 
 const PDFFile = ({ dato}) => {
   const [reservas, setReservas] = useState([]);
-
+  console.log("pdf",dato)
   useEffect(() => {
-    fetch("http://localhost:4005/api/informe", {
+    fetch("https://servicedeb.onrender.com/api/informe", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
-        id: dato.l,
+        carrera: dato.l,
+        fechad: dato.dd,
+        fechah: dato.dh,
+        estado: dato.r,
       }),
     })
       .then((response) => response.json())
@@ -82,10 +86,15 @@ const PDFFile = ({ dato}) => {
       });
   }, [ dato]);
 
-  console.log(reservas);
-  console.log("op44", dato.l);
-
+  console.log("setsda",reservas);
  
+ let estado = dato.r === 1 ? "Devuelto" : "No Devuelto";
+ let carrera =
+   dato.l === 1
+     ? "Ingenieria Informatica"
+     : dato.l === 2
+     ? "Derecho"
+     : "Contabilidad";
 
   return (
     <Document>
@@ -95,13 +104,17 @@ const PDFFile = ({ dato}) => {
           <View style={styles.invoiceNoContainer}>
             <Text style={styles.parameto}>Parametros </Text>
             <Text style={styles.label}>Estado: </Text>
-            <Text style={styles.invoiceDate}>Pendiente </Text>
+            <Text style={styles.invoiceDate}>{estado}</Text>
             <Text style={styles.label}>Carrera: </Text>
-            <Text style={styles.invoiceDate}>Informatica </Text>
+            <Text style={styles.invoiceDate}>{carrera} </Text>
             <Text style={styles.label}>Fecha Desde: </Text>
-            <Text style={styles.invoiceDate}>01/03/2023 </Text>
+            <Text style={styles.invoiceDate}>
+              {dayjs(dato.dd).format("DD/MM/YYYY")}
+            </Text>
             <Text style={styles.label}> Fecha Hasta: </Text>
-            <Text style={styles.invoiceDate}>01/05/2023 </Text>
+            <Text style={styles.invoiceDate}>
+              {dayjs(dato.dh).format("DD/MM/YYYY")}
+            </Text>
           </View>
         </Fragment>
 
@@ -122,18 +135,18 @@ const PDFFile = ({ dato}) => {
           </View>
 
           {reservas.map((reser) => (
-            <View style={styles.tableRow} key={reser.id_reserva}>
+            <View style={styles.tableRow} key={reser.id}>
               <View style={styles.tableCol}>
-                <Text style={styles.tableCell}> {reser.Alumno} </Text>
+                <Text style={styles.tableCell}>{reser.carrera} </Text>
               </View>
               <View style={styles.tableCol}>
-                <Text style={styles.tableCell}> {reser.Estado} </Text>
+                <Text style={styles.tableCell}> {reser.estado} </Text>
               </View>
               <View style={styles.tableCol}>
-                <Text style={styles.tableCell}> {reser.Fecha} </Text>
+                <Text style={styles.tableCell}>{reser.FechaSTR}</Text>
               </View>
               <View style={styles.tableCol}>
-                <Text style={styles.tableCell}> {reser.id_reserva} </Text>
+                <Text style={styles.tableCell}> </Text>
               </View>
             </View>
           ))}

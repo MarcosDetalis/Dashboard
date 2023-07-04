@@ -608,6 +608,7 @@ a:focus {
     max-width: 100%;
     padding: 0;
     margin: 0;
+    
    
      
 } 
@@ -3264,6 +3265,7 @@ table.projects tr td:first-child {
 
 .full_height {
     height: 100vh;
+   
 }
 
 .login_section {

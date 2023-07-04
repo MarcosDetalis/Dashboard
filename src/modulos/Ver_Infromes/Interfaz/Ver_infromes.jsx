@@ -32,8 +32,8 @@ export default function Ver_infromes() {
 
   const [fechadesde, setFechadesde] = useState();
   const [fechahasta, setFechahasta] = useState();
-  const [listaS, setListaS] = useState(20);
-  const [radio, setRadio] = useState("devueltos");
+  const [listaS, setListaS] = useState(1);
+  const [radio, setRadio] = useState(1);
   
   
   const handleChange = (event) => {
@@ -89,12 +89,12 @@ export default function Ver_infromes() {
                           id="demo-simple-select"
                           label="Carreras"
                           required
-                          value={listaS || "10"}
+                          value={listaS || 1}
                           onChange={handleChange}
                         >
-                          <MenuItem value={10}>Ingenieria Informatica</MenuItem>
-                          <MenuItem value={20}>Derecho</MenuItem>
-                          <MenuItem value={44}>Contabilidad</MenuItem>
+                          <MenuItem value={1}>Ingenieria Informatica</MenuItem>
+                          <MenuItem value={2}>Derecho</MenuItem>
+                          <MenuItem value={3}>Contabilidad</MenuItem>
                         </Select>
                       </FormControl>
                     </Box>
@@ -109,17 +109,17 @@ export default function Ver_infromes() {
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
-                        value={radio || "devueltos"}
+                        value={radio || "1"}
                         onChange={radioCha}
                       >
                         <FormControlLabel
-                          value="devueltos"
+                          value={1}
                           control={<Radio />}
                           label="Devueltos"
                           required
                         />
                         <FormControlLabel
-                          value="nodevuelto"
+                          value={2}
                           control={<Radio />}
                           label="No devuelto"
                           required
@@ -135,9 +135,9 @@ export default function Ver_infromes() {
                           dato={{
                             r: radio,
                             l: listaS,
-                            dd: (fechadesde || dayjs()).format("DD/MM/YYYY"),
+                            dd: (fechadesde || dayjs()).format("YYYY/MM/DD"),
                             dh: (fechahasta || dayjs().add(30, "day")).format(
-                              "DD/MM/YYYY"
+                              "YYYY/MM/DD"
                             ),
                           }}
                         />
@@ -153,8 +153,6 @@ export default function Ver_infromes() {
                       }
                     </PDFDownloadLink>
 
-
-                    
                     <Button variant="contained">Salir</Button>
                   </Stack>
                 </fieldset>

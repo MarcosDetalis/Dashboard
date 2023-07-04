@@ -83,7 +83,13 @@ const EditarM = ({ Req_Reservas }) => {
             </Form.Control>
           </Col>
           <Col>
-            <Form.Control placeholder="Ejemplo" />
+            <Form.Control size="sm" as="select">
+              <option>Libro</option>
+              <option>Tesis</option>
+            </Form.Control>
+          </Col>
+          <Col>
+            <Form.Control type="number" placeholder="Cantidad" />
           </Col>
         </Row>
       </Form.Group>

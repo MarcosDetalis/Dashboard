@@ -3263,13 +3263,13 @@ table.projects tr td:first-child {
 }
 
 .full_height {
-    height: 100vh;
+    height: 90vh;
 }
 
 .login_section {
     max-width: 640px;
     background: #fff;
-    min-height: 540px;
+    min-height: 400px;
     width: 100%;
     box-shadow: 0px 0 10px -8px #000;
     margin: 0px;

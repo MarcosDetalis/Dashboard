@@ -53,8 +53,6 @@ const AgregarM = () => {
         )}
       </Form.Group>
 
-
-      
       <Form.Group>
         <Form.Control
           type="text"
@@ -76,8 +74,6 @@ const AgregarM = () => {
         )}
       </Form.Group>
 
-
-      
       {/* <Form.Group>
         <Form.Control
           type="date"
@@ -132,7 +128,14 @@ const AgregarM = () => {
             </Form.Control>
           </Col>
           <Col>
-            <Form.Control placeholder="Cantidad" />
+            <Form.Control size="sm" as="select">
+              <option>Libro</option>
+              <option>Tesis</option>
+              
+            </Form.Control>
+          </Col>
+          <Col>
+            <Form.Control type="number" placeholder="Cantidad" />
           </Col>
         </Row>
       </Form.Group>
