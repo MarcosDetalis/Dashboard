@@ -1,5 +1,8 @@
 npm run start -- --host 0.0.0.0
-
+   AND (p.fecha_solicitud >= to_date($P{p_fecha_desde}, 'DD/MM/YYYY') OR
+       $P{p_fecha_desde} IS NULL)
+   AND (p.fecha_solicitud <= to_date($P{p_fecha_hasta}, 'DD/MM/YYYY') OR
+       $P{p_fecha_hasta} IS NULL)
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
