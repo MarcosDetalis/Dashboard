@@ -36,9 +36,9 @@ const AgregarM = () => {
         <Form.Control
           type="text"
           placeholder="Autor"
-          name="nombre"
-          id="nombreid" //el id identifica el cambio
-          value={inputs.nombreid}
+          name="autor"
+          id="autorid" //el id identifica el cambio
+          value={inputs.autorid}
           onChange={handleFieldChange}
           className={
             nombreiderr.emial == "El correo es un campo obligatorio"
@@ -131,7 +131,6 @@ const AgregarM = () => {
             <Form.Control size="sm" as="select">
               <option>Libro</option>
               <option>Tesis</option>
-              
             </Form.Control>
           </Col>
           <Col>
