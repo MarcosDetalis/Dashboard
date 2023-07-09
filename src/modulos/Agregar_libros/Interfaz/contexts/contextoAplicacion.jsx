@@ -23,9 +23,9 @@ const AplicacionContextProvider = (props) => {
   //Los datos guardamos en la memoria local del navegador
 
   
-  // useEffect(() => {
-  //   localStorage.setItem("reservas", JSON.stringify(reservas));
-  // });
+   useEffect(() => {
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+ });
 
   //tenemos una longitud de las peticiones
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 1));
