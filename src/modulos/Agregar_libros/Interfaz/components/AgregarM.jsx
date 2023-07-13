@@ -6,16 +6,16 @@ import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
 
-   const [inputs, handleFieldChange, getErrors, nombreiderr,fechaerr] =
+   const [inputs, handleFieldChange, getErrors, Autor_error, titulo_error] =
      validacion({
-       nombreid: "",
-       fechaid: "",
-       estadoid: "",
+       autortxt_id: "",
+       titulotxt_id: "",
+       decripid: "",
        //->Son los paramtros
      });
   
   
-  console.log("date fecha", fechaerr.op);
+  console.log("date fecha", Autor_error.msm_error);
   
    const submit = () => {
      getErrors();
@@ -24,7 +24,6 @@ const AgregarM = () => {
   const { addReservas } = useContext(ReservasContext);
 
   const handleSubmit = (e) => {
-    console.log("add", inputs.nombreid, inputs.fechaid, inputs.estadoid);
     
     e.preventDefault();
     addReservas(inputs.nombreid, inputs.fechaid, inputs.estadoid);
@@ -37,18 +36,18 @@ const AgregarM = () => {
           type="text"
           placeholder="Autor"
           name="autor"
-          id="autorid" //el id identifica el cambio
-          value={inputs.autorid}
+          id="autortxt_id" //el id identifica el cambio
+          value={inputs.autortxt_id}
           onChange={handleFieldChange}
           className={
-            nombreiderr.emial == "El correo es un campo obligatorio"
+            Autor_error.msm_error == "El autor es un campo obligatorio"
               ? "border-bottom border-danger"
               : ""
           }
         />
-        {nombreiderr?.emial && (
+        {Autor_error?.msm_error && (
           <span className="text-danger center  font-weight-bold">
-            {nombreiderr.emial}
+            {Autor_error.msm_error}
           </span>
         )}
       </Form.Group>
@@ -57,66 +56,34 @@ const AgregarM = () => {
         <Form.Control
           type="text"
           placeholder="Titulo"
-          name="nombre"
-          id="nombreid" //el id identifica el cambio
-          value={inputs.nombreid}
+          name="titulo"
+          id="titulotxt_id" //el id identifica el cambio
+          value={inputs.titulotxt_id}
           onChange={handleFieldChange}
           className={
-            nombreiderr.emial == "El correo es un campo obligatorio"
+            titulo_error.msm_error == "El titulo es un campo obligatorio"
               ? "border-bottom border-danger"
               : ""
           }
         />
-        {nombreiderr?.emial && (
+        {titulo_error?.msm_error && (
           <span className="text-danger center  font-weight-bold">
-            {nombreiderr.emial}
+            {titulo_error.msm_error}
           </span>
         )}
       </Form.Group>
-
-      {/* <Form.Group>
-        <Form.Control
-          type="date"
-          placeholder="data"
-          name="fechaid"
-          id="fechaid"
-          value={inputs.fechaid}
-          onChange={handleFieldChange}
-          className={
-            fechaerr.op == "Error en el formato"
-              ? "border-bottom border-danger"
-              : ""
-          }
-        />
-        {fechaerr?.op && (
-          <span className="text-danger center  font-weight-bold">
-            {fechaerr.op}
-          </span>
-        )}
-      </Form.Group> */}
 
       <Form.Group>
         <Form.Control
           as="textarea"
           placeholder="Descripcion del libro"
           rows={3}
-          name="estado"
-          id="estadoid"
+          name="descrip"
+          id="decripid"
           value={inputs.estadoid}
           onChange={handleFieldChange}
         />
       </Form.Group>
-      {/* <Form.Group>
-        <Form.Control
-          type="text"
-          placeholder="Algo"
-          name="address"
-          id="address"
-          value={inputs.address}
-          onChange={handleFieldChange}
-          disabled
-        />
-      </Form.Group> */}
 
       <Form.Group>
         <Row>

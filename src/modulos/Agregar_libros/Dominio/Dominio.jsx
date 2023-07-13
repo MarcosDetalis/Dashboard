@@ -3,37 +3,32 @@ import moment from "moment";
 export default function Dominio(initialState) {
   const [inputs, setValues] = useState(initialState);
 
-  const [nombreiderr, setalumnoid] = useState({}); // Estado para se enviado como mensaje a la interfaz ( el {} es para manejar un tipo de object )
-  const [estadoid, setestadoid] = useState({});
-  const [fechaerr, setfecha] = useState({});
+  const [Autor_error, setalumnoid] = useState({}); // Estado para se enviado como mensaje a la interfaz ( el {} es para manejar un tipo de object )
+  const [titulo_error, settitulo_error] = useState({}); 
   const getErrors = () => {
-    console.log("Dominionn", inputs.fechaid, fechaerr);
+    console.log("Dominionn", inputs.autortxt_id);
 
-    if (inputs.nombreid.trim() !== "") {
-      setalumnoid({ ...nombreiderr, emial: " " });
+    if (inputs.autortxt_id.trim() !== "") {
+      setalumnoid({ ...Autor_error, msm_error: " " });
     } else {
       setalumnoid({
-        ...nombreiderr,
-        emial: "El correo es un campo obligatorio",
+        ...Autor_error,
+        msm_error: "El autor es un campo obligatorio",
       });
     }
 
-    let result = moment(inputs.fechaid, "YYYY-MM-DD", true).isValid();
+  if (inputs.titulotxt_id.trim() !== "") {
+    settitulo_error({ ...titulo_error, msm_error: " " });
+  } else {
+    settitulo_error({
+      ...titulo_error,
+      msm_error: "El titulo es un campo obligatorio",
+    });
+  }
 
-    if (result == true) {
-      setfecha({ ...fechaerr, op: " " });
-    } else {
-      setfecha({ ...fechaerr, op: "Error en el formato" });
-    }
 
-    if (inputs.estadoid.trim() !== "") {
-      setestadoid({ ...estadoid, passw: " " });
-    } else {
-      setestadoid({
-        ...estadoid,
-        passw: "La contraseña es un campo obligatorio",
-      });
-    }
+
+ 
   };
 
   return [
@@ -48,8 +43,7 @@ export default function Dominio(initialState) {
     //-> Mandamos funciones y estados a la interfaz tener en cuenta que cada vez que se crea un estado que tendra
     //que interactuar con la interfaz se tendra que incluir en este apartado para ser utlizado en la interfaz
     getErrors,
-    nombreiderr,
-    fechaerr,
-     
+    Autor_error,
+    titulo_error
   ];
 }

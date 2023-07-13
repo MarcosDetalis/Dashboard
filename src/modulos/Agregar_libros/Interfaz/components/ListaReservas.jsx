@@ -4,7 +4,7 @@ import { ReservasContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Reservas";
 import AgregarM from "./AgregarM";
 import Pagination from "./Paginacion";
-import styles from "./ListaReserva.module.css";
+//import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
   const { lingitudReserva } = useContext(ReservasContext);
