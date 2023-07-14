@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 
 // importamo font aweson
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch, faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
 
 // importamos la libreria de la tabla y otro pa crear temas
 //observacion siempre importar pa q funcione los estilos
