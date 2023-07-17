@@ -6,16 +6,24 @@ import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
 
-   const [inputs, handleFieldChange, getErrors, Autor_error, titulo_error] =
-     validacion({
-       autortxt_id: "",
-       titulotxt_id: "",
-       decripid: "",
-       //->Son los paramtros
-     });
+   const [
+     inputs,
+     handleFieldChange,
+     getErrors,
+     Autor_error,
+     titulo_error,
+     descripcion_error,
+     cantidad_error,
+   ] = validacion({
+     autortxt_id: "",
+     titulotxt_id: "",
+     descripciontxt_id: "",
+     cantidadtxt_id: "",
+     //->Son los paramtros
+   });
   
   
-  console.log("date fecha", Autor_error.msm_error);
+  console.log("cantidad", cantidad_error.msm_error);
   
    const submit = () => {
      getErrors();
@@ -79,10 +87,21 @@ const AgregarM = () => {
           placeholder="Descripcion del libro"
           rows={3}
           name="descrip"
-          id="decripid"
-          value={inputs.estadoid}
+          id="descripciontxt_id"
+          value={inputs.descripciontxt_id}
           onChange={handleFieldChange}
+          className={
+            descripcion_error.msm_error ==
+            "La descripcion es un campo obligatorio"
+              ? "border-bottom border-danger"
+              : ""
+          }
         />
+        {descripcion_error?.msm_error && (
+          <span className="text-danger center  font-weight-bold">
+            {descripcion_error.msm_error}
+          </span>
+        )}
       </Form.Group>
 
       <Form.Group>
@@ -101,7 +120,24 @@ const AgregarM = () => {
             </Form.Control>
           </Col>
           <Col>
-            <Form.Control type="number" placeholder="Cantidad" />
+            <Form.Control
+              type="number"
+              placeholder="Cantidad"
+              id="cantidadtxt_id"
+              value={inputs.cantidadtxt_id}
+              onChange={handleFieldChange}
+              className={
+                cantidad_error.msm_error ==
+                "La cantidad es un campo obligatorio"
+                  ? "border-bottom border-danger"
+                  : ""
+              }
+            />
+            {cantidad_error?.msm_error && (
+              <span className="text-danger center  font-weight-bold">
+                {cantidad_error.msm_error}
+              </span>
+            )}
           </Col>
         </Row>
       </Form.Group>

@@ -1,32 +1,63 @@
 import { useState } from "react";
-import moment from "moment";
+ 
+ 
 export default function Dominio(initialState) {
   const [inputs, setValues] = useState(initialState);
 
   const [Autor_error, setalumnoid] = useState({}); // Estado para se enviado como mensaje a la interfaz ( el {} es para manejar un tipo de object )
   const [titulo_error, settitulo_error] = useState({}); 
+  const [descripcion_error, setdescripcion_error] = useState({});
+  const [cantidad_error, setcantidad_error] = useState({}); 
   const getErrors = () => {
-    console.log("Dominionn", inputs.autortxt_id);
+
+    let aux = 0;
 
     if (inputs.autortxt_id.trim() !== "") {
       setalumnoid({ ...Autor_error, msm_error: " " });
+      aux = 0;
     } else {
       setalumnoid({
         ...Autor_error,
         msm_error: "El autor es un campo obligatorio",
       });
+      aux =1;
     }
 
   if (inputs.titulotxt_id.trim() !== "") {
     settitulo_error({ ...titulo_error, msm_error: " " });
+    aux = 0;
   } else {
     settitulo_error({
       ...titulo_error,
       msm_error: "El titulo es un campo obligatorio",
     });
+    aux = 1;
   }
+ 
+ if (inputs.descripciontxt_id.trim() !== "") {
+   setdescripcion_error({ ...descripcion_error, msm_error: " " });
+   aux = 0;
+ } else {
+   setdescripcion_error({
+     ...descripcion_error,
+     msm_error: "La descripcion es un campo obligatorio",
+   });
+   aux = 1;
+ }
+ 
+     if (inputs.cantidadtxt_id.trim() !== "") {
+       setcantidad_error({ ...cantidad_error, msm_error: " " });
+       aux = 0;
+     } else {
+       setcantidad_error({
+         ...cantidad_error,
+         msm_error: "La cantidad es un campo obligatorio",
+       });
+       aux = 1;
+     }
+ 
 
-
+    console.log("valor",aux);
 
  
   };
@@ -44,6 +75,8 @@ export default function Dominio(initialState) {
     //que interactuar con la interfaz se tendra que incluir en este apartado para ser utlizado en la interfaz
     getErrors,
     Autor_error,
-    titulo_error
+    titulo_error,
+    descripcion_error,
+    cantidad_error,
   ];
 }
