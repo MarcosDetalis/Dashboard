@@ -100,4 +100,4 @@ export async function pendienteReservas(id, estado, estadoo) {
     console.log(err);
   }
 }
->>>>>>> ramaPablo
+
