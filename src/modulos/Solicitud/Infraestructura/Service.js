@@ -5,6 +5,8 @@ export async function getSolicitudes() {
   return datos;
 }
 
+
+//ppp
 // no necesariamente tiene q llamarrse como en la DB. ejemplo:id
 export async function eliminarReserva(id, nombre) {
   try {
