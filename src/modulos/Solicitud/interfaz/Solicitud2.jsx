@@ -1,17 +1,31 @@
+// package pa excel npm i react-export-table-to-excel
+// import {useRef} from 'react';
+// import {useDownloadExcel} from 'react-export-table-to-excel'
+
+// otra importacion pero desde el json usuario usando libreria XLSX Excel
+// utiliza npm install xlsx
+// import {XLSX} from "xlsx";
+import * as XLSX from 'xlsx';
+
+
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 // pa las ventanas modales
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'; 
 import {useState,useEffect } from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTrash,faEye} from '@fortawesome/free-solid-svg-icons'
+import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
 // import del services
 
-import {getdatos,DeleteReserva} from '../Infraestructura/Service'
+import '../interfaz/avatar.css';
+
+import {getdatos,DeleteReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
 
 function Solicitud2() {
   
-// estado q consume la api
+// estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
 
 useEffect(()=>{
@@ -20,32 +34,106 @@ useEffect(()=>{
   )
 },[])
 
-console.log(usuario);
-
-// estado que controlo cuando abre y cierra inicia en false p q no este abierto
+// estados que controla cuando abre y cierra inicia en false p q no este abierto
+const [modalOpciones,setModalOpciones]=useState(false);
 const [modalEliminar,setModalEliminar]=useState(false);
 
 // estado q controla lo tipéado en los inputs y sera un objeto q agarra 
-const [userSeleccionado,setUserSeleccionado]=useState({})
+const [userSeleccionado,setUserSeleccionado]=useState({
+  id:'',
+  nombre:''
+});
+// pasamos los parametros a rellenar
+const [seleConfirmar,setseleConfirmar]=useState({
+  id:'',
+  estado:'',
+  estadoo:''
+});
+// estado pa anular
+const [seleAnulado,setSeleAnulado]=useState({
+  id:"",
+  estado:"",
+  estadoo:""
+});
+
+// estado pa pendientes
+const [selePendiente,setSelePendiente]=useState({
+  id:"",
+  estado:"",
+  estadoo:""
+})
+
+
 
 // funcion que abrelos modales y el caso el un parametro pa diferenciar
 // que tipo de accion se realizara en este caso eliminar
-const seleccionadoUser=(caso,idreser)=>{
-setUserSeleccionado(idreser);
+const seleccionadoUser=(caso,idreser,res_nombre)=>{
+setUserSeleccionado(idreser,res_nombre);
 console.log(idreser);
 // condicion pa que abra el modal
-(caso==='eliminar') && setModalEliminar(true)
+(caso==='eliminar')&&setModalEliminar(true)
+}
+// funcion donde seleccionamos y cargamos los estados con sus parametros 
+const seleccionadoOpe=(casoo,idreser,res_estado,res_estadoo)=>{
+  // dentro del set rellena los parametros con valor-clave
+setseleConfirmar({...seleConfirmar,id:idreser,estado:res_estado,estadoo:res_estadoo});
+// rellenamos el estado de anulado tambien
+setSeleAnulado({...seleAnulado, id:idreser,estado:res_estado,estadoo:res_estadoo});
+setSelePendiente({...selePendiente,id:idreser,estado:res_estado,estadoo:res_estadoo});
+
+console.log(idreser,res_estado,res_estadoo);
+// condicion pa que abra el modal
+(casoo==='opciones')&&setModalOpciones(true)}
+
+
+// funcion donde pa actualizar el estado a confirmado
+const confirmarEstado=()=>{
+  updateReservas(seleConfirmar.id,seleConfirmar.estado,seleConfirmar.estadoo);
+  setModalOpciones(false);
 }
 
+// funcion pa pendientes
+const pendienteEstado=()=>{
+  pendienteReservas(selePendiente.id,selePendiente.estado,selePendiente.estadoo);
+  setModalOpciones(false);
+}
 
+// funcion pa actualizar el estado anular reserva
+const anularEstado=()=>{
+  anularReservas(seleAnulado.id,seleAnulado.estado,seleAnulado.estadoo);
+  setModalOpciones(false)
+}
 
 // funcion que realiza la eliminacion de reservas
 const eliminarReserva=()=>{
-// recorremos el estado q tiene las reservas
-// setUsuario(usuario.filter(name=>name.idreservas!==userSeleccionado.idreservas));//filtra aqui pa eliminar
 DeleteReserva(userSeleccionado);
 setModalEliminar(false);
 }
+
+// APARTADO BUSCADOR
+ // estado para busqueda e iniciamos con un vacio seria query y setquery
+ const[buscar,setBuscar]=useState("");
+
+ //esta funcion agarra los valores que se tipean en el buscador con target 
+ const buscador =(evento)=>{
+  setBuscar(evento.target.value);//va agarrando y cargando en la funcion varaible lo que tipea 
+  console.log(evento.target.value)
+   
+}
+// ponemos condicionales pa cuando el buscador
+// let resultado=[];//primero pasamos un array que contendra las presuestas del buscador
+// if(!buscar){
+//   resultado=usuarios//si esta vacio el buscador, entocnes trae el array completo
+// }else{
+//   resultado=usuarios.filter((data)=>data.name.toLowerCase().includes(buscar.toLowerCase()));
+// }
+
+
+
+
+
+
+
 
 // APARTADO DE PAGINACION
 // estado para paginacion qu recibe q comienza con uno
@@ -64,13 +152,47 @@ const registro = usuario.slice(primerIndice, ultimoIndice);
 const numeroPage = Math.ceil(usuario.length / registroPagina);
 // Obs: volver a ver ya que no entiendo
 const numero = [...Array(numeroPage + 1).keys()].slice(1);
+
+
+// funcion de exportacion excel con  xlsx
+const ExportExcel=()=>{
+  console.log(usuario);
+  var wb=XLSX.utils.book_new(),
+  ws=XLSX.utils.json_to_sheet(usuario);
+  XLSX.utils.book_append_sheet(wb,ws,"tablareservas");
+XLSX.writeFile(wb,"Reservas.xlsx");
+}
+
+
+
+
   return (
-    <div className="ooo">
-    <table className='table table-bordered'>
+    <div className="ooo m-2">
+    <div className="barraBusqueda">
+            <input
+              value={buscar}
+              onChange={buscador}
+              type="text"
+              placeholder="Buscar Libro"
+              className="textField"
+              name="busqueda"
+              //onChange={handleFilter}
+            />
+            <button type="button" className="btnBuscar">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          </div>
+        
+
+      
+      <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button>
+    {/* referenciamos la tabla pa exportar */}
+    <table  className='table table-bordered'>
         <thead>
             <tr>
                 <th>ID</th>
-                <th>USUARIO</th>
+                <th>Usuario</th>
+                <th>Fecha de reserva</th>
                 <th>TITULO Y AUTOR</th>
                 <th>CARRERA</th>
                 <th>CANTIDAD</th>
@@ -86,34 +208,58 @@ const numero = [...Array(numeroPage + 1).keys()].slice(1);
                 <td>
                 <div className="d-flex align-items-center">
                             <div className="img-container">
-                                {/* <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                                   /> */}
+                                <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                   />
                             </div>
-                            <div className="ps-1">
+                            <div className="pl-2">
                                 <div className="fw-600 pb-3">{elemento.res_correo}</div>
-                                <p className="m-0 text-black fs-09">{elemento.res_fecha}</p>
+                                <p className="m-0 text-black fs-09">{elemento.res_nombre}</p>
                             </div>
                         </div>
                         </td>
+                <td><p className="m-0 text-black fs-09">{elemento.res_fecha}</p></td>        
                 <td>{elemento.res_libro}</td>
                 <td>{elemento.res_carrera}</td>
                 <td>{elemento.res_cantidad}</td>
                 <td>
                 <div className="d-inline-flex align-items-center active">
-                            <div className="ps-1">Activo</div>
+                            <div className="ps-1">{elemento.res_estadoo}</div>
                         </div>
                 </td>
-                <td><button className='btn btn-primary'><FontAwesomeIcon icon={faEye} /></button>{" "}
-                <button className='btn btn-danger' onClick={()=>seleccionadoUser('eliminar',elemento.idreservas)}><FontAwesomeIcon icon={faTrash} /></button></td>
+                <td><button className='btn btn-primary'onClick={
+                  ()=>seleccionadoOpe('opciones',elemento.idreservas,elemento.res_estado,elemento.res_estadoo)}><FontAwesomeIcon icon={faEye} /></button>{" "}
+                <button className='btn btn-danger' onClick={
+                  ()=>seleccionadoUser('eliminar',elemento.idreservas)}><FontAwesomeIcon icon={faTrash} /></button></td>
                 </tr>
                 ))}
     </tbody>
     </table>
-  
-    {/*creamos el modal de eliminar isOpen pasamos la funcio n */}
+    {/* Modal de opciones */}
+    <Modal  isOpen={modalOpciones}  style={{maxWidth: '500px', width: '100%'}}   >
+          <ModalBody  >
+          Opciones de Solicitud de Rerseva 
+          </ModalBody>
+          <ModalFooter>
+          <button className='btn btn-success' onClick={()=>confirmarEstado()}>
+            Confirmar
+          </button>
+          <button className='btn btn-danger' onClick={()=>anularEstado()}>
+            Anular
+          </button>
+          <button className='btn btn-warning' onClick={()=>pendienteEstado()}>
+            Pendiente
+          </button>
+          <button className='btn btn-secondary' onClick={()=>setModalOpciones(false)}>
+            Salir
+          </button>
+          </ModalFooter>
+        </Modal>
+
+    {/*creamos el modal de eliminar isOpen pasamos la funcion */}
         <Modal isOpen={modalEliminar}>
           <ModalBody>
-           Seguro que desea eliminar la Reserva hecha por {userSeleccionado && userSeleccionado.res_nombre}
+           ¿Esta seguro que desea eliminar la Reserva?
+           {/* hecha por {userSeleccionado && userSeleccionado.nombre} */}
           </ModalBody>
           <ModalFooter>
           <button className='btn btn-danger' onClick={()=>eliminarReserva()}>
