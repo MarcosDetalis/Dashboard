@@ -1,12 +1,10 @@
-// package pa excel npm i react-export-table-to-excel
-// import {useRef} from 'react';
-// import {useDownloadExcel} from 'react-export-table-to-excel'
 
 // otra importacion pero desde el json usuario usando libreria XLSX Excel
 // utiliza npm install xlsx
 // import {XLSX} from "xlsx";
 import * as XLSX from 'xlsx';
 
+"../interfaz/Estilo1.css";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,9 +17,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
 // import del services
 
-import '../interfaz/avatar.css';
 
-import {getdatos,DeleteReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
+import {getSolicitudes,ElimiReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
 
 function Solicitud2() {
   
@@ -29,7 +26,7 @@ function Solicitud2() {
 const [usuario,setUsuario]=useState([]);
 
 useEffect(()=>{
-  getdatos().then((datos)=>
+  getSolicitudes().then((datos)=>
   setUsuario(datos)
   )
 },[])
@@ -106,7 +103,7 @@ const anularEstado=()=>{
 
 // funcion que realiza la eliminacion de reservas
 const eliminarReserva=()=>{
-DeleteReserva(userSeleccionado);
+ElimiReserva(userSeleccionado);
 setModalEliminar(false);
 }
 
@@ -120,14 +117,6 @@ setModalEliminar(false);
   console.log(evento.target.value)
    
 }
-// ponemos condicionales pa cuando el buscador
-// let resultado=[];//primero pasamos un array que contendra las presuestas del buscador
-// if(!buscar){
-//   resultado=usuarios//si esta vacio el buscador, entocnes trae el array completo
-// }else{
-//   resultado=usuarios.filter((data)=>data.name.toLowerCase().includes(buscar.toLowerCase()));
-// }
-
 
 
 
@@ -207,10 +196,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
                 <td>{elemento.idreservas}</td>
                 <td>
                 <div className="d-flex align-items-center">
-                            <div className="img-container">
+                            {/* <div className="img-container">
                                 <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                                    />
-                            </div>
+                            </div> */}
                             <div className="pl-2">
                                 <div className="fw-600 pb-3">{elemento.res_correo}</div>
                                 <p className="m-0 text-black fs-09">{elemento.res_nombre}</p>

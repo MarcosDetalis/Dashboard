@@ -1,14 +1,13 @@
 export async function getSolicitudes() {
-  const url = "https://servicedeb.onrender.com/soli/solicitudes";
+  const url = "https://servicedeb.onrender.com/soli/Solicitudes";
   const respuesta = await fetch(url);
   const datos = await respuesta.json();
   return datos;
 }
 
 
-//ppp
-// no necesariamente tiene q llamarrse como en la DB. ejemplo:id
-export async function eliminarReserva(id, nombre) {
+
+export async function ElimiReserva(id, nombre) {
   try {
     let res = await fetch("https://servicedeb.onrender.com/soli/eliminar", {
       headers: { "Content-Type": "application/json" },
@@ -29,6 +28,9 @@ export async function eliminarReserva(id, nombre) {
     console.log(err);
   }
 }
+
+
+
 
 // servicio pa actualizar estado de las reservas
 export async function updateReservas(id, estado, estadoo) {
