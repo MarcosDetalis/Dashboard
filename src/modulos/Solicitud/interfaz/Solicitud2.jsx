@@ -196,10 +196,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
                 <td>{elemento.idreservas}</td>
                 <td>
                 <div className="d-flex align-items-center">
-                            {/* <div className="img-container">
+                            <div className="img-container">
                                 <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                                    />
-                            </div> */}
+                            </div>
                             <div className="pl-2">
                                 <div className="fw-600 pb-3">{elemento.res_correo}</div>
                                 <p className="m-0 text-black fs-09">{elemento.res_nombre}</p>
