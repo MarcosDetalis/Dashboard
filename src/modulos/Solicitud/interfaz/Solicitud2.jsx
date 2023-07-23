@@ -4,8 +4,13 @@
 // import {XLSX} from "xlsx";
 import * as XLSX from 'xlsx';
 
+<<<<<<< HEAD
 "../interfaz/Estilo1.css";
+=======
+import '../interfaz/avatar.css';
+>>>>>>> ramaPablo
 
+'../interfaz/search.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -156,8 +161,8 @@ XLSX.writeFile(wb,"Reservas.xlsx");
 
 
   return (
-    <div className="ooo m-2">
-    <div className="barraBusqueda">
+    <div className="contenedor m-3">
+    {/* <div className="barraBusqueda">
             <input
               value={buscar}
               onChange={buscador}
@@ -170,11 +175,11 @@ XLSX.writeFile(wb,"Reservas.xlsx");
             <button type="button" className="btnBuscar">
               <FontAwesomeIcon icon={faSearch} />
             </button>
-          </div>
+          </div> */}
         
 
       
-      <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button>
+       <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
     {/* referenciamos la tabla pa exportar */}
     <table  className='table table-bordered'>
         <thead>

@@ -6,7 +6,12 @@ export async function getSolicitudes() {
 }
 
 
+<<<<<<< HEAD
 
+=======
+//ppp
+// no necesariamente tiene q llamarrse como en la DB. ejemplo:id
+>>>>>>> ramaPablo
 export async function ElimiReserva(id, nombre) {
   try {
     let res = await fetch("https://servicedeb.onrender.com/soli/eliminar", {
