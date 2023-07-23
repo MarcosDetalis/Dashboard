@@ -39,6 +39,7 @@ export async function ElimiReserva(id, nombre) {
 
 // servicio pa actualizar estado de las reservas
 export async function updateReservas(id, estado, estadoo) {
+   
   try {
     let res = await fetch("https://servicedeb.onrender.com/soli/update", {
       headers: { "Content-Type": "application/json" },

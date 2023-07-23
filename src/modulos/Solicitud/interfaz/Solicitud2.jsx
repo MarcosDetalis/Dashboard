@@ -89,9 +89,12 @@ console.log(idreser,res_estado,res_estadoo);
 
 
 // funcion donde pa actualizar el estado a confirmado
-const confirmarEstado=()=>{
-  updateReservas(seleConfirmar.id,seleConfirmar.estado,seleConfirmar.estadoo);
-  setModalOpciones(false);
+  const confirmarEstado = () => {
+  
+    updateReservas(seleConfirmar.id, seleConfirmar.estado, seleConfirmar.estadoo);
+     
+    setModalOpciones(false);
+  
 }
 
 // funcion pa pendientes
