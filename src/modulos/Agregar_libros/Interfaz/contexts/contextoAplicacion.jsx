@@ -47,9 +47,13 @@ const AplicacionContextProvider = (props) => {
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
+<<<<<<< HEAD
   const EliminarReservas = (id) => {
  
       
+=======
+  const EliminarReservas = (id) => {      
+>>>>>>> 6055da6103d67e339d28ab303ac796db60d819f2
     DeleteReserva(id);
   };
   //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves

@@ -277,3 +277,17 @@ export default function Registro() {
     </>
   );
 }
+
+
+AND ((a.fecha_solicitud >= ar.fecha_desde AND ar.fecha_hasta IS NULL) OR
+(a.fecha_solicitud BETWEEN ar.fecha_desde AND ar.fecha_hasta))
+AND (a.fecha_solicitud >= to_date($P{p_fecha_desde}, 'DD/MM/YYYY') OR
+$P{p_fecha_desde} IS NULL)
+AND (a.fecha_solicitud <= to_date($P{p_fecha_hasta}, 'DD/MM/YYYY') OR
+$P{p_fecha_hasta} IS NULL)
+AND (d.fec_derivacion >= to_date($P{p_fec_deriv_desde}, 'DD/MM/YYYY')
+OR $P{p_fec_deriv_desde} IS NULL)      
+AND (d.fec_derivacion <= to_date($P{p_fec_deriv_hasta}, 'DD/MM/YYYY') OR
+$P{p_fec_deriv_hasta} IS NULL)
+
+
