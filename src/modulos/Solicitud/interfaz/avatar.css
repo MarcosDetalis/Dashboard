@@ -9,3 +9,13 @@
     object-fit: cover;
     border-radius: 50%;
 }
+
+/* css letras */
+.fw-600 {
+    font-weight: 600 !important;
+}
+
+.fs-09 {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
