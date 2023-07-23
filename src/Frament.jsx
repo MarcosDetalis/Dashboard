@@ -5,6 +5,34 @@ export default function Frament() {
     <Fragment>
       <ul className="list-unstyled components">
         <li>
+          <a
+            href="#apps"
+            data-toggle="collapse"
+            aria-expanded="false"
+            className="dropdown-toggle"
+          >
+            <i className="fa fa-object-group blue2_color"></i> <span>Mantenimiento</span>
+          </a>
+          <ul className="collapse list-unstyled" id="apps">
+            <li>
+              <a href="email.html">
+                <span>Angregar Autor</span>
+              </a>
+            </li>
+            <li>
+              <a href="calendar.html">
+                 <span>Agregar Categoria</span>
+              </a>
+            </li>
+            <li>
+              <a href="media_gallery.html">
+                 <span>Agragar Tipo de Bibliografia</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
           <Link to={"Login"}>
             <i className="fa fa-table purple_color2"></i>
             Login
@@ -55,7 +83,6 @@ export default function Frament() {
             <span>Solicitud2</span>
           </Link>
         </li>
-
       </ul>
     </Fragment>
   );

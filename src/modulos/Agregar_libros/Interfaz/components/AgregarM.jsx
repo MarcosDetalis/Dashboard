@@ -1,4 +1,4 @@
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, InputGroup } from "react-bootstrap";
 import { ReservasContext } from "../contexts/contextoAplicacion";
 import { useContext} from "react";
 
@@ -58,6 +58,17 @@ const AgregarM = () => {
             {Autor_error.msm_error}
           </span>
         )}
+
+        <InputGroup className="mb-3">
+          <Button variant="outline-secondary" id="button-addon1">
+            Añadir
+          </Button>
+          <Form.Control
+            aria-label="Example text with button addon"
+            aria-describedby="basic-addon1"
+            placeholder="Autor"
+          />
+        </InputGroup>
       </Form.Group>
 
       <Form.Group>
@@ -117,6 +128,7 @@ const AgregarM = () => {
             <Form.Control size="sm" as="select">
               <option>Libro</option>
               <option>Tesis</option>
+              
             </Form.Control>
           </Col>
           <Col>
