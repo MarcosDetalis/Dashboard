@@ -4,11 +4,11 @@
 // import {XLSX} from "xlsx";
 import * as XLSX from 'xlsx';
 
-<<<<<<< HEAD
+
 "../interfaz/Estilo1.css";
-=======
+
 import '../interfaz/avatar.css';
->>>>>>> ramaPablo
+
 
 '../interfaz/search.css'
 
