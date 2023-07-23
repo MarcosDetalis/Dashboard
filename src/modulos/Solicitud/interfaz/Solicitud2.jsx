@@ -19,7 +19,7 @@ import {Modal,ModalBody,ModalFooter} from 'reactstrap';
 import {useState,useEffect } from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
+import {faTrash,faEye,faTable} from '@fortawesome/free-solid-svg-icons'
 // import del services
 
 
@@ -114,14 +114,14 @@ setModalEliminar(false);
 
 // APARTADO BUSCADOR
  // estado para busqueda e iniciamos con un vacio seria query y setquery
- const[buscar,setBuscar]=useState("");
+//  const[buscar,setBuscar]=useState("");
 
- //esta funcion agarra los valores que se tipean en el buscador con target 
- const buscador =(evento)=>{
-  setBuscar(evento.target.value);//va agarrando y cargando en la funcion varaible lo que tipea 
-  console.log(evento.target.value)
+//  //esta funcion agarra los valores que se tipean en el buscador con target 
+//  const buscador =(evento)=>{
+//   setBuscar(evento.target.value);//va agarrando y cargando en la funcion varaible lo que tipea 
+//   console.log(evento.target.value)
    
-}
+// }
 
 
 
