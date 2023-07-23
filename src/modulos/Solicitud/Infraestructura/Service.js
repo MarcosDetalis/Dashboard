@@ -8,7 +8,7 @@ export async function getSolicitudes() {
 
 //ppp
 // no necesariamente tiene q llamarrse como en la DB. ejemplo:id
-export async function eliminarReserva(id, nombre) {
+export async function ElimiReserva(id, nombre) {
   try {
     let res = await fetch("https://servicedeb.onrender.com/soli/eliminar", {
       headers: { "Content-Type": "application/json" },
