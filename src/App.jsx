@@ -55,7 +55,7 @@ function App() {
                       <i className="fa fa-bars"></i>
                     </button>
                     <div className="logo_section">
-                      <a href="index.html">
+                      <a href="/">
                         <img
                           className="img-responsive"
                           src="images/logo/logo.png"
