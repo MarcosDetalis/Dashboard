@@ -54,12 +54,12 @@ useEffect(()=>{
 }
 
 // funcion para filtrar
-let resultado=[];
-if(buscar){
-resultado=usuario
-}else{
-  resultado=usuario.filter((reserva)=>reserva.name.toLowerCase().includes(buscar.toLocaleLowerCase()));
-}
+// let resultado=[];
+// if(buscar){
+// resultado=usuario
+// }else{
+//   resultado=usuario.filter((reserva)=>reserva.name.toLowerCase().includes(buscar.toLocaleLowerCase()));
+// }
 
 
 
@@ -240,8 +240,6 @@ XLSX.writeFile(wb,"Reservas.xlsx");
      
     {/* referenciamos la tabla pa exportar */}
     <table  className='table table-bordered'>
-
-
       <button
         className="btn btn-success"
         title="Exportar a Excel"
