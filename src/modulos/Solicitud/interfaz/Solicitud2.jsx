@@ -247,8 +247,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
       >
         <FontAwesomeIcon icon={faTable} />
       </button>
-      {/* referenciamos la tabla pa exportar */}
-      <table className="table table-bordered">
+  
 
         <thead>
           <tr>
