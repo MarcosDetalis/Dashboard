@@ -1,2 +1,25 @@
 
+.contenedor{
+  padding-top: 2rem;
+}
 
+
+.btnBuscar{
+  background-color: yellow;
+}
+
+
+
+.contenedor-opciones{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inputBuscar{
+  display: flex;
+  right: 0;
+  justify-content: left;
+  padding-left: 12px;
+}
+
+  

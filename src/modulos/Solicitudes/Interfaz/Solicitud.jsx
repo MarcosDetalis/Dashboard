@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./search.css";
 import "./Estilo1.css";
 

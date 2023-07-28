@@ -5,7 +5,8 @@ export default function Ver_informeValidacio(initialState) {
   const [errors, setErrors] = useState({});
   
 console.log(inputs.fechadesde);
-    let fecha2 = inputs.fechadesde;
+    // let fecha2 = inputs.fechadesde;
+
     
     
     const getErrors = () => {

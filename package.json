@@ -23,7 +23,6 @@
     "bootstrap": "4.5.3",
     "cra-template": "1.1.1",
     "dayjs": "^1.11.8",
-    
     "ka-table": "^8.0.1",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",

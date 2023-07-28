@@ -5,12 +5,12 @@
 import * as XLSX from 'xlsx';
 
 
-"../interfaz/Estilo1.css";
+
 
 import '../interfaz/avatar.css';
 
 
-'../interfaz/search.css'
+import '../interfaz/search.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,7 +19,7 @@ import {Modal,ModalBody,ModalFooter} from 'reactstrap';
 import {useState,useEffect } from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTrash,faEye,faTable} from '@fortawesome/free-solid-svg-icons'
+import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
 // import del services
 
 
@@ -29,12 +29,40 @@ function Solicitud2() {
   
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
+// 
+
+
+
+
 
 useEffect(()=>{
   getSolicitudes().then((datos)=>
   setUsuario(datos)
+  
   )
 },[])
+// APARTADO BUSCADOR
+ // busqueda y setbesqueda == estado para busqueda e iniciamos con un vacio seria query y setquery
+ const[buscar,setBuscar]=useState("");
+
+//  //esta funcion agarra los valores que se tipean en el buscador con target 
+ const buscador =(evento)=>{
+  setBuscar(evento.target.value);//va agarrando y cargando en la funcion varaible lo que tipea 
+  console.log(evento.target.value)
+}
+
+// funcion para filtrar
+let resultado=[];
+if(buscar){
+resultado=usuario
+}else{
+  resultado=usuario.filter((reserva)=>reserva.name.toLowerCase().includes(buscar.toLocaleLowerCase()));
+}
+
+
+
+
+
 
 // estados que controla cuando abre y cierra inicia en false p q no este abierto
 const [modalOpciones,setModalOpciones]=useState(false);
@@ -115,16 +143,7 @@ ElimiReserva(userSeleccionado);
 setModalEliminar(false);
 }
 
-// APARTADO BUSCADOR
- // estado para busqueda e iniciamos con un vacio seria query y setquery
-//  const[buscar,setBuscar]=useState("");
 
-//  //esta funcion agarra los valores que se tipean en el buscador con target 
-//  const buscador =(evento)=>{
-//   setBuscar(evento.target.value);//va agarrando y cargando en la funcion varaible lo que tipea 
-//   console.log(evento.target.value)
-   
-// }
 
 
 
@@ -164,7 +183,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
 
 
   return (
-    <div className="contenedor m-3">
+    <div className="contenedor">
     {/* <div className="barraBusqueda">
             <input
               value={buscar}
@@ -179,10 +198,25 @@ XLSX.writeFile(wb,"Reservas.xlsx");
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div> */}
+          <div className="contenedor-opciones">
+          <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
+            
+        <input
+          className=" inputBuscar"
+          value={buscar}
+          placeholder="Busque reserva"
+          onChange={buscador}
+          
+        />
+         <button type="button" className="btnBuscar">
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+         
+      </div>
         
 
       
-       <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
+     
     {/* referenciamos la tabla pa exportar */}
     <table  className='table table-bordered'>
         <thead>
