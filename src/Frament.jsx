@@ -42,7 +42,7 @@ export default function Frament() {
         <li>
           <Link to={"Registro"}>
             <i className="fa fa-edit yellow_color"></i>
-            <span>Agregar</span>
+            <span>Agregar Libros</span>
           </Link>
         </li>
         <li>

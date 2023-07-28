@@ -21,14 +21,16 @@ import {useState,useEffect } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
 // import del services
-
+import { useNavigate } from "react-router-dom";
 
 import {getSolicitudes,ElimiReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
 
 function Solicitud2() {
+  const navigate = useNavigate();
   
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
+
 // 
 
 
@@ -62,6 +64,18 @@ resultado=usuario
 
 
 
+
+ const [reloadUsers, setReloadUsers] = useState(false);
+ 
+  
+ useEffect(() => {
+   getSolicitudes().then((datos) => setUsuario(datos));
+   setReloadUsers(false);
+ }, [reloadUsers]);
+    
+
+
+  console.log(usuario)
 
 
 // estados que controla cuando abre y cierra inicia en false p q no este abierto
@@ -118,16 +132,18 @@ console.log(idreser,res_estado,res_estadoo);
 
 // funcion donde pa actualizar el estado a confirmado
   const confirmarEstado = () => {
-  
-    updateReservas(seleConfirmar.id, seleConfirmar.estado, seleConfirmar.estadoo);
      
+    updateReservas(seleConfirmar.id, seleConfirmar.estado, seleConfirmar.estadoo);
+     setReloadUsers(true);
     setModalOpciones(false);
-  
+    
+      
 }
 
 // funcion pa pendientes
 const pendienteEstado=()=>{
-  pendienteReservas(selePendiente.id,selePendiente.estado,selePendiente.estadoo);
+  pendienteReservas(selePendiente.id, selePendiente.estado, selePendiente.estadoo);
+   setReloadUsers(true);
   setModalOpciones(false);
 }
 
@@ -185,6 +201,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
   return (
     <div className="contenedor">
     {/* <div className="barraBusqueda">
+=======
+    <div className="contenedor m-3">
+      {/* <div className="barraBusqueda">
+>>>>>>> 0e73689814e1ca10c6b7c89f986306a11260df4d
             <input
               value={buscar}
               onChange={buscador}
@@ -198,6 +218,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
               <FontAwesomeIcon icon={faSearch} />
             </button>
           </div> */}
+
           <div className="contenedor-opciones">
           <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
             
@@ -219,115 +240,171 @@ XLSX.writeFile(wb,"Reservas.xlsx");
      
     {/* referenciamos la tabla pa exportar */}
     <table  className='table table-bordered'>
+
+
+      <button
+        className="btn btn-success"
+        title="Exportar a Excel"
+        onClick={ExportExcel}
+      >
+        <FontAwesomeIcon icon={faTable} />
+      </button>
+      {/* referenciamos la tabla pa exportar */}
+      <table className="table table-bordered">
+
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Fecha de reserva</th>
-                <th>TITULO Y AUTOR</th>
-                <th>CARRERA</th>
-                <th>CANTIDAD</th>
-                <th>ESTADO</th>
-                <th>ACCIONES</th>
-                
+          <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Fecha de reserva</th>
+            <th>TITULO Y AUTOR</th>
+            <th>CARRERA</th>
+            <th>CANTIDAD</th>
+            <th>ESTADO</th>
+            <th>ACCIONES </th>
           </tr>
         </thead>
-    <tbody>
-        {registro.map(elemento=>(
+        <tbody>
+          {registro.map((elemento) => (
             <tr key={elemento.idreservas}>
-                <td>{elemento.idreservas}</td>
-                <td>
+              <td>{elemento.idreservas}</td>
+              <td>
                 <div className="d-flex align-items-center">
-                            <div className="img-container">
-                                <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                                   />
-                            </div>
-                            <div className="ps-2">
-                                <div className="fw-600 pb-3">{elemento.res_correo}</div>
-                                <p className="m-0 text-black fs-09">{elemento.res_nombre}</p>
-                            </div>
-                        </div>
-                        </td>
-                <td><p className="m-0 text-black fs-09">{elemento.res_fecha}</p></td>        
-                <td>{elemento.res_libro}</td>
-                <td>{elemento.res_carrera}</td>
-                <td>{elemento.res_cantidad}</td>
-                <td>
+                  <div className="img-container">
+                    <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                  </div>
+                  <div className="ps-2">
+                    <div className="fw-600 pb-3">{elemento.res_correo}</div>
+                    <p className="m-0 text-black fs-09">
+                      {elemento.res_nombre}
+                    </p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <p className="m-0 text-black fs-09">{elemento.res_fecha}</p>
+              </td>
+              <td>{elemento.res_libro}</td>
+              <td>{elemento.res_carrera}</td>
+              <td>{elemento.res_cantidad}</td>
+              <td>
                 <div className="d-inline-flex align-items-center active">
-                            <div className="ps-1">{elemento.res_estadoo}</div>
-                        </div>
-                </td>
-                <td><button className='btn btn-primary'onClick={
-                  ()=>seleccionadoOpe('opciones',elemento.idreservas,elemento.res_estado,elemento.res_estadoo)}><FontAwesomeIcon icon={faEye} /></button>{" "}
-                <button className='btn btn-danger' onClick={
-                  ()=>seleccionadoUser('eliminar',elemento.idreservas)}><FontAwesomeIcon icon={faTrash} /></button></td>
-                </tr>
-                ))}
-    </tbody>
-    </table>
-    {/* Modal de opciones */}
-    <Modal  isOpen={modalOpciones}  style={{maxWidth: '500px', width: '100%'}}   >
-          <ModalBody  >
-          Opciones de Solicitud de Rerseva 
-          </ModalBody>
-          <ModalFooter>
-          <button className='btn btn-success' onClick={()=>confirmarEstado()}>
+                  <div className="ps-1">{elemento.res_estadoo}</div>
+                </div>
+              </td>
+              <td>
+                <button
+                  className="btn btn-primary"
+                  onClick={() =>
+                    seleccionadoOpe(
+                      "opciones",
+                      elemento.idreservas,
+                      elemento.res_estado,
+                      elemento.res_estadoo
+                    )
+                  }
+                >
+                  <FontAwesomeIcon icon={faEye} />
+                </button>{" "}
+                <button
+                  className="btn btn-danger"
+                  onClick={() =>
+                    seleccionadoUser("eliminar", elemento.idreservas)
+                  }
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* Modal de opciones */}
+      <Modal
+        isOpen={modalOpciones}
+        style={{ maxWidth: "500px", width: "100%" }}
+      >
+        <ModalBody>Opciones de Solicitud de Rerseva</ModalBody>
+        <ModalFooter>
+          <button className="btn btn-success" onClick={confirmarEstado}>
             Confirmar
           </button>
-          <button className='btn btn-danger' onClick={()=>anularEstado()}>
+          <button className="btn btn-danger" onClick={() => anularEstado()}>
             Anular
           </button>
-          <button className='btn btn-warning' onClick={()=>pendienteEstado()}>
+          <button className="btn btn-warning" onClick={() => pendienteEstado()}>
             Pendiente
           </button>
-          <button className='btn btn-secondary' onClick={()=>setModalOpciones(false)}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setModalOpciones(false)}
+          >
             Salir
           </button>
-          </ModalFooter>
-        </Modal>
+        </ModalFooter>
+      </Modal>
 
-    {/*creamos el modal de eliminar isOpen pasamos la funcion */}
-        <Modal isOpen={modalEliminar}>
-          <ModalBody>
-           ¿Esta seguro que desea eliminar la Reserva?
-           {/* hecha por {userSeleccionado && userSeleccionado.nombre} */}
-          </ModalBody>
-          <ModalFooter>
-          <button className='btn btn-danger' onClick={()=>eliminarReserva()}>
+      {/*creamos el modal de eliminar isOpen pasamos la funcion */}
+      <Modal isOpen={modalEliminar}>
+        <ModalBody>
+          ¿Esta seguro que desea eliminar la Reserva?
+          {/* hecha por {userSeleccionado && userSeleccionado.nombre} */}
+        </ModalBody>
+        <ModalFooter>
+          <button className="btn btn-danger" onClick={() => eliminarReserva()}>
             Si
           </button>
-          <button className='btn btn-secondary' onClick={()=>setModalEliminar(false)}>
+          <button
+            className="btn btn-secondary"
+            onClick={() => setModalEliminar(false)}
+          >
             No
           </button>
-          </ModalFooter>
-        </Modal>
-  
-        {/* fronter de paginacion */}
-          {/* aqui hacemos front de la paginacion con boostrap */}
-    <nav className="d-flex justify-content-end ">
-      <ul className="pagination">
-        <li className="page-item">
-          <a href="#" value="hola2" className="page-link" onClick={anteriorPagina}>
-            Anterior
-          </a>
-        </li>
-        {numero.map((n, i) => (
-          <li className={`page-item ${paginacion === n ? 'active' : ''}`} key={i}>
-            <a href="#" value="hola" className="page-link" onClick={()=>changeCpage(n)} > {n}
+        </ModalFooter>
+      </Modal>
+      
+
+      {/* fronter de paginacion */}
+      {/* aqui hacemos front de la paginacion con boostrap */}
+      <nav className="d-flex justify-content-end ">
+        <ul className="pagination">
+          <li className="page-item">
+            <a
+              href="#"
+              value="hola2"
+              className="page-link"
+              onClick={anteriorPagina}
+            >
+              Anterior
             </a>
           </li>
-        ))}
-        {/* paginacion siguiente */}
-        <li className="pagina-item">
-          <a href="#" className="page-link" onClick={nextPagina}>
-           Siguiente
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+          {numero.map((n, i) => (
+            <li
+              className={`page-item ${paginacion === n ? "active" : ""}`}
+              key={i}
+            >
+              <a
+                href="#"
+                value="hola"
+                className="page-link"
+                onClick={() => changeCpage(n)}
+              >
+                {" "}
+                {n}
+              </a>
+            </li>
+          ))}
+          {/* paginacion siguiente */}
+          <li className="pagina-item">
+            <a href="#" className="page-link" onClick={nextPagina}>
+              Siguiente
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   );
-  //   las funcionaes para el onclick
+  //las funcionaes para el onclick
   function anteriorPagina() {
     if (paginacion !== 1) {
       setPaginacion(paginacion - 1);

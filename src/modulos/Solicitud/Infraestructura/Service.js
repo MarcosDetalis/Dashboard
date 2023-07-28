@@ -53,7 +53,8 @@ export async function updateReservas(id, estado, estadoo) {
     await res.json();
     if (res.status === 201) {
       console.log("Enviadoo con exito");
-      location.reload();
+      //location.reload(); 
+
     } else {
       console.log("error al enviar ");
     }
@@ -100,7 +101,7 @@ export async function pendienteReservas(id, estado, estadoo) {
     await res.json();
     if (res.status === 201) {
       console.log("Enviadoo con exito");
-      location.reload();
+      //location.reload();
     } else {
       console.log("error al enviar ");
     }
