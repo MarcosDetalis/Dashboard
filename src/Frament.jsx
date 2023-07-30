@@ -11,23 +11,26 @@ export default function Frament() {
             aria-expanded="false"
             className="dropdown-toggle"
           >
-            <i className="fa fa-object-group blue2_color"></i> <span>Mantenimiento</span>
+            <i className="fa fa-object-group blue2_color"></i>{" "}
+            <span>Mantenimiento</span>
           </a>
           <ul className="collapse list-unstyled" id="apps">
             <li>
-              <a href="email.html">
+              <Link to={"AgregarAutor"}>
                 <span>Angregar Autor</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="calendar.html">
-                 <span>Agregar Categoria</span>
-              </a>
+              
+                <Link to={"AgregarCategoria"}>
+                  <span>Agregar Categoria</span>
+                </Link>
+               
             </li>
             <li>
-              <a href="media_gallery.html">
-                 <span>Agragar Tipo de Bibliografia</span>
-              </a>
+               <Link to={"AgregarBibliografia"}> 
+                <span>Agragar Tipo de Bibliografia</span>
+               </Link>
             </li>
           </ul>
         </li>
