@@ -1,7 +1,7 @@
 import React from 'react'
  
 import Validacion from "../Dominio/ANDALAPUTA"
-
+//hola
 export default function Registrar_alumno() {
 
   const [inputs, handleFieldChange, getErrors, errors, fhoneerrors] = Validacion({
