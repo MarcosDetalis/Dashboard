@@ -26,7 +26,7 @@ import { useNavigate } from "react-router-dom";
 import {getSolicitudes,ElimiReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
 
 function Solicitud2() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
@@ -54,12 +54,12 @@ useEffect(()=>{
 }
 
 // funcion para filtrar
-// let resultado=[];
-// if(buscar){
-// resultado=usuario
-// }else{
-//   resultado=usuario.filter((reserva)=>reserva.name.toLowerCase().includes(buscar.toLocaleLowerCase()));
-// }
+let resultado=[];
+if(buscar){
+resultado=usuario
+}else{
+  resultado=usuario.filter((reserva)=>reserva.res_nombre.toLowerCase().includes(buscar.toLocaleLowerCase()));
+}
 
 
 
@@ -178,7 +178,7 @@ const ultimoIndice = paginacion * registroPagina;
 // este pa el indice o pagina inicial
 const primerIndice = ultimoIndice - registroPagina;
 // registro q traera una parte nomas del json con las limitaciones que pusimos
-const registro = usuario.slice(primerIndice, ultimoIndice);
+const registro = resultado.slice(primerIndice, ultimoIndice);
 // numero de paginas Math.ceil() devuelve
 // el numero de pagina mayor o mas proximo al numero
 const numeroPage = Math.ceil(usuario.length / registroPagina);
@@ -200,28 +200,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
 
   return (
     <div className="contenedor">
-    {/* <div className="barraBusqueda">
-=======
-    <div className="contenedor m-3">
-      {/* <div className="barraBusqueda">
->>>>>>> 0e73689814e1ca10c6b7c89f986306a11260df4d
-            <input
-              value={buscar}
-              onChange={buscador}
-              type="text"
-              placeholder="Buscar Libro"
-              className="textField"
-              name="busqueda"
-              //onChange={handleFilter}
-            />
-            <button type="button" className="btnBuscar">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </div> */}
+     <div className="contenedor-opciones">
+          <button className='btn btn-success btnexcel'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
 
-          <div className="contenedor-opciones">
-          <button className='btn btn-success'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
-            
+          <div className='btnbuscar'>  
         <input
           className=" inputBuscar"
           value={buscar}
@@ -229,10 +211,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
           onChange={buscador}
           
         />
-         <button type="button" className="btnBuscar">
+         <button type="button" className="btn btnBuscar">
               <FontAwesomeIcon icon={faSearch} />
             </button>
-         
+            </div>
       </div>
         
 
@@ -240,15 +222,6 @@ XLSX.writeFile(wb,"Reservas.xlsx");
      
     {/* referenciamos la tabla pa exportar */}
     <table  className='table table-bordered'>
-      <button
-        className="btn btn-success"
-        title="Exportar a Excel"
-        onClick={ExportExcel}
-      >
-        <FontAwesomeIcon icon={faTable} />
-      </button>
-  
-
         <thead>
           <tr>
             <th>ID</th>

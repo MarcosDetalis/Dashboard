@@ -1,4 +1,5 @@
 
+
 .contenedor{
   padding-top: 2rem;
 }
@@ -12,14 +13,19 @@
 
 .contenedor-opciones{
   display: flex;
-  justify-content: flex-end;
+
+ 
 }
 
-.inputBuscar{
+.btnbuscar{
   display: flex;
-  right: 0;
-  justify-content: left;
-  padding-left: 12px;
+  margin-left: 60.8rem;
+  border-radius: 4px;
+  background-color: #4158D0;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 }
 
-  
+.tr-table{
+  background-color: cornflowerblue;
+}
+
