@@ -1,50 +1,93 @@
- 
-import useFields from "../Dominio/vali";
-export default function App() {
-  const [fields, handleFieldChange, getErrors, errors] = useFields({
-    name: ""
-  });
-  const submit = () => {
-      getErrors(); 
-      
+import { useState, useRef } from "react";
+import "./style.css";
+import img from './main.png'
+
+function ImageUpload() {
+  const [image, setImage] = useState(null);
+  const hiddenFileInput = useRef(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    const imgname = event.target.files[0].name;
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      const img = new Image();
+      img.src = reader.result;
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const maxSize = Math.max(img.width, img.height);
+        canvas.width = maxSize;
+        canvas.height = maxSize;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(
+          img,
+          (maxSize - img.width) / 2,
+          (maxSize - img.height) / 2
+        );
+        canvas.toBlob(
+          (blob) => {
+            const file = new File([blob], imgname, {
+              type: "image/png",
+              lastModified: Date.now(),
+            });
+
+            console.log(file);
+            setImage(file);
+          },
+          "image/jpeg",
+          0.8
+        );
+      };
+    };
   };
-    console.log("daATA", errors.op);
-    return (
-      <div className="inner_page login">
-        <div className="full_container">
-          <div className="container">
-            <div className="center verticle_center full_height">
-              <div className="login_section">
-                <div className="logo_login"></div>
-                <div className="login_form"></div>
 
-                <div className="App">
-                  <h1>Custom hook</h1>
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      id="name"
-                      value={fields.name}
-                      onChange={handleFieldChange}
-                      
-                    />
-                    <br />
-                    {errors?.op && (
-                      <small className="text-danger">{errors.op}</small>
-                    )}
-                  </div>
-                  <button onClick={submit}>Send</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-}
+  const handleUploadButtonClick = (file) => {
+  
+  };
 
-
-
-
+  const handleClick = (event) => {
+    hiddenFileInput.current.click();
+  };
  
+  return (
+    <div className="image-upload-container">
+      <div className="box-decoration">
+        <label htmlFor="image-upload-input" className="image-upload-label">
+          {image ? image.name : "Choose an image"}
+        </label>
+        <div onClick={handleClick} style={{ cursor: "pointer" }}>
+          {image ? (
+            <img
+              src={URL.createObjectURL(image)}
+              alt="upload image"
+              className="img-display-after"
+            />
+          ) : (
+            <img
+              src={img}
+              alt="upload image"
+              className="img-display-before"
+            />
+          )}
+
+          <input
+            id="image-upload-input"
+            type="file"
+            onChange={handleImageChange}
+            ref={hiddenFileInput}
+            style={{ display: "none" }}
+          />
+        </div>
+
+        <button
+          className="image-upload-button"
+          onClick={handleUploadButtonClick}
+        >
+          Upload
+        </button>
+      </div>
+    </div>
+  );
+}
+export default ImageUpload;
