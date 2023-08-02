@@ -35,23 +35,17 @@ export default function Frament() {
           </ul>
         </li>
 
-        <li>
+      {/*   <li>
           <Link to={"Login"}>
             <i className="fa fa-table purple_color2"></i>
             Login
           </Link>
         </li>
-
+ */}
         <li>
           <Link to={"Registro"}>
             <i className="fa fa-edit yellow_color"></i>
             <span>Agregar Libros</span>
-          </Link>
-        </li>
-        <li>
-          <Link to={"Ver_infrom"}>
-            <i className="fa fa-bar-chart-o red_color"></i>
-            <span>Ver reportes</span>
           </Link>
         </li>
         <li>
@@ -61,12 +55,19 @@ export default function Frament() {
           </Link>
         </li>
         <li>
+          <Link to={"Ver_infrom"}>
+            <i className="fa fa-bar-chart-o red_color"></i>
+            <span>Ver reportes</span>
+          </Link>
+        </li>
+      
+        <li>
           <Link to={"Registrar_user"}>
             <i className="fa fa-group blue1_color"></i>
             <span>Registrar Usuarios</span>
           </Link>
         </li>
-        <li>
+      {/*   <li>
           <Link to={"Eliminar"}>
             <i className="fa fa-table purple_color2"></i>
             <span>Eliminar Libros</span>
@@ -80,12 +81,14 @@ export default function Frament() {
           </Link>
         </li>
 
+
         <li>
           <Link to={"Solicitud2"}>
             <i className="fa fa-table purple_color2"></i>
             <span>Solicitud2</span>
           </Link>
-        </li>
+        </li> */}
+
       </ul>
     </Fragment>
   );
