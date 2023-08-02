@@ -1,6 +1,7 @@
 import { Form, Button, Row, Col, InputGroup } from "react-bootstrap";
 import { ReservasContext } from "../contexts/contextoAplicacion";
 import { useContext} from "react";
+import Inter from '../../../Dardebaja/Interfaz/Inter'
 
 import validacion from '../../Dominio/Dominio'
 
@@ -40,24 +41,7 @@ const AgregarM = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Control
-          type="text"
-          placeholder="Autor"
-          name="autor"
-          id="autortxt_id" //el id identifica el cambio
-          value={inputs.autortxt_id}
-          onChange={handleFieldChange}
-          className={
-            Autor_error.msm_error == "El autor es un campo obligatorio"
-              ? "border-bottom border-danger"
-              : ""
-          }
-        />
-        {Autor_error?.msm_error && (
-          <span className="text-danger center  font-weight-bold">
-            {Autor_error.msm_error}
-          </span>
-        )}
+       
 
         <InputGroup className="mb-3">
           <Button variant="outline-secondary" id="button-addon1">
@@ -113,6 +97,11 @@ const AgregarM = () => {
             {descripcion_error.msm_error}
           </span>
         )}
+      </Form.Group>
+      <Form.Group>
+
+      <Inter></Inter>
+ 
       </Form.Group>
 
       <Form.Group>

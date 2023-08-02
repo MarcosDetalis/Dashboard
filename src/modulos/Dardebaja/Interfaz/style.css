@@ -3,13 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+     
 }
 
 .box-decoration {
-    border: 2px dashed #ccc;
+   /* border: 2px dashed #ccc;*/
     border-radius: 5px;
-    padding: 130px 100px;
+   /* padding: 10px 100px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,8 +42,8 @@
 }
 
 .img-display-before {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     margin-left: 35px;
 }
 

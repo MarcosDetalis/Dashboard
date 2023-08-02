@@ -50,11 +50,15 @@ function ImageUpload() {
     hiddenFileInput.current.click();
   };
  
+  const limpiarimg = ()=>{
+    setImage('');
+  }
+
   return (
     <div className="image-upload-container">
       <div className="box-decoration">
         <label htmlFor="image-upload-input" className="image-upload-label">
-          {image ? image.name : "Choose an image"}
+          {image ? image.name : "Agregar imagen"}
         </label>
         <div onClick={handleClick} style={{ cursor: "pointer" }}>
           {image ? (
@@ -64,11 +68,7 @@ function ImageUpload() {
               className="img-display-after"
             />
           ) : (
-            <img
-              src={img}
-              alt="upload image"
-              className="img-display-before"
-            />
+           <div>    </div>
           )}
 
           <input
@@ -80,12 +80,15 @@ function ImageUpload() {
           />
         </div>
 
-        <button
-          className="image-upload-button"
-          onClick={handleUploadButtonClick}
-        >
-          Upload
-        </button>
+        {image ? (
+           <i className="material-icons p-2" id="delete" onClick={limpiarimg}>
+            &#xE872; 
+         </i> 
+
+          ) : (
+           <div>    </div>
+          )}
+
       </div>
     </div>
   );
