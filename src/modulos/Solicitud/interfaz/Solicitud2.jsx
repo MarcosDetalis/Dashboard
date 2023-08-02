@@ -31,7 +31,7 @@ function Solicitud2() {
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
 
-// 
+// comentariooooo
 
 
 
