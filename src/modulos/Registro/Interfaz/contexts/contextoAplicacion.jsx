@@ -15,7 +15,7 @@ const AplicacionContextProvider = (props) => {
 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {
-    fetch("http://localhost:4005/ping")
+    fetch("https://apiser.onrender.com/usu/usuarios")
       .then((response) => response.json())
       .then((res) => {
         console.log("res", res);

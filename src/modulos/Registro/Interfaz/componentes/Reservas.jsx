@@ -18,10 +18,13 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
   console.log("first", reser.id_reserva);
   return (
     <>
-      <td>{reser.id_reserva}</td>
-      <td>{reser.Alumno}</td>
-      <td>{reser.Fecha}</td>
-      <td>{reser.Estado}</td>
+      <td>{reser.id_usuarios}</td>
+      <td>{reser.usu_nombre}</td>
+      <td>{reser.usu_apellido}</td>
+      <td>{reser.usu_correo}</td>
+      <td>{reser.usu_carrera}</td>
+      <td>{reser.usu_telefono}</td>
+      <td>{reser.contrasena}</td>
       <td>
         <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Editar</Tooltip>}>
           <button

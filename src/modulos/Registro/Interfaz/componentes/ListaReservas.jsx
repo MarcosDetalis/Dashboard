@@ -100,15 +100,15 @@ const ListaReserva = () => {
             <th>Nombre</th>
             <th>Apellido</th>
             <th>correo</th>
-            <th>contrasena</th>
-            <th>carrera</th>
+            <th>carrrera</th>
             <th>telefono</th>
+            <th>contrasena</th>
           </tr>
         </thead>
         <tbody>
           {/*Enviamos datos al componente Reserva, que tendra solo cada item. Como el map vamos a volver a mostrar hasta la longitd*/}
           {ActualReserva.map((reser) => (
-            <tr key={reser.id_reserva}>
+            <tr key={reser.id_usuarios}>
               <Reserva reser={reser} />
             </tr>
           ))}

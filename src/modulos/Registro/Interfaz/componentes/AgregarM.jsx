@@ -17,8 +17,9 @@ const AgregarM = () => {
   ] = validacion({
     Nombretxt_id: "",
     Apellidotxt_id: "",
-    descripciontxt_id: "",
-    cantidadtxt_id: "",
+    Correotxt_id: "",
+    Contrasenatxt_id: "",
+    telefonotxt_id: ""
     //->Son los paramtros
   });
 
