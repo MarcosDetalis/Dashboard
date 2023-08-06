@@ -11,31 +11,38 @@ export default function Frament() {
             aria-expanded="false"
             className="dropdown-toggle"
           >
-            <i className="fa fa-object-group blue2_color"></i>{" "}
+            <i className="fa fa-cogs blue2_color"></i>{" "}
             <span>Mantenimiento</span>
           </a>
           <ul className="collapse list-unstyled" id="apps">
             <li>
               <Link to={"AgregarAutor"}>
+                <i className="fa fa-user-plus blue2_color"></i>
                 <span>Angregar Autor</span>
               </Link>
             </li>
             <li>
-              
-                <Link to={"AgregarCategoria"}>
-                  <span>Agregar Categoria</span>
-                </Link>
-               
+              <Link to={"AgregarCategoria"}>
+                <i className="fa fa-tags  blue2_color"></i>
+                <span>Agregar Categoria</span>
+              </Link>
             </li>
             <li>
-               <Link to={"AgregarBibliografia"}> 
+              <Link to={"AgregarBibliografia"}>
+                <i className="fa fa-archive blue2_color"></i>
                 <span>Agragar Tipo de Bibliografia</span>
-               </Link>
+              </Link>
+            </li>
+            <li>
+              <Link to={"AgregarBibliografia"}>
+                <i className="fa fa-graduation-cap blue2_color"></i>
+                <span>Agregar Carreras</span>
+              </Link>
             </li>
           </ul>
         </li>
 
-      {/*   <li>
+        {/*   <li>
           <Link to={"Login"}>
             <i className="fa fa-table purple_color2"></i>
             Login
@@ -60,14 +67,14 @@ export default function Frament() {
             <span>Ver reportes</span>
           </Link>
         </li>
-      
+
         <li>
           <Link to={"Registrar_user"}>
             <i className="fa fa-group blue1_color"></i>
             <span>Registrar Usuarios</span>
           </Link>
         </li>
-      {/*   <li>
+        {/*   <li>
           <Link to={"Eliminar"}>
             <i className="fa fa-table purple_color2"></i>
             <span>Eliminar Libros</span>
@@ -88,7 +95,6 @@ export default function Frament() {
             <span>Solicitud2</span>
           </Link>
         </li> */}
-
       </ul>
     </Fragment>
   );
