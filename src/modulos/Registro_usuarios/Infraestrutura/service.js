@@ -47,9 +47,10 @@ export async function Agregar_usuario(Nombretxt_id,
   }
 }
 
-export async function DeleteReserva(id) {
+
+export async function eliminarusu(id) {
   try {
-    let res = await fetch("http://localhost:4005/api/ingresar", {
+    let res = await fetch("http://localhost:4005/usu/usuarios", {
       headers: { "Content-Type": "application/json" },
       method: "DELETE",
       body: JSON.stringify({
@@ -59,7 +60,7 @@ export async function DeleteReserva(id) {
     await res.json();
     if (res.status === 201) {
       console.log("Eliminado con exito");
-      location.reload();
+      location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
     } else {
       console.log("error al al eliminar ");
     }
