@@ -1,13 +1,13 @@
 import { Modal, Button, Alert ,Form} from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
-import { ReservasContext } from "../contexts/contextoAplicacion";
-import Reserva from "./Reservas";
-import AgregarM from "./AgregarM";
+import { UsuarioContext } from "../contexts/contextoAplicacion";
+import Reserva from "./Usuarios";
+import AgregarM from "./Agregar_usuario";
 import Pagination from "./Paginacion";
 //import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
-  const { lingitudReserva } = useContext(ReservasContext);
+  const { lingitudReserva } = useContext(UsuarioContext);
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -99,10 +99,10 @@ const ListaReserva = () => {
             <th>Id_usuario</th>
             <th>Nombre</th>
             <th>Apellido</th>
-            <th>correo</th>
-            <th>carrrera</th>
-            <th>telefono</th>
-            <th>contrasena</th>
+            <th>Correo</th>
+            <th>Carrera</th>
+            <th>Telefono</th>
+            <th>Contraseña</th>
           </tr>
         </thead>
         <tbody>

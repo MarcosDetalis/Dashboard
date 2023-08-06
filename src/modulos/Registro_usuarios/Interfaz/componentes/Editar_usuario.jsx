@@ -1,6 +1,6 @@
 import { Form, Button, Row,Col } from "react-bootstrap";
 
-import { ReservasContext } from "../contexts/contextoAplicacion";
+import { UsuarioContext } from "../contexts/contextoAplicacion";
 import { useContext, useState } from "react";
 
 const EditarM = ({ Req_Reservas }) => {
@@ -11,7 +11,7 @@ const EditarM = ({ Req_Reservas }) => {
   const [fecha, setFecha] = useState(Req_Reservas.Fecha);
   const [estado, setEstado] = useState(Req_Reservas.Estado);
 
-  const { atualizar } = useContext(ReservasContext); //llamamos al contexto de la aplicacion y usamos su funcion de actualizar
+  const { atualizar } = useContext(UsuarioContext); //llamamos al contexto de la aplicacion y usamos su funcion de actualizar
 
   const actualizar = { id, id_reserva, nombre, fecha, estado }; //Creamos un objeto
 

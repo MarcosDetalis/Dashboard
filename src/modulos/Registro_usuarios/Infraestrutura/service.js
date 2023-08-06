@@ -3,15 +3,23 @@ import withReactContent from "sweetalert2-react-content";
 
 const MySwal = withReactContent(Swal);
 
-export async function PostsReservas(alumno, fecha, estado) {
+export async function Agregar_usuario(Nombretxt_id,
+   Apellidotxt_id,
+   Correotxt_id,
+   Contrasenatxt_id,
+   telefonotxt_id,
+   carrera) {
   try {
-    let res = await fetch("http://localhost:4005/api/ingresar", {
+    let res = await fetch("https://apiser.onrender.com/usu/agregarusu", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
-        alumno: alumno,
-        fecha: fecha,
-        estado: estado,
+        usu_nombre: Nombretxt_id,
+        usu_apellido: Apellidotxt_id,
+        usu_correo: Correotxt_id,
+        usu_carrera: carrera,
+        usu_telefono: telefonotxt_id,
+        contrasena: Contrasenatxt_id,
       }),
     });
     await res.json();

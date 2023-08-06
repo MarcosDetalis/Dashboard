@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from "react";
-import { ReservasContext } from "../contexts/contextoAplicacion";
+import { UsuarioContext } from "../contexts/contextoAplicacion";
 import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import EditarM from "./EditarM";
+import EditarM from "./Editar_usuario";
 
 const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la ListaReservas es basicamente en un json  
-  const { EliminarReservas } = useContext(ReservasContext);
+  const { EliminarReservas } = useContext(UsuarioContext);
 
   const [show, setShow] = useState(false);
  

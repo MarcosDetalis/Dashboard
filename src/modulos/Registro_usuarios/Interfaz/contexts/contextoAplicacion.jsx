@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import {
-  PostsReservas,
+  Agregar_usuario,
   DeleteReserva,
   PutReservas,
 } from "../../Infraestrutura/service";
-export const ReservasContext = createContext();
+export const UsuarioContext = createContext();
 
 const AplicacionContextProvider = (props) => {
   const [reservas, setReservas] = useState([]);
@@ -39,9 +39,23 @@ const AplicacionContextProvider = (props) => {
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
   //obtenemos los datos del modal AgregarM
-  const addReservas = (nombre, fecha, estado) => {
+  const Guardar_Usuario = (Nombretxt_id,
+      Apellidotxt_id,
+      Correotxt_id,
+      Contrasenatxt_id,
+      telefonotxt_id,
+      carrera) => {
     //Enviamos los parametros a una funcion que esta en service
-    PostsReservas(nombre, fecha, estado);
+    Agregar_usuario(Nombretxt_id,
+   Apellidotxt_id,
+   Correotxt_id,
+   Contrasenatxt_id,
+   telefonotxt_id,
+   carrera
+    );
+    
+    console.log("contex")
+
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
@@ -60,16 +74,16 @@ const AplicacionContextProvider = (props) => {
 
   return (
     //Compartimos los datos a los demas  componentes
-    <ReservasContext.Provider
+    <UsuarioContext.Provider
       value={{
         lingitudReserva,
-        addReservas,
+        Guardar_Usuario,
         EliminarReservas,
         atualizar,
       }}
     >
       {props.children}
-    </ReservasContext.Provider>
+    </UsuarioContext.Provider>
   );
 };
 
