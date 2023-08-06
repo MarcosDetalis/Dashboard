@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
   Agregar_usuario,
-  DeleteReserva,
+  eliminarusu,
   PutReservas,
 } from "../../Infraestrutura/service";
 export const UsuarioContext = createContext();
@@ -59,8 +59,8 @@ const AplicacionContextProvider = (props) => {
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
-  const EliminarReservas = (id) => {
-    DeleteReserva(id);
+  const Eliminar_Usuario = (id) => {
+    eliminarusu(id);
   };
   //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
   const atualizar = (id, updateundato) => {
@@ -78,7 +78,7 @@ const AplicacionContextProvider = (props) => {
       value={{
         lingitudReserva,
         Guardar_Usuario,
-        EliminarReservas,
+        Eliminar_Usuario,
         atualizar,
       }}
     >

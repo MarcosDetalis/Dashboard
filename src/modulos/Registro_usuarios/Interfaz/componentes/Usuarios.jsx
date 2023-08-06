@@ -4,7 +4,7 @@ import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import EditarM from "./Editar_usuario";
 
 const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la ListaReservas es basicamente en un json  
-  const { EliminarReservas } = useContext(UsuarioContext);
+  const { Eliminar_Usuario } = useContext(UsuarioContext);
 
   const [show, setShow] = useState(false);
  
@@ -39,7 +39,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
         </OverlayTrigger>
         <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Borrar</Tooltip>}>
           <button
-            onClick={() => EliminarReservas(reser.id_reserva)} //LLamamos a una funcion que esta en el contexto de la aplicacion
+            onClick={() => Eliminar_Usuario(reser.id_usuarios)} //LLamamos a una funcion que esta en el contexto de la aplicacion
             className="btn text-danger btn-act"
             data-toggle="modal"
           >
@@ -62,7 +62,6 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
           <Button variant="secondary" onClick={handleClose}>
             Salir
           </Button>
-        
         </Modal.Footer>
       </Modal>
     </>

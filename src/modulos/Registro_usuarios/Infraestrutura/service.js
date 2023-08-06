@@ -50,7 +50,7 @@ export async function Agregar_usuario(Nombretxt_id,
 
 export async function eliminarusu(id) {
   try {
-    let res = await fetch("http://localhost:4005/usu/usuarios", {
+    let res = await fetch("http://localhost:4005/usu/eliminarusu", {
       headers: { "Content-Type": "application/json" },
       method: "DELETE",
       body: JSON.stringify({
