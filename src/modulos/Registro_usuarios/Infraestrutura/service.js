@@ -10,7 +10,7 @@ export async function Agregar_usuario(Nombretxt_id,
    telefonotxt_id,
    carrera) {
   try {
-    let res = await fetch("https://apiser.onrender.com/usu/agregarusu", {
+    let res = await fetch("http://localhost:4005/usu/agregarusu", {  //https://apiser.onrender.com
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
