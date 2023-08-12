@@ -1,5 +1,5 @@
 export async function getSolicitudes() {
-  const url = "https://servicedeb.onrender.com/soli/Solicitudes";
+  const url = "https://apiser.onrender.com/soli/Solicitudes";
   const respuesta = await fetch(url);
   const datos = await respuesta.json();
   return datos;
@@ -9,12 +9,12 @@ export async function getSolicitudes() {
 
 
 
-//ppp
+
 // no necesariamente tiene q llamarrse como en la DB. ejemplo:id
 
 export async function ElimiReserva(id, nombre) {
   try {
-    let res = await fetch("https://servicedeb.onrender.com/soli/eliminar", {
+    let res = await fetch("https://apiser.onrender.com/soli/eliminar", {
       headers: { "Content-Type": "application/json" },
       method: "DELETE",
       body: JSON.stringify({
@@ -41,7 +41,7 @@ export async function ElimiReserva(id, nombre) {
 export async function updateReservas(id, estado, estadoo) {
    
   try {
-    let res = await fetch("https://servicedeb.onrender.com/soli/update", {
+    let res = await fetch("https://apiser.onrender.com/soli/update", {
       headers: { "Content-Type": "application/json" },
       method: "PUT", //por que afecto solo 3 campos
       body: JSON.stringify({
@@ -66,7 +66,7 @@ export async function updateReservas(id, estado, estadoo) {
 // servicio pa actualizar estado anulado
 export async function anularReservas(id, estado, estadoo) {
   try {
-    let res = await fetch("https://servicedeb.onrender.com/soli/anular", {
+    let res = await fetch("https://apiser.onrender.com/soli/anular", {
       headers: { "Content-Type": "application/json" },
       method: "PUT", //por que afecto solo 3 campos
       body: JSON.stringify({
@@ -89,7 +89,7 @@ export async function anularReservas(id, estado, estadoo) {
 
 export async function pendienteReservas(id, estado, estadoo) {
   try {
-    let res = await fetch("https://servicedeb.onrender.com/soli/pendiente", {
+    let res = await fetch("https://apiser.onrender.com/soli/pendiente", {
       headers: { "Content-Type": "application/json" },
       method: "PUT", //por que afecto solo 3 campos
       body: JSON.stringify({
