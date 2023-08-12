@@ -26,12 +26,12 @@ const AgregarM = () => {
      getErrors();
    };
 
-  const { addCarrera} = useContext(ReservasContext);
+  const { addReservas } = useContext(ReservasContext);
 
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    addCarrera(inputs.nombreid);
+    addReservas(inputs.nombreid);
   };
    console.log("conta", Autor_error.msm_error);
   return (
