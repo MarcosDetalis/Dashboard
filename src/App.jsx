@@ -10,6 +10,7 @@ import Panel from "./modulos/PanelPrincipal/interfaz/Interfaz";
 import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
+import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
 function App() {
   return (
     <div className="App">
@@ -132,6 +133,10 @@ function App() {
                     <Route
                       path="/AgregarBibliografia"
                       element={<AgregarBibliografia />}
+                    />
+                    <Route
+                      path="/AgregarCarrera"
+                      element={<AgregarCarrera />}
                     />
                     <Route path="/Login" element={<Login />} />
                     <Route path="/Registro" element={<Registro />} />

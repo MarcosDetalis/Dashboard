@@ -4,11 +4,7 @@
 // import {XLSX} from "xlsx";
 import * as XLSX from 'xlsx';
 
-
-
-
 import '../interfaz/avatar.css';
-
 
 import '../interfaz/search.css'
 
@@ -20,8 +16,7 @@ import {useState,useEffect } from 'react';
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash,faEye,faTable,faSearch} from '@fortawesome/free-solid-svg-icons'
-// import del services
-import { useNavigate } from "react-router-dom";
+
 
 import {getSolicitudes,ElimiReserva,updateReservas,anularReservas,pendienteReservas} from '../Infraestructura/Service'
 
@@ -202,7 +197,6 @@ XLSX.writeFile(wb,"Reservas.xlsx");
     <div className="contenedor">
      <div className="contenedor-opciones">
           <button className='btn btn-success btnexcel'title='Exportar a Excel' onClick={ExportExcel}><FontAwesomeIcon icon={faTable} /></button> 
-
           <div className='btnbuscar'>  
         <input
           className=" inputBuscar"

@@ -6,11 +6,7 @@ export async function getSolicitudes() {
 }
 
 
-
-
-
-
-// no necesariamente tiene q llamarrse como en la DB. ejemplo:id
+// no necesariamente tiene q llamarse como en la DB. ejemplo:id
 
 export async function ElimiReserva(id, nombre) {
   try {
