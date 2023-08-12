@@ -31,7 +31,7 @@ const AgregarCarrera = () => {
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    addCarrera(inputs.nombreid);
+    addCarrera(inputs.nombrecarreratxt_id);
   };
    console.log("conta", carrera_error.msm_error);
   return (
@@ -41,7 +41,7 @@ const AgregarCarrera = () => {
           type="text"
           placeholder="Nombre de Autor"
           name="autor"
-          id="autortxt_id" //el id identifica el cambio
+          id="nombrecarreratxt_id" //el id identifica el cambio
           value={inputs.nombrecarreratxt_id}
           onChange={handleFieldChange}
           className={

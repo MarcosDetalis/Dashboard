@@ -53,7 +53,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
         </Modal.Header>
         <Modal.Body>
           {/* Enviamos datos al compontente de EditarM */}
-          <EditarM Req_Reservas={reser} />
+          <EditarM Req_Carrera={reser} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

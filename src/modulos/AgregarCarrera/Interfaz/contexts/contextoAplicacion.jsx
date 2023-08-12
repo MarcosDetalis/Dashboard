@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
-  PostsCarrera  
+  PostsCarrera ,
+  PutReservas
 } from '../../infraestructura/servicios.js';
 export const ReservasContext = createContext();
 
@@ -27,12 +28,6 @@ const AplicacionContextProvider = (props) => {
 
   console.log("sindate", reservas);
 
-  //Los datos guardamos en la memoria local del navegador
-
-  //    useEffect(() => {
-  //     localStorage.setItem("reservas", JSON.stringify(reservas));
-  //  });
-
   //tenemos una longitud de las peticiones
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
@@ -49,8 +44,7 @@ const AplicacionContextProvider = (props) => {
   //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
   const atualizar = (id, updateundato) => {
     PutReservas(
-      updateundato.nombre,
-      id
+      id, updateundato
     );
   };
 
