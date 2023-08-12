@@ -34,7 +34,7 @@ export default function Frament() {
               </Link>
             </li>
             <li>
-              <Link to={"AgregarBibliografia"}>
+              <Link to={"AgregarCarrera"}>
                 <i className="fa fa-graduation-cap blue2_color"></i>
                 <span>Agregar Carreras</span>
               </Link>

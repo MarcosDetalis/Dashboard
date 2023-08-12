@@ -1,9 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
-  PostsReservas,
-  DeleteReserva,
-  PutReservas,
-} from "../../Infraestructura/servicios";
+  PostsCarrera  
+} from '../../infraestructura/servicios.js';
 export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
@@ -15,7 +13,7 @@ const AplicacionContextProvider = (props) => {
 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {
-    fetch("http://localhost:4005/ping")
+    fetch("http://localhost:4005/car/carreras")
       .then((response) => response.json())
       .then((res) => {
         console.log("res", res);
@@ -39,9 +37,9 @@ const AplicacionContextProvider = (props) => {
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
   //obtenemos los datos del modal AgregarM
-  const addReservas = (nombre) => {
+  const addCarrera = (nombre) => {
     //Enviamos los parametros a una funcion que esta en service
-    PostsReservas(nombre);
+    PostsCarrera(nombre);
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
@@ -61,7 +59,7 @@ const AplicacionContextProvider = (props) => {
     <ReservasContext.Provider
       value={{
         lingitudReserva,
-        addReservas,
+        addCarrera,
         EliminarReservas,
         atualizar,
       }}

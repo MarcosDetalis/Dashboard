@@ -18,7 +18,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
   console.log("first", reser.id_reserva);
   return (
     <>
-      <td>{reser.id_reserva}</td>
+      <td>{reser.car_nombre}</td>
       <td>{reser.Alumno}</td>
       <td>{reser.Fecha}</td>
       <td>{reser.Estado}</td>

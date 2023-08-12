@@ -2,7 +2,7 @@ import { Modal, Button, Alert ,Form} from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { ReservasContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Reservas";
-import AgregarM from "./AgregarM";
+import AgregarM from "./AgregarCarrera";
 import Pagination from "./Paginacion";
 //import styles from "./ListaReserva.module.css";
 

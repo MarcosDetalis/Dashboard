@@ -3,7 +3,14 @@ import withReactContent from "sweetalert2-react-content";
 
 const MySwal = withReactContent(Swal);
 
-export async function PostsReservas(car_nombre) {
+
+
+
+
+
+
+
+export async function PostsCarrera(car_nombre) {
   try {
     let res = await fetch("http://localhost:4005/car/agregarCarrera", {
       headers: { "Content-Type": "application/json" },

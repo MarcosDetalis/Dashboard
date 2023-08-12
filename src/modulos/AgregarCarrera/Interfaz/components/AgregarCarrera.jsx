@@ -4,7 +4,7 @@ import { useContext} from "react";
 
 import validacion from '../../Dominio/Dominio'
 
-const AgregarM = () => {
+const AgregarCarrera = () => {
 
    const [
      inputs,
@@ -26,12 +26,12 @@ const AgregarM = () => {
      getErrors();
    };
 
-  const { addReservas } = useContext(ReservasContext);
+  const { addCarrera } = useContext(ReservasContext);
 
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    addReservas(inputs.nombreid);
+    addCarrera(inputs.nombreid);
   };
    console.log("conta", carrera_error.msm_error);
   return (
@@ -65,4 +65,4 @@ const AgregarM = () => {
   );
 };
 
-export default AgregarM;
+export default AgregarCarrera;

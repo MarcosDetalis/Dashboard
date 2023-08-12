@@ -144,6 +144,7 @@ function App() {
                     <Route path="/hook" element={<Hook />} />
                     <Route path="/Registrar_user" element={<AgregarUser />} />
                     <Route path="/Solicitud" element={<Solicitud2 />}></Route>
+                 
                   </Routes>
                 </div>
               </div>
