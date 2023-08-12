@@ -5,7 +5,7 @@ const MySwal = withReactContent(Swal);
 
 export async function Agregar_carrera(car_nombre) {
   try {
-    let res = await fetch("http://localhost:4005/carrera/agregarCarrera", {
+    let res = await fetch("http://localhost:4005/car/agregarCarrera", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
@@ -39,13 +39,13 @@ export async function Agregar_carrera(car_nombre) {
 }
 
 
-export async function eliminarusu(id) {
+export async function eliminarusu(idCarrera) {
   try {
-    let res = await fetch("http://localhost:4005/usu/eliminarusu", {
+    let res = await fetch("http://localhost:4005/car/eliminarcarrera", {
       headers: { "Content-Type": "application/json" },
       method: "DELETE",
       body: JSON.stringify({
-        id: id,
+        idCarrera: idCarrera,
       }),
     });
     await res.json();
@@ -62,16 +62,14 @@ export async function eliminarusu(id) {
 
 ///---
 
-export async function PutReservas(alumno, fecha, estado, id) {
+export async function PutReservas(nombrecarrera,idcarrare) {
   try {
     let res = await fetch("http://localhost:4005/api/update", {
       headers: { "Content-Type": "application/json" },
       method: "PUT",
       body: JSON.stringify({
-        alumno: alumno,
-        fecha: fecha,
-        estado: estado,
-        id: id,
+        nombrecarrera: nombrecarrera,
+        idcarrera: idcarrare
       }),
     });
     await res.json();

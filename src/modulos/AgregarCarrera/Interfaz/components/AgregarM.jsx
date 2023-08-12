@@ -10,12 +10,12 @@ const AgregarM = () => {
      inputs,
      handleFieldChange,
      getErrors,
-     Autor_error,
+     carrera_error,
   
   
    ] = validacion({
-     autortxt_id: "",
-     titulotxt_id: ""
+
+     nombrecarreratxt_id: ""
   
      //->Son los paramtros
    });
@@ -33,7 +33,7 @@ const AgregarM = () => {
     e.preventDefault();
     addReservas(inputs.nombreid);
   };
-   console.log("conta", Autor_error.msm_error);
+   console.log("conta", carrera_error.msm_error);
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -42,18 +42,18 @@ const AgregarM = () => {
           placeholder="Nombre de Autor"
           name="autor"
           id="autortxt_id" //el id identifica el cambio
-          value={inputs.autortxt_id}
+          value={inputs.nombrecarreratxt_id}
           onChange={handleFieldChange}
           className={
-            Autor_error.msm_error == undefined ||
-            Autor_error.msm_error == " "
+            carrera_error.msm_error == undefined ||
+            carrera_error.msm_error == " "
               ? " "
               : "border-bottom border-danger"
           }
         />
-        {Autor_error?.msm_error && (
+        {carrera_error?.msm_error && (
           <span className="text-danger center  font-weight-bold">
-            {Autor_error.msm_error}
+            {carrera_error.msm_error}
           </span>
         )}
       </Form.Group>

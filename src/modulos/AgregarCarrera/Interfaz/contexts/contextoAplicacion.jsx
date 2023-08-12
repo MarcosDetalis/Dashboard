@@ -3,7 +3,7 @@ import {
   PostsReservas,
   DeleteReserva,
   PutReservas,
-} from "../../Infraestrutura/service";
+} from "../../Infraestructura/servicios";
 export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
@@ -39,9 +39,9 @@ const AplicacionContextProvider = (props) => {
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
   //obtenemos los datos del modal AgregarM
-  const addReservas = (nombre, fecha, estado) => {
+  const addReservas = (nombre) => {
     //Enviamos los parametros a una funcion que esta en service
-    PostsReservas(nombre, fecha, estado);
+    PostsReservas(nombre);
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
@@ -52,8 +52,6 @@ const AplicacionContextProvider = (props) => {
   const atualizar = (id, updateundato) => {
     PutReservas(
       updateundato.nombre,
-      updateundato.fecha,
-      updateundato.estado,
       id
     );
   };
