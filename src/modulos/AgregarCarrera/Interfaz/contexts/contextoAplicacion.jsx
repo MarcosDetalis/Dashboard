@@ -36,7 +36,7 @@ const AplicacionContextProvider = (props) => {
   const addCarrera = (nombre) => {
     //Enviamos los parametros a una funcion que esta en service
     PostsCarrera(nombre);
-  };
+  };     
 
   //Eliminamos los datos solo obteniendo el id del item del boton
   const EliminarReservas = (id) => {
@@ -47,7 +47,7 @@ const AplicacionContextProvider = (props) => {
     PutReservas(
       id, updateundato
     );
-     setReloadUsers(true);
+     setReloadUsers(true); //apis
   };
 
   return (
