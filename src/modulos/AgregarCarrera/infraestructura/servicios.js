@@ -109,14 +109,28 @@ export async function PutReservas(idcarrare,nombrecarrera) {
       method: "PUT",
       body: JSON.stringify({
         nombrecarrera: nombrecarrera,
-        idcarrera: idcarrare
+        idcarrera: idcarrare,
       }),
     });
     await res.json();
     if (res.status === 201) {
       console.log("Enviadoo con exito");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Datos Guardados",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      location.reload();
     } else {
-      console.log("error al enviar ");
+      console.log("error al AgregAR ");
+
+      MySwal.fire({
+        icon: "error",
+        title: "Ocurrio un error",
+        text: "Favor verificar los datos introducidos",
+      });
     }
   } catch (err) {
     console.log(err);
