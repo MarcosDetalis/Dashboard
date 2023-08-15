@@ -74,7 +74,7 @@ export async function anularReservas(id, estado, estadoo) {
     await res.json();
     if (res.status === 201) {
       console.log("Enviadoo con exito");
-      location.reload();
+     // location.reload();
     } else {
       console.log("error al enviar ");
     }

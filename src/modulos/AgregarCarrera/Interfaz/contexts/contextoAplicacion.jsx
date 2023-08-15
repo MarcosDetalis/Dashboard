@@ -7,7 +7,7 @@ export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
   const [reservas, setReservas] = useState([]);
-
+   const [reloadUsers, setReloadUsers] = useState(false);
   // useEffect(() => {
   //   setReservas(JSON.parse(localStorage.getItem("reservas")));
   // }, []);
@@ -24,7 +24,8 @@ const AplicacionContextProvider = (props) => {
           setReservas(res);
         }
       });
-  }, []);
+    setReloadUsers(false);
+  }, [reloadUsers]);
 
   console.log("sindate", reservas);
 
@@ -46,6 +47,7 @@ const AplicacionContextProvider = (props) => {
     PutReservas(
       id, updateundato
     );
+     setReloadUsers(true);
   };
 
   return (

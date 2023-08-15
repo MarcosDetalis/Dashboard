@@ -122,7 +122,7 @@ export async function PutReservas(idcarrare,nombrecarrera) {
         showConfirmButton: false,
         timer: 1500,
       });
-      location.reload();
+      //location.reload();
     } else {
       console.log("error al AgregAR ");
 
