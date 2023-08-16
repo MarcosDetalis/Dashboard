@@ -49,24 +49,49 @@ export async function Agregar_usuario(Nombretxt_id,
 
 
 export async function eliminarusu(id) {
-  try {
-    let res = await fetch("http://localhost:4005/usu/eliminarusu", {
-      headers: { "Content-Type": "application/json" },
-      method: "DELETE",
-      body: JSON.stringify({
-        id: id,
-      }),
-    });
-    await res.json();
-    if (res.status === 201) {
-      console.log("Eliminado con exito");
-      location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
-    } else {
-      console.log("error al al eliminar ");
+
+
+
+
+  Swal.fire({
+    title: 'Desea eliminar?',
+    text: "Se eliminar el registro seleccionado!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Se elimino con Exito!'
+        
+      )
+      try {
+        let res =  fetch("http://localhost:4005/usu/eliminarusu", {
+          headers: { "Content-Type": "application/json" },
+          method: "DELETE",
+          body: JSON.stringify({
+            id: id,
+          }),
+        });
+        res.json();
+        if (res.status === 201) {
+          console.log("Eliminado con exito");
+          location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
+        } else {
+          console.log("error al al eliminar ");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+
+
+
     }
-  } catch (err) {
-    console.log(err);
-  }
+  })
+
+ 
 }
 
 ///---
