@@ -32,6 +32,9 @@ const AplicacionContextProvider = (props) => {
   //tenemos una longitud de las peticiones
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
+console.log ("que trea",reservas)
+console.log ("longi",lingitudReserva)
+
   //obtenemos los datos del modal AgregarM
   const addCarrera = (nombre) => {
     //Enviamos los parametros a una funcion que esta en service
