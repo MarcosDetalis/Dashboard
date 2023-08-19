@@ -8,7 +8,7 @@ export const UsuarioContext = createContext();
 
 const AplicacionContextProvider = (props) => {
   const [reservas, setReservas] = useState([]);
-
+  const [reloadUsers,setReloadUsers] = useState(false);
   // useEffect(() => {
   //   setReservas(JSON.parse(localStorage.getItem("reservas")));
   // }, []);
@@ -25,7 +25,8 @@ const AplicacionContextProvider = (props) => {
           setReservas(res);
         }
       });
-  }, []);
+      setReloadUsers(false);
+  }, [reloadUsers]);
 
   console.log("sindate", reservas);
 
@@ -64,6 +65,7 @@ const AplicacionContextProvider = (props) => {
   };
   //Obtenemos un objeto json (actualusu) lo cual llamamos sus claves
   const atualizar = (id, actualusu) => {
+  
   console.log('actualizar',actualusu)
 
 
@@ -74,6 +76,7 @@ const AplicacionContextProvider = (props) => {
       actualusu.usu_telefono,
       actualusu.contrasena
     );
+    setReloadUsers(true);
   };
 
   return (
