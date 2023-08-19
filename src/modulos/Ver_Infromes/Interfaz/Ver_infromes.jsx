@@ -19,13 +19,18 @@ import Stack from "@mui/material/Stack";
  
 import dayjs from "dayjs";
 
-import { useState } from "react";
+import { useState , useEffect } from "react";
 
 
 
 import PDFFile from "./PDFFile";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
+
+
+//
+import QRCode from 'react-qr-code';
+ 
 
 export default function Ver_infromes() {
   
@@ -36,6 +41,20 @@ export default function Ver_infromes() {
   const [radio, setRadio] = useState(1);
   
   
+  const [reservas, setReservas] = useState([]);
+
+  useEffect(() => {
+    fetch("https://apiser.onrender.com/soli/Solicitudes")
+      .then((response) => response.json())
+      .then((res) => {
+       
+          setReservas(res);
+        
+      });
+   
+  },[]);
+
+
   const handleChange = (event) => {
     setListaS(event.target.value);
   };
@@ -155,6 +174,19 @@ export default function Ver_infromes() {
 
                     <Button variant="contained">Salir</Button>
                   </Stack>
+
+
+{ reservas.map((reser) => (
+
+
+ 
+<QRCode value={reser.idreservas} />
+  
+ 
+    
+))}
+
+           
                 </fieldset>
               </div>
             </div>
