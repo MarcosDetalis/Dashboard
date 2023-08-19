@@ -97,9 +97,7 @@ const ListaReserva = () => {
         <thead>
           <tr>
             <th>Nombre de las carreras disponibles</th>
-            <th> </th>
-            <th> </th>
-            <th> </th>
+           
             <th>Acciones</th>
           </tr>
         </thead>
@@ -112,7 +110,7 @@ const ListaReserva = () => {
             <tr key={reser.id_reserva}>
 
               <Reserva reser={reser} />
-              <td>{reser.car_nombre}</td>
+              
             </tr>
           ))}
 

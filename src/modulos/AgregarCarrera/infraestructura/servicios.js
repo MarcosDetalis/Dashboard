@@ -38,11 +38,6 @@ export async function Agregar_carrera(inputcarrera) {
  }
 }
 
-
-
-
-
-
 export async function PostsCarrera(car_nombre) {
   try {
     let res = await fetch("http://localhost:4005/car/agregarCarrera", {
@@ -80,29 +75,52 @@ export async function PostsCarrera(car_nombre) {
 
 
 export async function DeleteCarrera(idCarrera) {
-  
-  try {
-    let res = await fetch("http://localhost:4005/car/eliminarcarrera", {
-      headers: { "Content-Type": "application/json" },
-      method: "DELETE",
-      body: JSON.stringify({
-        idCarrera: idCarrera,
-      }),
-    });
-    await res.json();
-    if (res.status === 201) {
-      
-      console.log("Eliminado con exito");
-      location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
-    } else {
-      console.log("error al al eliminar ");
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Se elimino con exito'
+      )
+      try {
+        let res = fetch("http://localhost:4005/car/eliminarcarrera", {
+          headers: { "Content-Type": "application/json" },
+          method: "DELETE",
+          body: JSON.stringify({
+            idCarrera: idCarrera,
+          }),
+        });
+         res.json();
+        if (res.status === 201) {
+          
+          console.log("Eliminado con exito");
+          location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
+        } else {
+          console.log("error al al eliminar ");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+      )
     }
-  } catch (err) {
-    console.log(err);
-  }
+  })
+
+  
+  
 }
 
-///---
+
 
 export async function PutReservas(idcarrare,nombrecarrera) {
   try {
