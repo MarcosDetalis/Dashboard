@@ -120,8 +120,6 @@ export async function DeleteCarrera(idCarrera) {
   
 }
 
-
-
 export async function PutReservas(idcarrare,nombrecarrera) {
   try {
     let res = await fetch("http://localhost:4005/car/updatecarrera", {
