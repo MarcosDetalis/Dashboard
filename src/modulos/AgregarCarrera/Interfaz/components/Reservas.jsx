@@ -16,6 +16,12 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
   }, [reser]);
 
 
+  console.log("first43", reser);
+
+  if (reser.length == "") return<td>borrado</td>;
+
+
+
   return (
     <>
       <td>{reser.car_nombre}</td>

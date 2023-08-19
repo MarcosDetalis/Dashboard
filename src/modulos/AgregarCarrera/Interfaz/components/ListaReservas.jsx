@@ -57,7 +57,7 @@ const ListaReserva = () => {
   const ActualReserva = resultado.slice(PrimeraPagina, UtimaPagina);
   const totalPagesNum = Math.ceil(resultado.length / PaginaReserva);
 
-  console.log("esta", lingitudReserva);
+  console.log("esta43", ActualReserva);
 
   return (
     <>
@@ -105,11 +105,19 @@ const ListaReserva = () => {
         </thead>
         <tbody>
           {/*Enviamos datos al componente Reserva, que tendra solo cada item. Como el map vamos a volver a mostrar hasta la longitd*/}
-          {ActualReserva.map((reser) => (
+        
+          {!ActualReserva.length ?  <div className="align-items-center justify-content-center">Sin datos</div>:
+          ActualReserva.map((reser) => (
+
             <tr key={reser.id_reserva}>
+
               <Reserva reser={reser} />
+              <td>{reser.car_nombre}</td>
             </tr>
           ))}
+
+             
+
         </tbody>
       </table>
 

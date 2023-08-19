@@ -9,7 +9,8 @@ import Pagination from "./Paginacion";
 const ListaReserva = () => {
   const { lingitudReserva } = useContext(UsuarioContext);
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
+ 
 
   const [show, setShow] = useState(false);
 
@@ -23,17 +24,21 @@ const ListaReserva = () => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
-    }, 2000);
+    }, 1000);
   };
-
+ 
+  
+  
   useEffect(() => {
     handleClose();
 
     return () => {
       handleShowAlert();
     };
+    
   }, [lingitudReserva]);
 
+ 
   //buscador fragmento del codigo del pablo
   const [buscar, setBuscar] = useState("");
 
@@ -84,14 +89,16 @@ const ListaReserva = () => {
             className="btn btn-success"
             data-toggle="modal"
           >
-            <i className="material-icons">&#xE147;</i> <span>Agregar Usuarios</span>
+            <i className="material-icons">&#xE147;</i>{" "}
+            <span>Agregar Usuarios</span>
           </Button>
         </div>
       </div>
 
       <Alert show={showAlert} variant="success">
-        Datos actualizados
+        Buscando datos
       </Alert>
+     
 
       <table className="table table-striped table-hover">
         <thead>
