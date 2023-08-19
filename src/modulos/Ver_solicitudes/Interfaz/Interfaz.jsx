@@ -1,9 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 // pa las ventanas modales
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'; 
-import {useEffect, useState } from 'react';
-
-<<<<<<< HEAD
+import {useEffect, useState } fro
 import { useEffect,useState } from "react";
 import DataTable from "react-data-table-component";
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -37,14 +35,12 @@ export default function Interfaz() {
   const Edit = () => setShowEdit(true);
   //cerrar modal editar
   const handleCloseEdit = () => setShowEdit(false);
-=======
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash,faEye} from '@fortawesome/free-solid-svg-icons'
 // import del services
 import './maqui.css';
 
 import {getdatos} from '../Infraestructura/Services'
->>>>>>> 6055da6103d67e339d28ab303ac796db60d819f2
 
 console.log(resultado)
 
@@ -80,7 +76,6 @@ useEffect(()=>{
 },[])
 
 
-<<<<<<< HEAD
         const columnas = [
           {
             name: "Id",
@@ -183,7 +178,7 @@ useEffect(()=>{
       </Modal>
     </>
   );
-=======
+
 // estado que controlo cuando abre y cierra inicia en false p q no este abierto
 const [modalEliminar,setModalEliminar]=useState(false);
 
@@ -200,7 +195,7 @@ const seleccionadoUser=(elemento,caso)=>{
 setUserSeleccionado(elemento);
 // condicion pa que abra el modal
 (caso==='eliminar') && setModalEliminar(true)
->>>>>>> 6055da6103d67e339d28ab303ac796db60d819f2
+
 }
 
 // funcion que realiza la eliminacion de reservas

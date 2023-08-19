@@ -96,11 +96,11 @@ const ListaReserva = () => {
       <table className="table table-striped table-hover">
         <thead>
           <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Fecha</th>
-            <th>Estado</th>
-            <th>Actions</th>
+            <th>Nombre de las carreras disponibles</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>

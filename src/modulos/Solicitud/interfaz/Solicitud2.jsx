@@ -26,6 +26,7 @@ function Solicitud2() {
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
 
+const[buscar,setBuscar]=useState("");
 // comentariooooo
 
 
@@ -40,7 +41,7 @@ useEffect(()=>{
 },[])
 // APARTADO BUSCADOR
  // busqueda y setbesqueda == estado para busqueda e iniciamos con un vacio seria query y setquery
- const[buscar,setBuscar]=useState("");
+
 
 //  //esta funcion agarra los valores que se tipean en el buscador con target 
  const buscador =(evento)=>{
@@ -50,10 +51,12 @@ useEffect(()=>{
 
 // funcion para filtrar
 let resultado=[];
-if(buscar){
+if(!buscar){
 resultado=usuario
 }else{
-  resultado=usuario.filter((reserva)=>reserva.res_nombre.toLowerCase().includes(buscar.toLocaleLowerCase()));
+  resultado=usuario.filter((reserva)=>
+  reserva.res_nombre.toLowerCase().includes(buscar.toLocaleLowerCase())
+  );
 }
 
 
@@ -153,14 +156,6 @@ const eliminarReserva=()=>{
 ElimiReserva(userSeleccionado);
 setModalEliminar(false);
 }
-
-
-
-
-
-
-
-
 
 // APARTADO DE PAGINACION
 // estado para paginacion qu recibe q comienza con uno

@@ -79,7 +79,8 @@ export async function PostsCarrera(car_nombre) {
 }
 
 
-export async function eliminarusu(idCarrera) {
+export async function DeleteCarrera(idCarrera) {
+  
   try {
     let res = await fetch("http://localhost:4005/car/eliminarcarrera", {
       headers: { "Content-Type": "application/json" },
@@ -90,6 +91,7 @@ export async function eliminarusu(idCarrera) {
     });
     await res.json();
     if (res.status === 201) {
+      
       console.log("Eliminado con exito");
       location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
     } else {

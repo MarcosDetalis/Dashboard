@@ -1,17 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import {
-  PostsCarrera ,
-  PutReservas
+  PostsCarrera ,PutReservas,DeleteCarrera
 } from '../../infraestructura/servicios.js';
 export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
   const [reservas, setReservas] = useState([]);
    const [reloadUsers, setReloadUsers] = useState(false);
-  // useEffect(() => {
-  //   setReservas(JSON.parse(localStorage.getItem("reservas")));
-  // }, []);
-
+ 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {
     fetch("http://localhost:4005/car/carreras")
@@ -39,8 +35,8 @@ const AplicacionContextProvider = (props) => {
   };     
 
   //Eliminamos los datos solo obteniendo el id del item del boton
-  const EliminarReservas = (id) => {
-    DeleteReserva(id);
+  const EliminarCarrera = (id) => {
+    DeleteCarrera(id);
   };
   //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
   const atualizar = (id, updateundato) => {
@@ -56,7 +52,7 @@ const AplicacionContextProvider = (props) => {
       value={{
         lingitudReserva,
         addCarrera,
-        EliminarReservas,
+        EliminarCarrera,
         atualizar,
       }}
     >
