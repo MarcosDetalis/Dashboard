@@ -15,7 +15,6 @@ const [carrera, setcarrera] = useState("Derechoa");
     getErrors,
     Autor_error,
     titulo_error,
-   
     cantidad_error,
   ] = validacion({
     Nombretxt_id: "",

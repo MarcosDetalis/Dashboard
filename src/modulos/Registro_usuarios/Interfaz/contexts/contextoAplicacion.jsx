@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import {
   Agregar_usuario,
   eliminarusu,
-  PutReservas,
+  actualizarusu,
 } from "../../Infraestrutura/service";
 export const UsuarioContext = createContext();
 
@@ -15,7 +15,7 @@ const AplicacionContextProvider = (props) => {
 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {
-    fetch("https://apiser.onrender.com/usu/usuarios")
+    fetch("http://localhost:4005/usu/usuarios")
       .then((response) => response.json())
       .then((res) => {
         console.log("res", res);
@@ -62,13 +62,17 @@ const AplicacionContextProvider = (props) => {
   const Eliminar_Usuario = (id) => {
     eliminarusu(id);
   };
-  //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
-  const atualizar = (id, updateundato) => {
-    PutReservas(
-      updateundato.nombre,
-      updateundato.fecha,
-      updateundato.estado,
-      id
+  //Obtenemos un objeto json (actualusu) lo cual llamamos sus claves
+  const atualizar = (id, actualusu) => {
+  console.log('actualizar',actualusu)
+
+
+    actualizarusu(
+      id,
+      actualusu.usu_nombre,
+      actualusu.usu_apellido,
+      actualusu.usu_telefono,
+      actualusu.contrasena
     );
   };
 

@@ -50,9 +50,6 @@ export async function Agregar_usuario(Nombretxt_id,
 
 export async function eliminarusu(id) {
 
-
-
-
   Swal.fire({
     title: 'Desea eliminar?',
     text: "Se eliminar el registro seleccionado!",
@@ -65,7 +62,6 @@ export async function eliminarusu(id) {
     if (result.isConfirmed) {
       Swal.fire(
         'Se elimino con Exito!'
-        
       )
       try {
         let res =  fetch("http://localhost:4005/usu/eliminarusu", {
@@ -89,23 +85,21 @@ export async function eliminarusu(id) {
 
 
     }
-  })
-
- 
+  }) 
 }
 
-///---
 
-export async function PutReservas(alumno, fecha, estado, id) {
+export async function actualizarusu(id,usu_nombre,usu_apellido,usu_telefono,contrasena) {
   try {
-    let res = await fetch("http://localhost:4005/api/update", {
+    let res = await fetch("http://localhost:4005/usu/actualizarusu", {
       headers: { "Content-Type": "application/json" },
       method: "PUT",
       body: JSON.stringify({
-        alumno: alumno,
-        fecha: fecha,
-        estado: estado,
-        id: id,
+      id:id,
+      usu_nombre: usu_nombre,
+      usu_apellido: usu_apellido,
+      usu_telefono: usu_telefono ,
+      contrasena: contrasena,
       }),
     });
     await res.json();

@@ -16,7 +16,7 @@ const EditarM = ({ Req_Usuarios }) => {
 
   const { atualizar } = useContext(UsuarioContext); //llamamos al contexto de la aplicacion y usamos su funcion de actualizar
 
-  const actualizar = { id, usu_nombre, usu_apellido, usu_correo,contrasena,usu_telefono }; //Creamos un objeto
+  const actualizar = {  usu_nombre, usu_apellido, usu_correo,contrasena,usu_telefono }; //Creamos un objeto
 
   const handleSubmit = (e) => {
     e.preventDefault();
