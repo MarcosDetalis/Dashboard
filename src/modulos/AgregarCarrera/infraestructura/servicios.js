@@ -74,7 +74,7 @@ export async function PostsCarrera(car_nombre) {
 }
 
 
-export async function DeleteCarrera(idCarrera) {
+export async function DeleteCarrera(id) {
   Swal.fire({
     title: 'Are you sure?',
     text: "You won't be able to revert this!",
@@ -84,7 +84,6 @@ export async function DeleteCarrera(idCarrera) {
     cancelButtonColor: '#d33',
     confirmButtonText: 'Yes, delete it!'
   }).then((result) => {
-    
     if (result.isConfirmed) {
       Swal.fire(
         'Se elimino con exito'
@@ -94,7 +93,7 @@ export async function DeleteCarrera(idCarrera) {
           headers: { "Content-Type": "application/json" },
           method: "DELETE",
           body: JSON.stringify({
-            idCarrera: idCarrera,
+            id: id,
           }),
         });
          res.json();
