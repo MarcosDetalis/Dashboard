@@ -1,9 +1,11 @@
-import { Modal, Button, Alert ,Form} from "react-bootstrap";
+import { Modal, Button,Form} from "react-bootstrap";
 import { useContext, useEffect, useState } from "react";
 import { UsuarioContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Usuarios";
 import AgregarM from "./Agregar_usuario";
 import Pagination from "./Paginacion";
+
+import ScaleLoader from "react-spinners/ScaleLoader";
 //import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
@@ -24,7 +26,7 @@ const ListaReserva = () => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
-    }, 1000);
+    }, 10);
   };
  
   
@@ -62,7 +64,7 @@ const ListaReserva = () => {
   const ActualReserva = resultado.slice(PrimeraPagina, UtimaPagina);
   const totalPagesNum = Math.ceil(resultado.length / PaginaReserva);
 
-  console.log("esta", lingitudReserva);
+ 
 
   return (
     <>
@@ -95,11 +97,6 @@ const ListaReserva = () => {
         </div>
       </div>
 
-      <Alert show={showAlert} variant="success">
-        Buscando datos
-      </Alert>
-     
-
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -119,9 +116,24 @@ const ListaReserva = () => {
               <Reserva reser={reser} />
             </tr>
           ))}
+
+          <tr>
+            <td colSpan="7" style={{ textAlign: "center" }}>
+              <div>
+                <ScaleLoader
+                  color="#214162"
+                  cssOverride={{}}
+                  loading={showAlert}
+                  margin={6}
+                  radius={4}
+                  speedMultiplier={1}
+                  width={10}
+                />
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
-
       <Pagination
         pages={totalPagesNum}
         setCurrentPage={setCurrentPage}
@@ -129,7 +141,6 @@ const ListaReserva = () => {
         lingitudReserva={lingitudReserva}
       />
       {/* ize="xs || sm || md || lg || full" */}
-
       <Modal show={show} onHide={handleClose} size="md">
         <Modal.Header closeButton>
           <Modal.Title>Añadir Usuario</Modal.Title>
@@ -151,3 +162,6 @@ const ListaReserva = () => {
 };
 
 export default ListaReserva;
+
+
+
