@@ -9,6 +9,7 @@ import '../interfaz/avatar.css';
 import '../interfaz/search.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import ScaleLoader from "react-spinners/ScaleLoader";
 
 // pa las ventanas modales
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'; 
@@ -28,6 +29,12 @@ const [usuario,setUsuario]=useState([]);
 
 const[buscar,setBuscar]=useState("");
 // comentariooooo
+
+
+const [showAlert, setShowAlert] = useState(true);
+
+
+
 
 
 
@@ -226,6 +233,19 @@ XLSX.writeFile(wb,"Reservas.xlsx");
         <tbody>
           {registro.map((elemento) => (
             <tr key={elemento.idreservas}>
+              {/* <td colSpan="7" style={{ textAlign: "center" }}>
+              <div>
+                <ScaleLoader
+                  color="#214162"
+                  cssOverride={{}}
+                  loading={showAlert}
+                  margin={6}
+                  radius={4}
+                  speedMultiplier={1}
+                  width={10}
+                />
+              </div>
+            </td> */}
               <td>{elemento.idreservas}</td>
               <td>
                 <div className="d-flex align-items-center">

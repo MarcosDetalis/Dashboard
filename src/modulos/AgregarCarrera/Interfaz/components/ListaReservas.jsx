@@ -4,10 +4,13 @@ import { ReservasContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Reservas";
 import AgregarM from "./AgregarCarrera";
 import Pagination from "./Paginacion";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 
 const ListaReserva = () => {
   const { lingitudReserva } = useContext(ReservasContext);
+
+  
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -113,6 +116,21 @@ const ListaReserva = () => {
               
             </tr>
           ))}
+          <tr>
+            <td colSpan="7" style={{ textAlign: "center" }}>
+              <div>
+                <ScaleLoader
+                  color="#214162"
+                  cssOverride={{}}
+                  loading={showAlert}
+                  margin={6}
+                  radius={4}
+                  speedMultiplier={1}
+                  width={10}
+                />
+              </div>
+            </td>
+          </tr>
 
              
 
