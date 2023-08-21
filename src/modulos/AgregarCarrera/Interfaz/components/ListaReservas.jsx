@@ -12,7 +12,7 @@ const ListaReserva = () => {
 
   
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
 
   const [show, setShow] = useState(false);
 
@@ -26,7 +26,7 @@ const ListaReserva = () => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
-    }, 2000);
+    }, 10);
   };
 
   useEffect(() => {
@@ -92,9 +92,7 @@ const ListaReserva = () => {
         </div>
       </div>
 
-      <Alert show={showAlert} variant="success">
-        Datos actualizados
-      </Alert>
+  
 
       <table className="table table-striped table-hover">
         <thead>
@@ -107,7 +105,7 @@ const ListaReserva = () => {
         <tbody>
           {/*Enviamos datos al componente Reserva, que tendra solo cada item. Como el map vamos a volver a mostrar hasta la longitd*/}
         
-          {!ActualReserva.length ?  <div className="align-items-center justify-content-center">Sin datos</div>:
+          {!ActualReserva.length ?  <div></div>:
           ActualReserva.map((reser) => (
 
             <tr key={reser.id_reserva}>
