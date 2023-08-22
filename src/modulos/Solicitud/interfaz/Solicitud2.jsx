@@ -35,11 +35,6 @@ const[buscar,setBuscar]=useState("");
 
 const [showAlert, setShowAlert] = useState(true);
 
-const [show, setShow] = useState(false);
-
-const handleShow = () => setShow(true);
-const handleClose = () => setShow(false);
-
 
 const handleShowAlert = () => {
   setShowAlert(true);
@@ -49,15 +44,10 @@ const handleShowAlert = () => {
 };
 
 
-
-
-
-
-
-
-
 useEffect(()=>{
-  handleClose();
+
+
+  handleShowAlert();
   getSolicitudes().then((datos)=>
   setUsuario(datos)
   
