@@ -9,7 +9,7 @@ import '../interfaz/avatar.css';
 import '../interfaz/search.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import ScaleLoader from "react-spinners/ScaleLoader";
+ import ScaleLoader from "react-spinners/ScaleLoader";
 
 // pa las ventanas modales
 import {Modal,ModalBody,ModalFooter} from 'reactstrap'; 
@@ -31,7 +31,23 @@ const[buscar,setBuscar]=useState("");
 // comentariooooo
 
 
+// estados para el spinner loading
+
 const [showAlert, setShowAlert] = useState(true);
+
+const [show, setShow] = useState(false);
+
+const handleShow = () => setShow(true);
+const handleClose = () => setShow(false);
+
+
+const handleShowAlert = () => {
+  setShowAlert(true);
+  setTimeout(() => {
+    setShowAlert(false);
+  }, 10);
+};
+
 
 
 
@@ -41,6 +57,7 @@ const [showAlert, setShowAlert] = useState(true);
 
 
 useEffect(()=>{
+  handleClose();
   getSolicitudes().then((datos)=>
   setUsuario(datos)
   
@@ -231,9 +248,8 @@ XLSX.writeFile(wb,"Reservas.xlsx");
           </tr>
         </thead>
         <tbody>
-          {registro.map((elemento) => (
-            <tr key={elemento.idreservas}>
-              {/* <td colSpan="7" style={{ textAlign: "center" }}>
+            <tr>
+            <td colSpan="7" style={{ textAlign: "center" }}>
               <div>
                 <ScaleLoader
                   color="#214162"
@@ -245,7 +261,11 @@ XLSX.writeFile(wb,"Reservas.xlsx");
                   width={10}
                 />
               </div>
-            </td> */}
+            </td>
+          </tr>
+          {registro.map((elemento) => (
+          
+            <tr key={elemento.idreservas}>
               <td>{elemento.idreservas}</td>
               <td>
                 <div className="d-flex align-items-center">

@@ -60,7 +60,7 @@ const ListaReserva = () => {
   const ActualReserva = resultado.slice(PrimeraPagina, UtimaPagina);
   const totalPagesNum = Math.ceil(resultado.length / PaginaReserva);
 
-  console.log("esta43", ActualReserva);
+  
 
   return (
     <>
