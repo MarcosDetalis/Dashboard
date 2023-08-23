@@ -72,7 +72,7 @@ const ListaReserva = () => {
             </h2>
           </div>
 
-          <div className="col-sm-">
+          <div className="col-sm">
             <Form.Control
               type="search"
               placeholder="Buscar"

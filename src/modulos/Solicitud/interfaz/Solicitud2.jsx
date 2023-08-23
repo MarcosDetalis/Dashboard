@@ -35,12 +35,12 @@ const[buscar,setBuscar]=useState("");
 
 const [showAlert, setShowAlert] = useState(true);
 
-
+// funcion que pone el minuto ve visualizacion
 const handleShowAlert = () => {
   setShowAlert(true);
   setTimeout(() => {
     setShowAlert(false);
-  }, 10);
+  }, 200);
 };
 
 
@@ -50,6 +50,7 @@ useEffect(()=>{
   handleShowAlert();
   getSolicitudes().then((datos)=>
   setUsuario(datos)
+  
   
   )
 },[])
@@ -238,23 +239,10 @@ XLSX.writeFile(wb,"Reservas.xlsx");
           </tr>
         </thead>
         <tbody>
-            <tr>
-            <td colSpan="7" style={{ textAlign: "center" }}>
-              <div>
-                <ScaleLoader
-                  color="#214162"
-                  cssOverride={{}}
-                  loading={showAlert}
-                  margin={6}
-                  radius={4}
-                  speedMultiplier={1}
-                  width={10}
-                />
-              </div>
-            </td>
-          </tr>
+       
+           
           {registro.map((elemento) => (
-          
+            
             <tr key={elemento.idreservas}>
               <td>{elemento.idreservas}</td>
               <td>
@@ -306,6 +294,21 @@ XLSX.writeFile(wb,"Reservas.xlsx");
               </td>
             </tr>
           ))}
+          <tr>
+            <td colSpan={8}>
+            <div style={{ textAlign: "center" }}>
+                <ScaleLoader
+                  color="#214162"
+                  cssOverride={{}}
+                  loading={showAlert}
+                  margin={6}
+                  radius={4}
+                  speedMultiplier={1}
+                  width={10}
+                />
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
       {/* Modal de opciones */}
