@@ -31,26 +31,10 @@ const[buscar,setBuscar]=useState("");
 // comentariooooo
 
 
-// estados para el spinner loading
-
-const [showAlert, setShowAlert] = useState(true);
-
-// funcion que pone el minuto ve visualizacion
-const handleShowAlert = () => {
-  setShowAlert(true);
-  setTimeout(() => {
-    setShowAlert(false);
-  }, 200);
-};
-
 
 useEffect(()=>{
-
-
-  handleShowAlert();
   getSolicitudes().then((datos)=>
   setUsuario(datos)
-  
   
   )
 },[])
@@ -294,13 +278,15 @@ XLSX.writeFile(wb,"Reservas.xlsx");
               </td>
             </tr>
           ))}
-          <tr>
+
+    {/* loading. Se verifica la longitud de datos -> se aplica con la ternaria */}  
+    {!registro.length ?   <tr>
             <td colSpan={8}>
             <div style={{ textAlign: "center" }}>
                 <ScaleLoader
                   color="#214162"
                   cssOverride={{}}
-                  loading={showAlert}
+                  loading={true}
                   margin={6}
                   radius={4}
                   speedMultiplier={1}
@@ -308,7 +294,13 @@ XLSX.writeFile(wb,"Reservas.xlsx");
                 />
               </div>
             </td>
-          </tr>
+          </tr>: <></> } 
+
+
+
+         
+
+
         </tbody>
       </table>
       {/* Modal de opciones */}
