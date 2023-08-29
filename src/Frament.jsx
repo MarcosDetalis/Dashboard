@@ -4,6 +4,13 @@ export default function Frament() {
   return (
     <Fragment>
       <ul className="list-unstyled components">
+      <li>
+          <Link to={"Login"}>
+            <i className="fa fa-table purple_color2"></i>
+            Login
+          </Link>
+        </li>
+
         <li>
           <a
             href="#apps"
@@ -42,13 +49,7 @@ export default function Frament() {
           </ul>
         </li>
 
-        {/*   <li>
-          <Link to={"Login"}>
-            <i className="fa fa-table purple_color2"></i>
-            Login
-          </Link>
-        </li>
- */}
+        
         <li>
           <Link to={"Registro"}>
             <i className="fa fa-edit yellow_color"></i>

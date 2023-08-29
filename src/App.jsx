@@ -11,6 +11,7 @@ import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
 import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
+
 function App() {
   return (
     <div className="App">
@@ -122,6 +123,8 @@ function App() {
 
               <div className="midde_cont">
                 <div className="container-fluid">
+                  
+               
                   <Routes>
                     AgregarBibliografia
                     <Route path="/" element={<Panel />} />
@@ -138,7 +141,7 @@ function App() {
                       path="/AgregarCarrera"
                       element={<AgregarCarrera />}
                     />
-                    <Route path="/Login" element={<Login />} />
+                    <Route path="/Login" element={<Login/>}  />
                     <Route path="/Registro" element={<Registro />} />
                     <Route path="/Ver_infrom" element={<Ver_infromes />} />
                     <Route path="/hook" element={<Hook />} />
