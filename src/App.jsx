@@ -11,9 +11,14 @@ import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
 import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
+import {PrivateRoute} from './Router/Router_Private'
 function App() {
   return (
     <div className="App">
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+      
       <div className="dashboard dashboard_1">
         <div className="full_container">
           <div className="inner_container">
@@ -124,27 +129,78 @@ function App() {
                 <div className="container-fluid">
                   <Routes>
                     AgregarBibliografia
-                    <Route path="/" element={<Panel />} />
-                    <Route path="/AgregarAutor" element={<AgregarAutor />} />
+                    {/*  <Route path="/" element={<Login />} /> */}
+                    {/* <Route path="/" element={<Panel />} /> */}
+                    <Route
+                      path="/AgregarAutor"
+                      element={
+                        <PrivateRoute>
+                          <AgregarAutor />
+                        </PrivateRoute>
+                      }
+                    />
                     <Route
                       path="/AgregarCategoria"
-                      element={<AgregarCategoria />}
+                      element={
+                        <PrivateRoute>
+                          {" "}
+                          <AgregarCategoria />
+                        </PrivateRoute>
+                      }
                     />
                     <Route
                       path="/AgregarBibliografia"
-                      element={<AgregarBibliografia />}
+                      element={
+                        <PrivateRoute>
+                          {" "}
+                          <AgregarBibliografia />
+                        </PrivateRoute>
+                      }
                     />
                     <Route
                       path="/AgregarCarrera"
-                      element={<AgregarCarrera />}
+                      element={
+                        <PrivateRoute>
+                          {" "}
+                          <AgregarCarrera />
+                        </PrivateRoute>
+                      }
                     />
-                    <Route path="/Login" element={<Login />} />
-                    <Route path="/Registro" element={<Registro />} />
-                    <Route path="/Ver_infrom" element={<Ver_infromes />} />
+                    <Route
+                      path="/Registro"
+                      element={
+                        <PrivateRoute>
+                          <Registro />{" "}
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/Ver_infrom"
+                      element={
+                        <PrivateRoute>
+                          {" "}
+                          <Ver_infromes />
+                        </PrivateRoute>
+                      }
+                    />
                     <Route path="/hook" element={<Hook />} />
-                    <Route path="/Registrar_user" element={<AgregarUser />} />
-                    <Route path="/Solicitud" element={<Solicitud2 />}></Route>
-                 
+                    <Route
+                      path="/Registrar_user"
+                      element={
+                        <PrivateRoute>
+                          <AgregarUser />{" "}
+                        </PrivateRoute>
+                      }
+                    />
+                    <Route
+                      path="/Solicitud"
+                      element={
+                        <PrivateRoute>
+                          {" "}
+                          <Solicitud2 />
+                        </PrivateRoute>
+                      }
+                    ></Route>
                   </Routes>
                 </div>
               </div>
