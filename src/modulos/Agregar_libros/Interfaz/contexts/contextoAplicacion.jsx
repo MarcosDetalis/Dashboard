@@ -3,6 +3,7 @@ import {
   PostsReservas,
   DeleteReserva,
   PutReservas,
+ 
 } from "../../Infraestrutura/service";
 export const ReservasContext = createContext();
 
@@ -28,6 +29,8 @@ const AplicacionContextProvider = (props) => {
   }, []);
 
   console.log("sindate", reservas);
+ 
+
 
   //Los datos guardamos en la memoria local del navegador
 
@@ -66,6 +69,7 @@ const AplicacionContextProvider = (props) => {
         addReservas,
         EliminarReservas,
         atualizar,
+         
       }}
     >
       {props.children}

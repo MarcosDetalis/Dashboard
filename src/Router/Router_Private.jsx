@@ -1,7 +1,14 @@
-import { Navigate, useLocation } from "react-router-dom";
 
-export const PrivateRoute = ({ children }) => {
-  const { state } = useLocation();
+import { Navigate, Outlet } from "react-router-dom";
 
-  return state?.logged ? children : <Navigate to="/" />;
+export const PrivateRoute = ({
+  isAllowed,
+  redirectTo = "/",
+  children,
+}) => {
+  if (!isAllowed) {
+    return <Navigate to={redirectTo} replace />;
+  }
+
+  return children ? children : <Outlet />;
 };

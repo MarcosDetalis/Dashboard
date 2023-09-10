@@ -1,7 +1,10 @@
-import React from "react";
+ 
 import validacion from "../Dominio/Validacion";
+import { useNavigate } from "react-router-dom";
+import {Postslogin} from "../Infraestructura/service"
 //-> hacemos un import de nuestra funcion 
 export default function Login() {
+  const navigate = useNavigate();
   //-> Creamos la intructura que deamos utilizar(estado , funciones,  dentro del hooks), enviamos parametros a nuesta
   //funcion de validacion con una estructura json de tal forma para manejar por clave y valor.
   const [inputs, handleFieldChange, getErrors, emialerror, passerror] =
@@ -11,8 +14,14 @@ export default function Login() {
     });
 
   //-> Creamos una funcion la cual llama a una funcion dentro de nuestro hooks de validacion.
-  const submit = () => {
-    getErrors();
+  const submit = (e) => {
+    //etErrors();
+    e.preventDefault();
+       Postslogin(inputs.emailid, inputs.passwordid);
+       // navigate("/Panel/");
+      
+  
+
   };
 
   return (

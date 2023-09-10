@@ -1,6 +1,9 @@
 import  { Fragment } from 'react'
 import { Link } from "react-router-dom";
+ 
 export default function Frament() {
+ 
+  
   return (
     <Fragment>
       <ul className="list-unstyled components">
@@ -18,7 +21,7 @@ export default function Frament() {
             <li>
               <Link to={"AgregarAutor"}>
                 <i className="fa fa-user-plus blue2_color"></i>
-                <span>Angregar Autor</span>
+                <span >Angregar Autor</span>
               </Link>
             </li>
             <li>
