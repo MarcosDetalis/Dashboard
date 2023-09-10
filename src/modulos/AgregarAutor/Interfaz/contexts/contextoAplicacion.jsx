@@ -4,14 +4,12 @@ import {
   eliminarAtour,
   actualizarAutor,
 } from "../../Infraestrutura/service";
-export const UsuarioContext = createContext();
+export const ReservasContext = createContext();
 
 const AplicacionContextProvider = (props) => {
   const [reservas, setReservas] = useState([]);
   const [reloadUsers,setReloadUsers] = useState(false);
-  // useEffect(() => {
-  //   setReservas(JSON.parse(localStorage.getItem("reservas")));
-  // }, []);
+ 
 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {

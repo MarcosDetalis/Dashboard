@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+// import { useState } from "react";
 import validacion from "../Dominio/Validacion";
 //-> hacemos un import de nuestra funcion 
 export default function Login() {
@@ -17,17 +16,17 @@ export default function Login() {
   };
 
 // estado pa obtener el usuario y pass del login
-const [login,setLogin]=useState({username:'',password:''});
+// const [login,setLogin]=useState({username:'',password:''});
 
 // funcion que agarra el valor de los inputsd
-const inputChange({target})=>{
-  const {name,value}=target
-  setLogin({
-    ...login,
-    [name]:value
-  })
+// const inputChange({target})=>{
+//   const {name,value}=target
+//   setLogin({
+//     ...login,
+//     [name]:value
+//   })
   
-}
+// }
 
 
   return (
@@ -50,9 +49,9 @@ const inputChange({target})=>{
                         name="username"
                         placeholder="E-mail"
                         id="emailid"
-                        //  value={inputs.emailid}
-                        value={login.username} //-> obtenemos el valor
-                        onChange={handleFieldChange,inputChange} //-> cada cambio que pase en input llamara a nuestra funcion de return del hooks validar
+                        value={inputs.emailid}
+                        // value={login.username} //-> obtenemos el valor
+                        onChange={handleFieldChange} //-> cada cambio que pase en input llamara a nuestra funcion de return del hooks validar
                         className={
                           emialerror.emial ==
                           "El correo es un campo obligatorio"
@@ -79,9 +78,9 @@ const inputChange({target})=>{
                         name="password"
                         id="passwordid"
                         placeholder="Password"
-                        // value={inputs.passwordid}
-                        value={login.password}
-                        onChange={handleFieldChange,inputChange}
+                         value={inputs.passwordid}
+                        // value={login.password}
+                        onChange={handleFieldChange}
                         className={
                           passerror.passw ==
                           "La contraseña es un campo obligatorio"

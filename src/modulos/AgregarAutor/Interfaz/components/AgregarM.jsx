@@ -1,5 +1,5 @@
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { UsuarioContext } from "../contexts/contextoAplicacion";
+import { ReservasContext } from "../contexts/contextoAplicacion";
 import { useContext } from "react";
 
 import validacion from '../../Dominio/Dominio'

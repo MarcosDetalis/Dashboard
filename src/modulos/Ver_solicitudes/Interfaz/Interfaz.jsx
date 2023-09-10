@@ -126,8 +126,8 @@ useEffect(()=>{
 
 
   return (
-    <>
-      <div className="table-title">
+   
+      {/* <div className="table-title">
         <div className="row">
           <div className="col-sm-6">
             <h2>
@@ -167,8 +167,8 @@ useEffect(()=>{
           <Modal.Title>Editar Reservas</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Enviamos datos al compontente de EditarM */}
-          <EditModa Req_Reservas={resultado}></EditModa>
+          {/* Enviamos datos al compontente de EditarM */
+          /* <EditModa Req_Reservas={resultado}></EditModa>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseEdit}>
@@ -247,8 +247,8 @@ console.log(usuario);
               <div className="d-flex align-items-center">
                           <div className="img-container">
                               {/* <img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                                  alt=""/> */}
-                          </div>
+                                  alt=""/> */
+                          /* </div>
                           <div className="ps-1">
                               <div className="fw-600 pb-3">mark@gmail.com</div>
                               <p className="m-0 text-black fs-09">Fecha: 03/02/2023</p>
@@ -266,42 +266,42 @@ console.log(usuario);
               <td><button className='btn btn-primary'><FontAwesomeIcon icon={faEye} /></button>{" "}
               <button className='btn btn-danger' onClick={()=>seleccionadoUser(elemento,'eliminar')}><FontAwesomeIcon icon={faTrash} /></button></td>
               </tr>
-              ))}
-  </tbody>
-  </table>
+              ))} */}
+  // </tbody>
+  // </table>
 
-  {/*creamos el modal de eliminar isOpen pasamos la funcio n */}
-      <Modal isOpen={modalEliminar}>
-        <ModalBody>
-         Seguro que desea eliminar la Reserva hecha por {userSeleccionado && userSeleccionado.name}
-        </ModalBody>
-        <ModalFooter>
-        <button className='btn btn-danger' onClick={()=>eliminarReserva()}>
-          Si
-        </button>
-        <button className='btn btn-secondary' onClick={()=>setModalEliminar(false)}>
-          No
-        </button>
-        </ModalFooter>
-      </Modal>
+  /*creamos el modal de eliminar isOpen pasamos la funcio n */
+      // <Modal isOpen={modalEliminar}>
+      //   <ModalBody>
+      //    Seguro que desea eliminar la Reserva hecha por {userSeleccionado && userSeleccionado.name}
+      //   </ModalBody>
+      //   <ModalFooter>
+      //   <button className='btn btn-danger' onClick={()=>eliminarReserva()}>
+      //     Si
+      //   </button>
+      //   <button className='btn btn-secondary' onClick={()=>setModalEliminar(false)}>
+      //     No
+      //   </button>
+      //   </ModalFooter>
+      // </Modal>
 
-      {/* fronter de paginacion */}
-        {/* aqui hacemos front de la paginacion con boostrap */}
-  <nav className="d-flex justify-content-end ">
-    <ul className="pagination">
-      <li className="page-item">
-        <a href="#" value="hola2" className="page-link" onClick={anteriorPagina}>
-          Anterior
-        </a>
-      </li>
-      {numero.map((n, i) => (
+      /* fronter de paginacion */
+        /* aqui hacemos front de la paginacion con boostrap */
+  // <nav className="d-flex justify-content-end ">
+  //   <ul className="pagination">
+  //     <li className="page-item">
+  //       <a href="#" value="hola2" className="page-link" onClick={anteriorPagina}>
+  //         Anterior
+  //       </a>
+  //     </li>
+      /* {numero.map((n, i) => (
         <li className={`page-item ${paginacion === n ? 'active' : ''}`} key={i}>
           <a href="#" value="hola" className="page-link" onClick={()=>changeCpage(n)} > {n}
           </a>
         </li>
-      ))}
+      ))} */}
       {/* paginacion siguiente */}
-      <li className="pagina-item">
+      {/* <li className="pagina-item">
         <a href="#" className="page-link" onClick={nextPagina}>
          Siguiente
         </a>
@@ -309,22 +309,25 @@ console.log(usuario);
     </ul>
   </nav>
 </div>
-  )
+  ) */}
+  // 
   //   las funcionaes para el onclick
-function anteriorPagina(){
-  if(paginacion !== 1){
-      setPaginacion(paginacion - 1);
-  }
-  }
-function changeCpage(l){
-  setPaginacion(l);
+// function anteriorPagina(){
+  // if(paginacion !== 1){
+  //     setPaginacion(paginacion - 1);
+  // }
+  // 
+// function changeCpage(l){
+//   setPaginacion(l);
 
-}
-function nextPagina(){
-  if(paginacion !== numeroPage){
-      setPaginacion(paginacion + 1);
-  }
-}
-}
+// }
+// function nextPagina(){
+//   if(paginacion !== numeroPage){
+//       setPaginacion(paginacion + 1);
+//   }
+// }
 
-export default Interfaz
+
+
+
+export default Interfaz;
