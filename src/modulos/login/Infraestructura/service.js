@@ -23,7 +23,8 @@ export async function Postslogin(correo, pass) {
         showConfirmButton: false,
         timer: 1500,
       });
-      
+          localStorage.setItem("reservas", true);
+      location.href = "/Panel";
     } else {
       console.log("Al logearse");
 
@@ -32,6 +33,8 @@ export async function Postslogin(correo, pass) {
         title: "Accesos Denegado",
         text: "Favor verificar los datos introducidos",
       });
+        localStorage.removeItem("reservas");
+        // localStorage.setItem("reservas", " ");
     }
   } catch (err) {
     console.log(err);

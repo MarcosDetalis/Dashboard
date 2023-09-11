@@ -19,8 +19,8 @@ export default function Login() {
     e.preventDefault();
        Postslogin(inputs.emailid, inputs.passwordid);
        // navigate("/Panel/");
-      
-  
+    
+  console.log(  localStorage.getItem("reservas"));
 
   };
 
