@@ -136,14 +136,23 @@ function App() {
                     {/*  <Route path="/" element={<Login />} /> */}
                     <Route path="/Panel" element={<Panel />} />
                     <Route path="/AgregarAutor" element={<AgregarAutor />} />
-
+                    <Route
+                      element={
+                        <PrivateRoute
+                          redirectTo="/Panel"
+                          isAllowed={
+                            !!sessionStorage.getItem("reservas") &&
+                            sessionStorage.getItem("roles").includes("admin")
+                          }
+                        />
+                      }
+                    >
                       <Route
                         path="/AgregarCategoria"
                         element={<AgregarCategoria />}
                       />
+                    </Route>
                     <Route
-                      
-
                       path="/AgregarBibliografia"
                       element={<AgregarBibliografia />}
                     />

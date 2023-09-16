@@ -11,7 +11,9 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<Login />} />
       <Route
-        element={<PrivateRoute isAllowed={!!(localStorage.getItem("reservas"))} />}
+        element={
+          <PrivateRoute isAllowed={!!sessionStorage.getItem("reservas")} />
+        }
       >
         <Route path="*" element={<App />} />
       </Route>
