@@ -1,4 +1,4 @@
-import Login from "./modulos/login/Interfaz/Login";
+//import Login from "./modulos/login/Interfaz/Login";
 import Registro from "./modulos/Agregar_libros/Interfaz/Registro";
 import Ver_infromes from "./modulos/Ver_Infromes/Interfaz/Ver_infromes";
 import AgregarUser from "./modulos/Registro_usuarios/Interfaz/Registrar_usuarios";
@@ -11,10 +11,15 @@ import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
 import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
+import { PrivateRoute } from './router/Router_private'
 
 function App() {
   return (
     <div className="App">
+      {/* <Routes>
+        <Route path="/ " element={<Login />} />
+      </Routes> */}
+
       <div className="dashboard dashboard_1">
         <div className="full_container">
           <div className="inner_container">
@@ -123,16 +128,27 @@ function App() {
 
               <div className="midde_cont">
                 <div className="container-fluid">
-                  
-               
                   <Routes>
                     AgregarBibliografia
-                    <Route path="/" element={<Panel />} />
+                    {/*  <Route path="/" element={<Login />} /> */}
+                    <Route path="/Panel" element={<Panel />} />
                     <Route path="/AgregarAutor" element={<AgregarAutor />} />
                     <Route
-                      path="/AgregarCategoria"
-                      element={<AgregarCategoria />}
-                    />
+                      element={
+                        <PrivateRoute
+                          redirectTo="/Panel"
+                          isAllowed={
+                            !!sessionStorage.getItem("reservas") &&
+                            sessionStorage.getItem("roles").includes("admin")
+                          }
+                        />
+                      }
+                    >
+                      <Route
+                        path="/AgregarCategoria"
+                        element={<AgregarCategoria />}
+                      />
+                    </Route>
                     <Route
                       path="/AgregarBibliografia"
                       element={<AgregarBibliografia />}
@@ -141,13 +157,11 @@ function App() {
                       path="/AgregarCarrera"
                       element={<AgregarCarrera />}
                     />
-                    <Route path="/Login" element={<Login/>}  />
                     <Route path="/Registro" element={<Registro />} />
                     <Route path="/Ver_infrom" element={<Ver_infromes />} />
                     <Route path="/hook" element={<Hook />} />
                     <Route path="/Registrar_user" element={<AgregarUser />} />
                     <Route path="/Solicitud" element={<Solicitud2 />}></Route>
-                 
                   </Routes>
                 </div>
               </div>

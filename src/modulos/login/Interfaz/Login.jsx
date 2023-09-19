@@ -1,7 +1,9 @@
-// import { useState } from "react";
 import validacion from "../Dominio/Validacion";
+import { useNavigate } from "react-router-dom";
+import {Postslogin} from "../Infra/service";
 //-> hacemos un import de nuestra funcion 
 export default function Login() {
+  const navigate = useNavigate();
   //-> Creamos la intructura que deamos utilizar(estado , funciones,  dentro del hooks), enviamos parametros a nuesta
   //funcion de validacion con una estructura json de tal forma para manejar por clave y valor.
   const [inputs, handleFieldChange, getErrors, emialerror, passerror] =
@@ -11,23 +13,15 @@ export default function Login() {
     });
 
   //-> Creamos una funcion la cual llama a una funcion dentro de nuestro hooks de validacion.
-  const submit = () => {
-    getErrors();
+  const submit = (e) => {
+    //etErrors();
+    e.preventDefault();
+       Postslogin(inputs.emailid, inputs.passwordid);
+       // navigate("/Panel/");
+    
+  console.log(  localStorage.getItem("reservas"));
+
   };
-
-// estado pa obtener el usuario y pass del login
-// const [login,setLogin]=useState({username:'',password:''});
-
-// funcion que agarra el valor de los inputsd
-// const inputChange({target})=>{
-//   const {name,value}=target
-//   setLogin({
-//     ...login,
-//     [name]:value
-//   })
-  
-// }
-
 
   return (
     <div className="inner_page login">
@@ -43,14 +37,12 @@ export default function Login() {
                       <label className="label_field font-weight-bold">
                         E-mail
                       </label>
-                      {/* campo correo */}
                       <input
                         type="email"
-                        name="username"
+                        name="email"
                         placeholder="E-mail"
                         id="emailid"
-                        value={inputs.emailid}
-                        // value={login.username} //-> obtenemos el valor
+                        value={inputs.emailid} //-> obtenemos el valor
                         onChange={handleFieldChange} //-> cada cambio que pase en input llamara a nuestra funcion de return del hooks validar
                         className={
                           emialerror.emial ==
@@ -72,14 +64,12 @@ export default function Login() {
                       <label className="label_field font-weight-bold">
                         Password
                       </label>
-                      {/* campo password */}
                       <input
                         type="password"
                         name="password"
                         id="passwordid"
                         placeholder="Password"
-                         value={inputs.passwordid}
-                        // value={login.password}
+                        value={inputs.passwordid}
                         onChange={handleFieldChange}
                         className={
                           passerror.passw ==
