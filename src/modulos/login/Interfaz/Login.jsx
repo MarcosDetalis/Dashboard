@@ -1,6 +1,6 @@
 import validacion from "../Dominio/Validacion";
 import { useNavigate } from "react-router-dom";
-import {Postslogin} from "../Infra/service";
+import {Postslogin} from "../infra/service";
 //-> hacemos un import de nuestra funcion 
 export default function Login() {
   const navigate = useNavigate();
