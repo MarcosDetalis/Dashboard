@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Login from "./modulos/login/Interfaz/Login";
+// import Login from "./modulos/login/Interfaz/Login";
 import { PrivateRoute } from "./router/Router_private";
-
+import Login from './modulos/login/Interfaz/Login'
 
 ReactDOM.render(
   <BrowserRouter>
@@ -14,7 +14,7 @@ ReactDOM.render(
   <Route path="/" element={<Login />} />
   <Route
     element={
-      <PrivateRoute isAllowed={!!usu_correo && roles=='admin'} />
+      <PrivateRoute isAllowed={!!sessionStorage.getItem("reservas")} />
     }
   >
     <Route path="*" element={<App />} />
