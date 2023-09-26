@@ -5,7 +5,7 @@ const MySwal = withReactContent(Swal);
 
 export async function Postslogin(correo, pass) {
   try {
-    let res = await fetch("http://localhost:4005/login/auten", {
+    let res = await fetch("http://localhost:4005/login/iniciarsesion", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
       body: JSON.stringify({
