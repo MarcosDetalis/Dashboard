@@ -13,8 +13,8 @@ export async function Postslogin(correo, pass) {
         pass: pass,
       }),
     });
-    await res.json();
-    if (res.status === 201) {
+    const usuarioDB  = await  res.json();
+    if (res.status != 500) {
       console.log("Acceso Correcto");
       Swal.fire({
         position: "top-end",
@@ -23,7 +23,8 @@ export async function Postslogin(correo, pass) {
         showConfirmButton: false,
         timer: 1500,
       });
-      sessionStorage.setItem("reservas", true);
+      console.log(".", usuarioDB.data.token);
+      sessionStorage.setItem("reservas", usuarioDB.data.token);
       sessionStorage.setItem("roles", 'adn');
       location.href = "/Panel";
     } else {

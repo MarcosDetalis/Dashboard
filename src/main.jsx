@@ -12,7 +12,7 @@ ReactDOM.render(
       <Route path="/" element={<Login />} />
       <Route
         element={
-          <PrivateRoute isAllowed={!!sessionStorage.getItem("reservas")} />
+          <PrivateRoute isAllowed={sessionStorage.getItem("reservas")}  />
         }
       >
         <Route path="*" element={<App />} />
