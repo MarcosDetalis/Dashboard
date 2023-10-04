@@ -24,6 +24,7 @@ export async function Postslogin(correo, pass) {
         timer: 1500,
       });
       console.log(".tronko", usuarioDB.data.token);
+       
       sessionStorage.setItem("reservas", usuarioDB.data.token);
       sessionStorage.setItem("roles", 'adn');
       location.href = "/Panel";

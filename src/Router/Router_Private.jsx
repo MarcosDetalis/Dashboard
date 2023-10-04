@@ -1,7 +1,7 @@
 
 import { Navigate, Outlet } from "react-router-dom";
  
-import { createContext, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
  
 
 export const PrivateRoute = ({
@@ -9,7 +9,7 @@ export const PrivateRoute = ({
   redirectTo = "/",
   children,
 }) => {
-     const [reservas, setReservas] = useState([]);
+     const [reservas, setReservas] = useState();
 
  useEffect(() => {
    fetch("http://localhost:4005/login/toket", {
@@ -21,22 +21,27 @@ export const PrivateRoute = ({
    })
      .then((response) => response.json())
      .then((res) => {
-       console.log("resall", res.message.result[0].token);
-
-       if (res === 0) {
-         console.log("first ", res.message);
+       console.log(res.message)
+        setReservas(res.message);
+       /*
+       console.log("resallooo", res.message.result[0].token);
+            console.log("firstooo ", res.message);
+       if (res.status ==500) {
+         console.log("firstooo55 ", res.status);
+         setReservas(1);
        } else {
-         setReservas(res.message.result[0].token);
-       }
+         setReservas(0);
+          console.log("firstooo55 ", res.status);
+          setReservas(1);
+       }*/
      });
  }, [isAllowed]);
-       console.log("op", reservas);
-
-  if (isAllowed == reservas) {
-       return <Navigate to={redirectTo} replace />;
- 
-  } else if (isAllowed !== reservas) {
- 
-      return children ? children : <Outlet />;
+  
+ console.log("hello", reservas)
+    
+  if ("Error al autenticarse" == reservas) {
+    return <Navigate to={redirectTo} replace />;
+  } else {
+    return children ? children : <Outlet />;
   }
 };
