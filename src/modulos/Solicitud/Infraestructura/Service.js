@@ -1,9 +1,22 @@
+//importamos para utilizar el estado de handlechange
+import {buscar} from '../interfaz/Solicitud2.jsx'
+//Original
+// export async function getSolicitudes() {
+//   const url = "https://servicedeb.onrender.com/soli/solicitudes";
+//   const respuesta = await fetch(url);
+//   const datos = await respuesta.json();
+//   return datos;
+// }
+
+
 export async function getSolicitudes() {
-  const url = "https://servicedeb.onrender.com/soli/solicitudes";
+  const url = `https://servicedeb.onrender.com/soli/solicitudes?q=${buscar}`;
   const respuesta = await fetch(url);
   const datos = await respuesta.json();
   return datos;
 }
+
+
 
 //PRUEBAAAAAA
 //ppp

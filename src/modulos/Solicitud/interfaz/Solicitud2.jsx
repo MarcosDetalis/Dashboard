@@ -26,11 +26,7 @@ function Solicitud2() {
 // estado q consume la api Observacion este seria data y set data
 const [usuario,setUsuario]=useState([]);
 
-useEffect(()=>{
-  getSolicitudes().then((datos)=>
-  setUsuario(datos)
-  )
-},[])
+
 
 // estados que controla cuando abre y cierra inicia en false p q no este abierto
 const [modalOpciones,setModalOpciones]=useState(false);
@@ -118,6 +114,11 @@ setModalEliminar(false);
   console.log(evento.target.value)
    
 }
+useEffect(()=>{
+  getSolicitudes().then((datos)=>
+  setUsuario(datos)
+  )
+},[buscar])//aca llama parametro que le pasamos por el input pa q renderize
 
 
 
@@ -158,7 +159,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
 
   return (
     <div className="contenedor m-3">
-    {/* <div className="barraBusqueda">
+    <div className="barraBusqueda">
             <input
               value={buscar}
               onChange={buscador}
@@ -171,7 +172,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
             <button type="button" className="btnBuscar">
               <FontAwesomeIcon icon={faSearch} />
             </button>
-          </div> */}
+          </div> 
         
 
       
@@ -192,6 +193,7 @@ XLSX.writeFile(wb,"Reservas.xlsx");
           </tr>
         </thead>
     <tbody>
+      {/* tendria que iterar(mapear) usuario ya  */}
         {registro.map(elemento=>(
             <tr key={elemento.idreservas}>
                 <td>{elemento.idreservas}</td>
