@@ -5,7 +5,7 @@ export async function getSolicitudes() {
   return datos;
 }
 
-
+//PRUEBAAAAAA
 //ppp
 // no necesariamente tiene q llamarrse como en la DB. ejemplo:id
 export async function ElimiReserva(id, nombre) {
