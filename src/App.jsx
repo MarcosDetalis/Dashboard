@@ -67,7 +67,7 @@ function App() {
                       <a href="/">
                         <img
                           className="img-responsive"
-                          src="images/logo/logo.png"
+                         // src="images/logo/logo.png"
                           alt="#"
                         />
                       </a>
@@ -101,7 +101,7 @@ function App() {
                             >
                               <img
                                 className="img-responsive rounded-circle"
-                                src="images/layout_img/user_img.jpg"
+                               //rc="images/layout_img/user_img.jpg" 
                                 alt="#"
                               />
                               <span className="name_user">Nombre usuario</span>

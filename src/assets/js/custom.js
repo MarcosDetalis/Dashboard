@@ -15,15 +15,16 @@
 
 $(document).ready(function () {
   /*-- sidebar js --*/
-  $('#sidebarCollapse').on('click', function () {
-    $('#sidebar').toggleClass('active');
+  $("#sidebarCollapse").on("click", function () {
+    $("#sidebar").toggleClass("active");
   });
-  /*-- calendar js --*/
+  /*-- calendar js 
   $('#example14').calendar({
     inline: true
-  });
-  $('#example15').calendar();
-  /*-- tooltip js --*/
+    
+  });  
+  $("#example15").calendar();
+  --*/
   $('[data-toggle="tooltip"]').tooltip();
 });
 
@@ -36,7 +37,7 @@ $(document).ready(function () {
 /*--------------------------------------
     chart js
 --------------------------------------*/
-
+/*
 $(function () {
   new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line'));
   new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar'));
@@ -44,7 +45,7 @@ $(function () {
   new Chart(document.getElementById("pie_chart").getContext("2d"), getChartJs('pie'));
   new Chart(document.getElementById("area_chart").getContext("2d"), getChartJs('area'));
   new Chart(document.getElementById("donut_chart").getContext("2d"), getChartJs('donut'));
-});
+});*/
 
 function getChartJs(type) {
   var config = null;
