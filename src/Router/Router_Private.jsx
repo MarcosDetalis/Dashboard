@@ -9,7 +9,7 @@ export const PrivateRoute = ({
   redirectTo = "/",
   children,
 }) => {
-  const [reservas, setReservas] = useState();
+  const [reservas, setReservas] = useState(null);
 
   
  /*

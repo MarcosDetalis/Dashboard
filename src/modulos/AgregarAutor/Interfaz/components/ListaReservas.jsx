@@ -4,12 +4,13 @@ import { ReservasContext } from "../contexts/contextoAplicacion";
 import Reserva from "./Reservas";
 import AgregarM from "./AgregarM";
 import Pagination from "./Paginacion";
+import ScaleLoader from "react-spinners/ScaleLoader";
 //import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
   const { lingitudReserva } = useContext(ReservasContext);
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(true);
 
   const [show, setShow] = useState(false);
 
@@ -23,7 +24,7 @@ const ListaReserva = () => {
     setShowAlert(true);
     setTimeout(() => {
       setShowAlert(false);
-    }, 2000);
+    }, 10);
   };
 
   useEffect(() => {
@@ -89,10 +90,7 @@ const ListaReserva = () => {
         </div>
       </div>
 
-      <Alert show={showAlert} variant="success">
-        Datos actualizados
-      </Alert>
-
+     
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -110,6 +108,21 @@ const ListaReserva = () => {
               <Reserva reser={reser} />
             </tr>
           ))}
+          <tr>
+            <td colSpan="7" style={{ textAlign: "center" }}>
+              <div>
+                <ScaleLoader
+                  color="#214162"
+                  cssOverride={{}}
+                  loading={showAlert}
+                  margin={6}
+                  radius={4}
+                  speedMultiplier={1}
+                  width={10}
+                />
+              </div>
+            </td>
+          </tr>
         </tbody>
       </table>
 
