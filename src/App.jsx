@@ -11,6 +11,8 @@ import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
 import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
+
+import AgregarPais from "./modulos/Agregar_Pais/Interfaz";
 import { PrivateRoute } from './Router/Router_Private'
 
  
@@ -67,7 +69,7 @@ function App() {
                       <a href="/">
                         <img
                           className="img-responsive"
-                         // src="images/logo/logo.png"
+                          // src="images/logo/logo.png"
                           alt="#"
                         />
                       </a>
@@ -101,7 +103,7 @@ function App() {
                             >
                               <img
                                 className="img-responsive rounded-circle"
-                               //rc="images/layout_img/user_img.jpg" 
+                                //rc="images/layout_img/user_img.jpg"
                                 alt="#"
                               />
                               <span className="name_user">Nombre usuario</span>
@@ -135,6 +137,7 @@ function App() {
                     AgregarBibliografia
                     {/*  <Route path="/" element={<Login />} /> */}
                     <Route path="/Panel" element={<Panel />} />
+                    {/*  Mantenimiento Seccion*/}
                     <Route path="/AgregarAutor" element={<AgregarAutor />} />
                     <Route
                       element={
@@ -160,6 +163,10 @@ function App() {
                       path="/AgregarCarrera"
                       element={<AgregarCarrera />}
                     />
+                    <Route path="/AgregarPais" element={<AgregarPais />} />
+                    {/*  Mantenimiento Seccion FIN*/}
+
+
                     <Route path="/Registro" element={<Registro />} />
                     <Route path="/Ver_infrom" element={<Ver_infromes />} />
                     <Route path="/hook" element={<Hook />} />

@@ -21,7 +21,7 @@ export default function Frament() {
             <li>
               <Link to={"AgregarAutor"}>
                 <i className="fa fa-user-plus blue2_color"></i>
-                <span >Angregar Autor</span>
+                <span>Angregar Autor</span>
               </Link>
             </li>
             <li>
@@ -40,6 +40,12 @@ export default function Frament() {
               <Link to={"AgregarCarrera"}>
                 <i className="fa fa-graduation-cap blue2_color"></i>
                 <span>Agregar Carreras</span>
+              </Link>
+            </li>
+            <li>
+              <Link to={"AgregarPais"}>
+                <i className="fa fa-globe blue2_color"></i>
+                <span>Agregar Pais</span>
               </Link>
             </li>
           </ul>
