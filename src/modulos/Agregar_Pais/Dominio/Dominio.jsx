@@ -1,12 +1,17 @@
 import { useState } from "react";
- 
+ import { PaisContext } from "../Interfaz/contexts/contextoAplicacion";
+import { useContext } from "react";
  
 export default function Dominio(initialState) {
   const [inputs, setValues] = useState(initialState);
 
   const [Autor_error, setalumnoid] = useState({}); // Estado para se enviado como mensaje a la interfaz ( el {} es para manejar un tipo de object )
   const [titulo_error, settitulo_error] = useState({}); 
- 
+
+  const { AgregarPais } = useContext(PaisContext);
+  
+  console.log(inputs,"osi")
+
   const getErrors = () => {
 
     let aux = 0;
@@ -14,10 +19,11 @@ export default function Dominio(initialState) {
     if (inputs.paistxt_id.trim() !== "") {
       setalumnoid({ ...Autor_error, msm_error: " " });
       aux = 0;
+        AgregarPais(inputs.paistxt_id);
     } else {
       setalumnoid({
         ...Autor_error,
-        msm_error: "El Nombre del autor es un campo obligatorio",
+        msm_error: "El Nombre del Pais es un campo obligatorio",
       });
       aux = 1;
     }

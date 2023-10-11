@@ -1,7 +1,5 @@
 import { Form, Button, } from "react-bootstrap";
-import { PaisContext } from "../contexts/contextoAplicacion";
-import { useContext} from "react";
-
+ 
 import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
@@ -16,12 +14,12 @@ const AgregarM = () => {
      getErrors();
    };
 
-  const { AgregarPais } = useContext(PaisContext);
+  //const { AgregarPais } = useContext(PaisContext);
    
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    AgregarPais(inputs.paistxt_id);
+   // AgregarPais(inputs.paistxt_id);
   };
    console.log("conta", Autor_error.msm_error);
   return (

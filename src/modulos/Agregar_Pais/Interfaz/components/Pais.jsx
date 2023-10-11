@@ -15,7 +15,7 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
     handleClose();
   }, [reser]);
 
- 
+  console.log("first", reser);
   return (
     <>
       <td>{reser.nombre}</td>
