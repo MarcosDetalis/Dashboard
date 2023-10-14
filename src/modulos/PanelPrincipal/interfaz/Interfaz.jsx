@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+ import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 
 export default function Interfaz() {
   const [reservas, setReservas] = useState([]);
@@ -19,7 +20,13 @@ export default function Interfaz() {
   
   let re = reservas.map((item) => item.l)
  
-  console.log(re);
+  console.log(Number(re));
+
+  const data = [
+    { name: "Cantidad de solicitud", biblio: Number(re) },
+    { name: "Atrasos de Entrega", biblio: 2 },
+    { name: "Cantidad de Libros", biblio: 20 },
+  ];
 
   return (
     <div>
@@ -94,6 +101,12 @@ export default function Interfaz() {
           </div>
         </div>
       </div>
+      <BarChart width={600} height={230} data={data}>
+        <Bar dataKey="biblio" fill="#15283c" />
+        <CartesianGrid stroke="#ccc" />
+        <XAxis dataKey="name" />
+        <YAxis />
+      </BarChart>
     </div>
   );
 }
