@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import  PaisContext from "../Interfaz/contexts/contextoAplicacion";
+ 
 const MySwal = withReactContent(Swal);
 
  
@@ -39,39 +39,37 @@ export async function PostsPais(pais) {
   }
 }
 
-export  function DeleteReserva(id) {
+export  async function DeleteReserva(id) {
 
- 
-  console.log("op",  PaisContext());
-  
- Swal.fire({
-   title: "Desea eliminar?",
-   text: "Se eliminar el registro seleccionado!",
-   icon: "warning",
-   showCancelButton: true,
-   confirmButtonColor: "#3085d6",
-   cancelButtonColor: "#d33",
-   confirmButtonText: "Si",
- }).then((result) => {
-   if (result.isConfirmed) {
-     let res = fetch("http://localhost:4005/pais/eliminarpais", {
+     try {
+    let res =  await fetch("http://localhost:4005/pais/eliminarpais", {
        headers: { "Content-Type": "application/json" },
        method: "DELETE",
        body: JSON.stringify({
          id: id,
        }),
-     });
-       let op  = res;
-     console.log("res", op);
-     if (res.status === 201) {
-       console.log("Eliminado con exito");
-       Swal.fire("Se elimino con Exito!");
-       //location.reload(); //refresca la pagina pa borrar de la taal el registro es temporal
-     } else {
-       console.log("error al al eliminar ");
-     }
-   }
- }); 
+    });
+    await res.json();
+    if (res.status === 201) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Eliminado con exito",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      //location.reload();
+    } else {
+      MySwal.fire({
+        icon: "error",
+        title: "Ocurrio un error",
+        text: "Favor verificar la conexion",
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+   
 }
 
 ///---

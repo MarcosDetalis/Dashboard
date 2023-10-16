@@ -16,32 +16,30 @@ export default function Dominio(initialState) {
 
     let aux = 0;
 
-    if (inputs.paistxt_id.trim() !== "") {
+    console.log("oo", isNaN(inputs.paistxt_id));
+
+    if ( isNaN(inputs.paistxt_id) == true ) {
       setalumnoid({ ...Autor_error, msm_error: " " });
       aux = 0;
-        AgregarPais(inputs.paistxt_id);
+      //AgregarPais(inputs.paistxt_id);
     } else {
       setalumnoid({
         ...Autor_error,
-        msm_error: "El Nombre del Pais es un campo obligatorio",
+        msm_error: "Favor agregar un dato que corresponda",
       });
       aux = 1;
     }
-
-  if (inputs.paistxt_id.trim() !== "") {
-    settitulo_error({ ...titulo_error, msm_error: " " });
-    aux = 0;
-  } else {
-    settitulo_error({
-      ...titulo_error,
-      msm_error: "El titulo es un campo obligatorio",
-    });
-    aux = 1;
-  }
+    if (aux === 0) {
+      AgregarPais(inputs.paistxt_id);
+    }
+  
  
- console.log(aux)
  
   };
+  function elei() {
+     return 0
+  }
+
 
   return [
     //-> Se obtiene un evento lo cual identificamos los datos que se ingresan de la interfaz (inputs)
@@ -55,8 +53,9 @@ export default function Dominio(initialState) {
     //-> Mandamos funciones y estados a la interfaz tener en cuenta que cada vez que se crea un estado que tendra
     //que interactuar con la interfaz se tendra que incluir en este apartado para ser utlizado en la interfaz
     getErrors,
+      elei,
     Autor_error,
-    titulo_error
-   
+    titulo_error,
+  
   ];
 }

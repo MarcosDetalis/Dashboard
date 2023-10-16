@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { PaisContext } from "../contexts/contextoAplicacion";
 import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import EditarM from "./Editar_Pais";
+ 
 
 const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la ListaReservas es basicamente en un json  
   const { EliminarReservas } = useContext(PaisContext);
@@ -10,6 +11,21 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
  
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+   
+
+  const [eliminar, seteliminar] = useState(false);
+
+  const eliminarShow = () => seteliminar(true);
+  const eliminarClose = () => {
+    EliminarReservas(reser.idPais);
+    seteliminar(false);
+  } 
+   
+
+  
+
+
+
 
   useEffect(() => {
     handleClose();
@@ -32,9 +48,10 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
             </i>
           </button>
         </OverlayTrigger>
+
         <OverlayTrigger overlay={<Tooltip id={`tooltip-top`}>Borrar</Tooltip>}>
           <button
-            onClick={() => EliminarReservas(reser.idPais)} //LLamamos a una funcion que esta en el contexto de la aplicacion
+            onClick={eliminarShow} //LLamamos a una funcion que esta en el contexto de la aplicacion
             className="btn text-danger btn-act"
             data-toggle="modal"
           >
@@ -56,6 +73,21 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Salir
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={eliminar} onHide={eliminarClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> ¿Desea elimiar el datos?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={eliminarClose}>
+          Cerrar
+          </Button>
+          <Button variant="danger" onClick={eliminarClose } >
+           Eliminar
           </Button>
         </Modal.Footer>
       </Modal>

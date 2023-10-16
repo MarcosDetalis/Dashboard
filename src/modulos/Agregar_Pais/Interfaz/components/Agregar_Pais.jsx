@@ -4,12 +4,15 @@ import validacion from '../../Dominio/Dominio'
 
 const AgregarM = () => {
 
-   const [inputs, handleFieldChange, getErrors, Autor_error] = validacion({
-     paistxt_id: "",
+   const [inputs, handleFieldChange, getErrors, Autor_error, titulo_error] =
+     validacion({
+       paistxt_id: "",
 
-     //->Son los paramtros
-   });
+       //->Son los paramtros
+     });
   
+  
+  console.log("num", titulo_error);
    const submit = () => {
      getErrors();
    };

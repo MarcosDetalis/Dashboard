@@ -8,6 +8,7 @@ import {
 export const PaisContext = createContext();
 
 const AplicacionContextProvider = (props) => {
+  
   const [reservas, setReservas] = useState([]);
 const [reloadDatos, setReloadDatos] = useState(false);
   // useEffect(() => {
@@ -51,19 +52,17 @@ const [reloadDatos, setReloadDatos] = useState(false);
 
   //Eliminamos los datos solo obteniendo el id del item del boton
   const EliminarReservas =  (id) => {
-    let res = DeleteReserva(id);
-    console.log("hol",res)
+    DeleteReserva(id);
     setReloadDatos(true);
+   
   };
-     function op() {
-       console.log("op2")
-       setReloadDatos(true);
-     }
+      
      
      
      //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
      const atualizar = (id, updateundato) => {
        PutPais(updateundato.nombre, id);
+       setReloadDatos(true);
      };
 
   return (
@@ -74,7 +73,7 @@ const [reloadDatos, setReloadDatos] = useState(false);
         AgregarPais,
         EliminarReservas,
         atualizar,
-        op,
+         
       }}
     >
       {props.children}
