@@ -2,8 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import { PaisContext } from "../contexts/contextoAplicacion";
 import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import EditarM from "./Editar_Pais";
- 
-
 const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la ListaReservas es basicamente en un json  
   const { EliminarReservas } = useContext(PaisContext);
 
@@ -16,22 +14,18 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
   const [eliminar, seteliminar] = useState(false);
 
   const eliminarShow = () => seteliminar(true);
+   const Close = () => seteliminar(false);
+    
+
   const eliminarClose = () => {
     EliminarReservas(reser.idPais);
     seteliminar(false);
   } 
-   
-
-  
-
-
-
-
+    
   useEffect(() => {
     handleClose();
   }, [reser]);
-
-  console.log("first", reser);
+ 
   return (
     <>
       <td>{reser.nombre}</td>
@@ -62,12 +56,11 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
         </OverlayTrigger>
       </td>
 
-      <Modal show={show} onHide={handleClose} fullscreen={true}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Editar Libros</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Enviamos datos al compontente de EditarM */}
           <EditarM Req_Reservas={reser} />
         </Modal.Body>
         <Modal.Footer>
@@ -81,13 +74,13 @@ const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la 
         <Modal.Header closeButton>
           <Modal.Title>Confirmar</Modal.Title>
         </Modal.Header>
-        <Modal.Body> ¿Desea elimiar el datos?</Modal.Body>
+        <Modal.Body> ¿Desea eliminar {reser.nombre}?</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={eliminarClose}>
-          Cerrar
+          <Button variant="secondary" onClick={Close}>
+            Cerrar
           </Button>
-          <Button variant="danger" onClick={eliminarClose } >
-           Eliminar
+          <Button variant="danger" onClick={eliminarClose}>
+            Eliminar
           </Button>
         </Modal.Footer>
       </Modal>

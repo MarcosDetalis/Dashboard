@@ -1,18 +1,17 @@
 import { Form, Button, } from "react-bootstrap";
  
 import validacion from '../../Dominio/Dominio'
-
+import { Modal} from "react-bootstrap";
 const AgregarM = () => {
 
-   const [inputs, handleFieldChange, getErrors, Autor_error, titulo_error] =
+   const [inputs, handleFieldChange, getErrors, Autor_error] =
      validacion({
        paistxt_id: "",
 
        //->Son los paramtros
      });
   
-  
-  console.log("num", titulo_error);
+ 
    const submit = () => {
      getErrors();
    };
@@ -24,7 +23,7 @@ const AgregarM = () => {
     e.preventDefault();
    // AgregarPais(inputs.paistxt_id);
   };
-   console.log("conta", Autor_error.msm_error);
+   
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
@@ -51,6 +50,11 @@ const AgregarM = () => {
       <Button variant="success" type="submit" block onClick={submit}>
         Confirmar
       </Button>
+
+
+    
+
+
     </Form>
   );
 };

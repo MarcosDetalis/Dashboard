@@ -42,7 +42,7 @@ const ListaReserva = () => {
 
   const buscador = (evento) => {
     setBuscar(evento.target.value); //va agarrando y cargando en la funcion varaible lo que tipea
-    console.log(evento.target.value);
+     
   };
   // ponemos condicionales pa cuando el buscador
   let resultado = []; //primero pasamos un array que contendra las presuestas del buscador
