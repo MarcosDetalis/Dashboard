@@ -23,10 +23,11 @@ export async function Postslogin(correo, pass) {
         showConfirmButton: false,
         timer: 1500,
       });
-      console.log(".tronko", usuarioDB.data.token);
+      console.log(".tronko", usuarioDB.result.result[0].usu_nombre);
        
       sessionStorage.setItem("reservas", usuarioDB.data.token);
-      sessionStorage.setItem("roles", 'adn');
+      sessionStorage.setItem("roles", usuarioDB.result.result[0].roles);
+      sessionStorage.setItem("Usuario", usuarioDB.result.result[0].usu_nombre);
       location.href = "/Panel";
     } else {
       console.log("Al logearse");

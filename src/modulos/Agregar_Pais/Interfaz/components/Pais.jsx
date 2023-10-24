@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { PaisContext } from "../contexts/contextoAplicacion";
 import { Modal, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import EditarM from "./Editar_Pais";
+ 
 const Reserva = ({ reser }) => {//Obtenemos los datos de que nos pasan desde la ListaReservas es basicamente en un json  
   const { EliminarReservas } = useContext(PaisContext);
 

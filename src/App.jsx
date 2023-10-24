@@ -40,7 +40,7 @@ function App() {
                   <div className="user_profle_side">
                     <div className="user_img"></div>
                     <div className="user_info">
-                      <h6>Nombre usuario</h6>
+                      <h6>{sessionStorage.getItem("Usuario")}</h6>
                       <p>
                         <span className="online_animation"></span> Online
                       </p>
@@ -106,7 +106,7 @@ function App() {
                                 //rc="images/layout_img/user_img.jpg"
                                 alt="#"
                               />
-                              <span className="name_user">Nombre usuario</span>
+                              <span className="name_user">{sessionStorage.getItem("Usuario")}</span>
                             </a>
                             <div className="dropdown-menu">
                               <a className="dropdown-item" href="profile.html">
@@ -118,8 +118,8 @@ function App() {
                               <a className="dropdown-item" href="help.html">
                                 Help
                               </a>
-                              <a className="dropdown-item" href="#">
-                                <span>Log Out</span>{" "}
+                              <a className="dropdown-item" href="/" onClick={()=> sessionStorage.removeItem("reservas") }>
+                                <span>Salir</span>{" "}
                                 <i className="fa fa-sign-out"></i>
                               </a>
                             </div>
@@ -139,6 +139,7 @@ function App() {
                     <Route path="/Panel" element={<Panel />} />
                     {/*  Mantenimiento Seccion*/}
                     <Route path="/AgregarAutor" element={<AgregarAutor />} />
+
                     <Route
                       element={
                         <PrivateRoute
@@ -155,10 +156,33 @@ function App() {
                         element={<AgregarCategoria />}
                       />
                     </Route>
+
+
+
+
+
+                    <Route
+                      element={
+                        <PrivateRoute
+                          redirectTo="/"
+                          isAllowed={
+                            !!sessionStorage.getItem("reservas")
+                             
+                          }
+                        />
+                      }
+                    >
+
                     <Route
                       path="/AgregarBibliografia"
                       element={<AgregarBibliografia />}
                     />
+
+                    </Route>
+
+                  
+
+                    
                     <Route
                       path="/AgregarCarrera"
                       element={<AgregarCarrera />}

@@ -5,6 +5,7 @@ import Pais from "./Pais";
 import Agregar_Pais from "./Agregar_Pais";
 import Pagination from "./Paginacion";
 import ScaleLoader from "react-spinners/ScaleLoader";
+
 //import styles from "./ListaReserva.module.css";
 
 const ListaReserva = () => {
@@ -60,6 +61,8 @@ const ListaReserva = () => {
   const ActualReserva = resultado.slice(PrimeraPagina, UtimaPagina);
   const totalPagesNum = Math.ceil(resultado.length / PaginaReserva);
 
+
+ 
  
 
   return (
@@ -138,12 +141,10 @@ const ListaReserva = () => {
           <Modal.Title>Añadir Pais</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Agregar_Pais />
+          <Agregar_Pais  />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
-            Limpiar
-          </Button>
+       
           <Button variant="secondary" onClick={handleClose}>
             Salir
           </Button>

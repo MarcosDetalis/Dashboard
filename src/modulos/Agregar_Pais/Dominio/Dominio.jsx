@@ -9,14 +9,8 @@ export default function Dominio(initialState) {
  
   const { AgregarPais } = useContext(PaisContext);
   
- 
-
   const getErrors = () => {
-
     let aux = 0;
-
-     
-
     if ( isNaN(inputs.paistxt_id) == true ) {
       setalumnoid({ ...Autor_error, msm_error: " " });
       aux = 0;
@@ -31,10 +25,25 @@ export default function Dominio(initialState) {
     if (aux === 0) {
       AgregarPais(inputs.paistxt_id);
     }
-  
- 
- 
   };
+
+  const LimiarForm=()=> {
+   
+ 
+    //Convertimos los inputs (json) a un arreglo de arreglos 
+    const inputsArray = Object.entries(inputs);
+    // Recorremos el arreglo y retornamos un nuevo arreglo de arreglos conservando el key
+    const clearInputsArray = inputsArray.map(([key]) => [key, '']);
+
+    //Convertimos el arreglo de arreglos nuevamente a formato json
+    const inputsJson = Object.fromEntries(clearInputsArray);
+
+    setValues(inputsJson)
+}
+
+
+
+
  
 
   return [
@@ -49,9 +58,9 @@ export default function Dominio(initialState) {
     //-> Mandamos funciones y estados a la interfaz tener en cuenta que cada vez que se crea un estado que tendra
     //que interactuar con la interfaz se tendra que incluir en este apartado para ser utlizado en la interfaz
     getErrors,
-     
+    
     Autor_error,
-   
+    LimiarForm,
   
   ];
 }

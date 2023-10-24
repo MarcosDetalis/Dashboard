@@ -1,10 +1,8 @@
-import { Form, Button, } from "react-bootstrap";
- 
+import { Form, Button, Row, Col} from "react-bootstrap";
 import validacion from '../../Dominio/Dominio'
-import { Modal} from "react-bootstrap";
-const AgregarM = () => {
+const AgregarM = ( ) => {
 
-   const [inputs, handleFieldChange, getErrors, Autor_error] =
+   const [inputs, handleFieldChange, getErrors, Autor_error,LimiarForm] =
      validacion({
        paistxt_id: "",
 
@@ -15,6 +13,7 @@ const AgregarM = () => {
    const submit = () => {
      getErrors();
    };
+ 
 
   //const { AgregarPais } = useContext(PaisContext);
    
@@ -23,6 +22,8 @@ const AgregarM = () => {
     e.preventDefault();
    // AgregarPais(inputs.paistxt_id);
   };
+
+ 
    
   return (
     <Form onSubmit={handleSubmit}>
@@ -45,13 +46,25 @@ const AgregarM = () => {
             {Autor_error.msm_error}
           </span>
         )}
+         
       </Form.Group>
 
-      <Button variant="success" type="submit" block onClick={submit}>
-        Confirmar
-      </Button>
 
+ 
 
+  <Row>
+        <Col xs="auto">
+        <Button variant="success" type="submit"  onClick={submit}  >
+          Confirmar
+          </Button>
+          
+        </Col>
+        <Col xs="auto"  >
+        <Button variant="danger" onClick={LimiarForm}  >
+            Limpiar
+          </Button>
+        </Col>
+      </Row>
     
 
 
