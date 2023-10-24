@@ -1,6 +1,33 @@
- 
+import { useEffect, useState } from "react";
+ import { BarChart, Bar, CartesianGrid, XAxis, YAxis } from "recharts";
 
 export default function Interfaz() {
+  const [reservas, setReservas] = useState([]);
+ 
+  // useEffect(() => {
+  //   setReservas(JSON.parse(localStorage.getItem("reservas")));
+  // }, []);
+
+  //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
+  useEffect(() => {
+    fetch("http://localhost:4005/ping")
+      .then((response) => response.json())
+      .then((res) => {
+        setReservas(res);
+      });
+    
+  }, []);
+  
+  let re = reservas.map((item) => item.l)
+ 
+  console.log(Number(re));
+
+  const data = [
+    { name: "Cantidad de solicitud", biblio: Number(re) },
+    { name: "Atrasos de Entrega", biblio: 2 },
+    { name: "Cantidad de Libros", biblio: 20 },
+  ];
+
   return (
     <div>
       {" "}
@@ -21,7 +48,7 @@ export default function Interfaz() {
             </div>
             <div className="counter_no">
               <div>
-                <p className="total_no">20</p>
+                <p className="total_no">{re}</p>
                 <p className="head_couter">Cantidad de Solicitud</p>
               </div>
             </div>
@@ -36,7 +63,7 @@ export default function Interfaz() {
             </div>
             <div className="counter_no">
               <div>
-                <p className="total_no">20</p>
+                <p className="total_no">{re}</p>
                 <p className="head_couter">Atrasos de Entrega</p>
               </div>
             </div>
@@ -74,6 +101,12 @@ export default function Interfaz() {
           </div>
         </div>
       </div>
+      <BarChart width={600} height={230} data={data}>
+        <Bar dataKey="biblio" fill="#15283c" />
+        <CartesianGrid stroke="#ccc" />
+        <XAxis dataKey="name" />
+        <YAxis />
+      </BarChart>
     </div>
   );
 }

@@ -1,6 +1,9 @@
 import  { Fragment } from 'react'
 import { Link } from "react-router-dom";
+ 
 export default function Frament() {
+ 
+  
   return (
     <Fragment>
       <ul className="list-unstyled components">
@@ -44,6 +47,12 @@ export default function Frament() {
               <Link to={"AgregarCarrera"}>
                 <i className="fa fa-graduation-cap blue2_color"></i>
                 <span>Agregar Carreras</span>
+              </Link>
+            </li>
+            <li>
+              <Link to={"AgregarPais"}>
+                <i className="fa fa-globe blue2_color"></i>
+                <span>Agregar Pais</span>
               </Link>
             </li>
           </ul>

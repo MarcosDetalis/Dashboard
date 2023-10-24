@@ -1,36 +1,38 @@
 import { createContext, useEffect, useState } from "react";
 import {
-  PostsReservas,
+  PostsPais,
   DeleteReserva,
-  PutReservas,
+  PutPais,
  
 } from "../../Infraestrutura/service";
-export const ReservasContext = createContext();
+export const PaisContext = createContext();
 
 const AplicacionContextProvider = (props) => {
+  
   const [reservas, setReservas] = useState([]);
-
+const [reloadDatos, setReloadDatos] = useState(false);
   // useEffect(() => {
   //   setReservas(JSON.parse(localStorage.getItem("reservas")));
   // }, []);
 
   //Se hace la peticion a la api (Asi no es la manera de que se debe hacer)
   useEffect(() => {
-    fetch("http://localhost:4005/ping")
+    fetch("http://localhost:4005/pais/paises")
       .then((response) => response.json())
       .then((res) => {
-        console.log("res", res);
+       
         if (res === 0) {
           setReservas([{ id_reserva: "sin nada" }]);
         } else {
           setReservas(res);
         }
+        setReloadDatos(false);
       });
-  }, []);
+  }, [reloadDatos]);
 
-  console.log("sindate", reservas);
  
 
+ 
 
   //Los datos guardamos en la memoria local del navegador
 
@@ -42,38 +44,40 @@ const AplicacionContextProvider = (props) => {
   const lingitudReserva = reservas.sort((a, b) => (a.name < b.name ? -1 : 10));
 
   //obtenemos los datos del modal AgregarM
-  const addReservas = (nombre, fecha, estado) => {
+  const AgregarPais = (nombre) => {
     //Enviamos los parametros a una funcion que esta en service
-    PostsReservas(nombre, fecha, estado);
+    PostsPais(nombre);
+     setReloadDatos(true);
   };
 
   //Eliminamos los datos solo obteniendo el id del item del boton
-  const EliminarReservas = (id) => {
+  const EliminarReservas =  (id) => {
     DeleteReserva(id);
+    setReloadDatos(true);
+   
   };
-  //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
-  const atualizar = (id, updateundato) => {
-    PutReservas(
-      updateundato.nombre,
-      updateundato.fecha,
-      updateundato.estado,
-      id
-    );
-  };
+      
+     
+     
+     //Obtenemos un objeto json (updateundato) lo cual llamamos sus claves
+     const atualizar = (id, updateundato) => {
+       PutPais(updateundato.nombre, id);
+       setReloadDatos(true);
+     };
 
   return (
     //Compartimos los datos a los demas  componentes
-    <ReservasContext.Provider
+    <PaisContext.Provider
       value={{
         lingitudReserva,
-        addReservas,
+        AgregarPais,
         EliminarReservas,
         atualizar,
          
       }}
     >
       {props.children}
-    </ReservasContext.Provider>
+    </PaisContext.Provider>
   );
 };
 
