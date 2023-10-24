@@ -11,9 +11,14 @@ import AgregarAutor from "./modulos/AgregarAutor/Interfaz/Registro";
 import AgregarCategoria from './modulos/AgregarCategoria/Interfaz/Registro'
 import AgregarBibliografia from './modulos/AgregarTipoBibliografia/Interfaz/Registro'
 import AgregarCarrera from './modulos/AgregarCarrera/Interfaz/Registro'
+ 
 
 import AgregarPais from "./modulos/Agregar_Pais/Interfaz";
 import { PrivateRoute } from './Router/Router_Private'
+
+ 
+ 
+import { PrivateRoute } from './router/Router_private'
 
  
 function App() {
@@ -137,7 +142,9 @@ function App() {
                     AgregarBibliografia
                     {/*  <Route path="/" element={<Login />} /> */}
                     <Route path="/Panel" element={<Panel />} />
+ 
                     {/*  Mantenimiento Seccion*/}
+ 
                     <Route path="/AgregarAutor" element={<AgregarAutor />} />
 
                     <Route
@@ -156,6 +163,7 @@ function App() {
                         element={<AgregarCategoria />}
                       />
                     </Route>
+ 
 
 
 
@@ -173,6 +181,7 @@ function App() {
                       }
                     >
 
+ 
                     <Route
                       path="/AgregarBibliografia"
                       element={<AgregarBibliografia />}
@@ -187,10 +196,12 @@ function App() {
                       path="/AgregarCarrera"
                       element={<AgregarCarrera />}
                     />
+ 
                     <Route path="/AgregarPais" element={<AgregarPais />} />
                     {/*  Mantenimiento Seccion FIN*/}
 
 
+ 
                     <Route path="/Registro" element={<Registro />} />
                     <Route path="/Ver_infrom" element={<Ver_infromes />} />
                     <Route path="/hook" element={<Hook />} />
