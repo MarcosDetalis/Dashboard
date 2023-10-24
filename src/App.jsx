@@ -18,9 +18,6 @@ import { PrivateRoute } from './Router/Router_Private'
 
  
  
-import { PrivateRoute } from './router/Router_private'
-
- 
 function App() {
 
    
