@@ -718,7 +718,36 @@ XLSX.writeFile(wb,"Reservas.xlsx");
 
 export default Solicitud2;
 
+pa gustave
+DECLARE
 
+  p_cantidad number (10);
+  p_stock number (3);
+   CURSOR apex IS
+   
+    SELECT rp.cantidad FROM RESTRI_PRUEBA rp union
+    stock_prueba sp;
+   
+BEGIN
+  p_cantidad := '&cantidad';
+  p_stock := 5;
+  FOR reg IN apex LOOP
+    
+    IF reg.cantidad >= p_stock  THEN
+      if reg.cantidad < p_cantidad then
+      
+    dbms_output.put_line('inserta');
+    END IF;
+      END IF;
+   IF reg.cantidad > p_cantidad  THEN
+     
+      dbms_output.put_line('no inserta');
+     
+     end if;
+     
+  END LOOP;
+  commit;
+END;
 
 
 
